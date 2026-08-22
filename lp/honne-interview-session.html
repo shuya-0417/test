@@ -1,0 +1,397 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+  .honne-lp{
+    --navy:#1B2330;
+    --navy-deep:#141A24;
+    --ink:#2B2E36;
+    --paper:#F7F3EA;
+    --paper-alt:#FFFFFF;
+    --cream:#EFE7D6;
+    --ember:#A9291E;
+    --ember-dark:#8A2018;
+    --gold:#A9812E;
+    --gold-soft:#D8C48C;
+    --line:#E1D8C4;
+    --line-dark:#3A4152;
+    --muted:#6B6F78;
+    font-family:"Zen Kaku Gothic New","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic Medium","YuGothic","Meiryo",sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    box-sizing:border-box;
+  }
+  .honne-lp *,.honne-lp *::before,.honne-lp *::after{box-sizing:inherit;}
+  .honne-lp ul{list-style:none;margin:0;padding:0;}
+  .honne-lp p{margin:0;}
+  .honne-lp a{color:inherit;text-decoration:none;}
+  .honne-lp img{max-width:100%;display:block;}
+  .honne-lp section{padding:88px 24px;}
+  .honne-lp .honne-inner{max-width:1040px;margin:0 auto;}
+  .honne-lp .honne-eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12px;letter-spacing:.24em;font-weight:700;
+  }
+  .honne-lp .honne-eyebrow::before{content:"";width:22px;height:1px;background:currentColor;opacity:.6;}
+  .honne-lp h1,.honne-lp h2,.honne-lp h3{
+    font-family:"Shippori Mincho","游明朝","Yu Mincho","Hiragino Mincho Pro",serif;
+    font-weight:600;margin:0;text-wrap:balance;
+  }
+  .honne-lp .honne-lead{font-size:16px;color:var(--muted);max-width:56ch;}
+  .honne-lp .honne-btn{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:17px 38px;border-radius:2px;
+    font-size:15px;font-weight:700;letter-spacing:.06em;
+    border:1px solid var(--ember);background:var(--ember);color:#FBF2EA;
+    transition:background .25s ease,transform .25s ease,border-color .25s ease;
+  }
+  .honne-lp .honne-btn:hover{background:var(--ember-dark);border-color:var(--ember-dark);transform:translateY(-2px);}
+  .honne-lp .honne-btn::after{content:"→";transition:transform .25s ease;}
+  .honne-lp .honne-btn:hover::after{transform:translateX(4px);}
+  .honne-lp .honne-note{font-size:12.5px;color:var(--muted);}
+
+  .honne-lp .honne-reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+  .honne-lp .honne-reveal.is-visible{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){
+    .honne-lp .honne-reveal{opacity:1;transform:none;transition:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .honne-lp .honne-hero{
+    background:radial-gradient(120% 140% at 15% 0%,#232B3B 0%,var(--navy) 46%,var(--navy-deep) 100%);
+    color:#EFEAE0;position:relative;overflow:hidden;padding:132px 24px 108px;
+  }
+  .honne-lp .honne-hero::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:repeating-linear-gradient(180deg,rgba(216,196,140,.07) 0px,rgba(216,196,140,.07) 1px,transparent 1px,transparent 64px);
+    mask-image:linear-gradient(180deg,transparent,#000 30%,#000 75%,transparent);
+  }
+  .honne-lp .honne-hero .honne-inner{position:relative;text-align:center;display:flex;flex-direction:column;align-items:center;gap:26px;}
+  .honne-lp .honne-hero .honne-eyebrow{
+    color:var(--gold-soft);border:1px solid rgba(216,196,140,.4);padding:8px 18px;border-radius:999px;
+  }
+  .honne-lp .honne-hero .honne-eyebrow::before{display:none;}
+  .honne-lp .honne-hero h1{font-size:clamp(28px,4.6vw,46px);line-height:1.65;color:#FBF7EE;max-width:18ch;}
+  .honne-lp .honne-hero .honne-sub{font-family:"Shippori Mincho",serif;font-size:clamp(16px,2vw,19px);color:var(--gold-soft);letter-spacing:.04em;}
+  .honne-lp .honne-hero .honne-lead{color:#C7CBD6;max-width:52ch;font-size:15.5px;}
+  .honne-lp .honne-hero .honne-note{color:#8890A0;margin-top:6px;}
+
+  /* ---------- STRENGTH ---------- */
+  .honne-lp .honne-strength{background:var(--paper);}
+  .honne-lp .honne-head{display:flex;flex-direction:column;gap:16px;margin-bottom:56px;}
+  .honne-lp .honne-strength .honne-eyebrow{color:var(--ember);}
+  .honne-lp .honne-strength h2{font-size:clamp(24px,3.2vw,34px);color:var(--navy);}
+  .honne-lp .honne-strength-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);}
+  .honne-lp .honne-strength-card{background:var(--paper-alt);padding:40px 32px;display:flex;flex-direction:column;gap:16px;}
+  .honne-lp .honne-strength-card .honne-kana{font-family:"Shippori Mincho",serif;font-size:13px;color:var(--gold);letter-spacing:.1em;}
+  .honne-lp .honne-strength-card h3{font-size:19px;color:var(--navy);line-height:1.6;}
+  .honne-lp .honne-strength-card p{font-size:14.5px;color:var(--muted);}
+
+  /* ---------- FOR ---------- */
+  .honne-lp .honne-for{background:var(--paper-alt);}
+  .honne-lp .honne-for .honne-eyebrow{color:var(--gold);}
+  .honne-lp .honne-for h2{font-size:clamp(24px,3.2vw,34px);color:var(--navy);}
+  .honne-lp .honne-for-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+  .honne-lp .honne-for-card{background:var(--paper-alt);padding:44px 40px;}
+  .honne-lp .honne-for-card:first-child{background:var(--navy);color:#EDE9DF;}
+  .honne-lp .honne-for-card .honne-tag{font-size:13px;letter-spacing:.1em;font-weight:700;color:var(--gold-soft);}
+  .honne-lp .honne-for-card:last-child .honne-tag{color:var(--ember);}
+  .honne-lp .honne-for-card h3{font-family:"Shippori Mincho",serif;font-weight:600;font-size:21px;margin:14px 0 22px;line-height:1.7;}
+  .honne-lp .honne-for-card:first-child h3{color:#FBF7EE;}
+  .honne-lp .honne-for-card:last-child h3{color:var(--navy);}
+  .honne-lp .honne-for-card ul{display:flex;flex-direction:column;gap:12px;}
+  .honne-lp .honne-for-card li{font-size:14.5px;padding-left:20px;position:relative;}
+  .honne-lp .honne-for-card:first-child li{color:#C7CBD6;}
+  .honne-lp .honne-for-card:last-child li{color:var(--muted);}
+  .honne-lp .honne-for-card li::before{content:"・";position:absolute;left:0;}
+
+  /* ---------- FLOW ---------- */
+  .honne-lp .honne-flow{background:var(--paper);}
+  .honne-lp .honne-flow .honne-eyebrow{color:var(--ember);}
+  .honne-lp .honne-flow h2{font-size:clamp(24px,3.2vw,34px);color:var(--navy);}
+  .honne-lp .honne-flow-list{display:flex;flex-direction:column;}
+  .honne-lp .honne-flow-item{display:grid;grid-template-columns:64px 1fr;gap:28px;position:relative;padding-bottom:44px;}
+  .honne-lp .honne-flow-item:last-child{padding-bottom:0;}
+  .honne-lp .honne-flow-item::before{
+    content:"";position:absolute;left:31px;top:52px;bottom:0;width:1px;background:var(--line);
+  }
+  .honne-lp .honne-flow-item:last-child::before{display:none;}
+  .honne-lp .honne-flow-num{
+    width:64px;height:64px;border-radius:50%;border:1px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:"Shippori Mincho",serif;font-size:20px;color:var(--gold);background:var(--paper-alt);
+    flex-shrink:0;z-index:1;
+  }
+  .honne-lp .honne-flow-body{padding-top:12px;}
+  .honne-lp .honne-flow-body h3{font-size:18px;color:var(--navy);margin-bottom:8px;}
+  .honne-lp .honne-flow-body p{font-size:14.5px;color:var(--muted);max-width:56ch;}
+
+  /* ---------- WORKS ---------- */
+  .honne-lp .honne-works{background:var(--paper-alt);}
+  .honne-lp .honne-works .honne-eyebrow{color:var(--gold);}
+  .honne-lp .honne-works h2{font-size:clamp(24px,3.2vw,34px);color:var(--navy);}
+  .honne-lp .honne-works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .honne-lp .honne-work-card{
+    border:1px solid var(--line);padding:30px 26px;display:flex;flex-direction:column;gap:14px;
+    transition:box-shadow .25s ease,transform .25s ease;background:var(--paper);
+  }
+  .honne-lp .honne-work-card:hover{box-shadow:0 18px 34px -22px rgba(27,35,48,.35);transform:translateY(-3px);}
+  .honne-lp .honne-work-card .honne-tag{font-size:11.5px;letter-spacing:.18em;font-weight:700;color:var(--ember);}
+  .honne-lp .honne-work-card h3{font-size:19px;color:var(--navy);}
+  .honne-lp .honne-work-card p{font-size:13.5px;color:var(--muted);flex-grow:1;}
+  .honne-lp .honne-work-card .honne-read{font-size:13px;font-weight:700;color:var(--gold);}
+
+  /* ---------- PRICE ---------- */
+  .honne-lp .honne-price{background:var(--paper);}
+  .honne-lp .honne-price .honne-eyebrow{color:var(--ember);}
+  .honne-lp .honne-price h2{font-size:clamp(24px,3.2vw,34px);color:var(--navy);}
+  .honne-lp .honne-price-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:28px;}
+  .honne-lp .honne-price-card{background:var(--paper-alt);border:1px solid var(--line);padding:36px 32px;display:flex;flex-direction:column;gap:10px;}
+  .honne-lp .honne-price-card.is-featured{border-color:var(--gold);box-shadow:0 20px 40px -26px rgba(169,129,46,.45);position:relative;}
+  .honne-lp .honne-price-card .honne-badge{
+    align-self:flex-start;font-size:11px;letter-spacing:.12em;font-weight:700;color:var(--navy);
+    background:var(--gold-soft);padding:5px 12px;border-radius:999px;margin-bottom:6px;
+  }
+  .honne-lp .honne-price-card .honne-amount{font-family:"Shippori Mincho",serif;font-size:32px;color:var(--navy);}
+  .honne-lp .honne-price-card .honne-amount span{font-size:15px;font-weight:400;color:var(--muted);}
+  .honne-lp .honne-price-card h3{font-size:16px;color:var(--ink);font-weight:700;}
+  .honne-lp .honne-price-card p{font-size:14px;color:var(--muted);}
+  .honne-lp .honne-price-card .honne-opt{font-size:12.5px;color:var(--gold);margin-top:4px;}
+  .honne-lp .honne-price-foot{
+    border-top:1px solid var(--line);padding-top:22px;font-size:13.5px;color:var(--muted);
+  }
+  .honne-lp .honne-price-foot strong{color:var(--navy);}
+
+  /* ---------- CONTACT ---------- */
+  .honne-lp .honne-contact{
+    background:radial-gradient(120% 140% at 85% 100%,#232B3B 0%,var(--navy) 46%,var(--navy-deep) 100%);
+    color:#EFEAE0;text-align:center;padding:112px 24px;
+  }
+  .honne-lp .honne-contact .honne-inner{display:flex;flex-direction:column;align-items:center;gap:22px;}
+  .honne-lp .honne-contact .honne-eyebrow{color:var(--gold-soft);}
+  .honne-lp .honne-contact h2{font-size:clamp(24px,3.6vw,36px);color:#FBF7EE;max-width:20ch;line-height:1.7;}
+  .honne-lp .honne-contact .honne-lead{color:#C7CBD6;}
+  .honne-lp .honne-contact .honne-note{color:#8890A0;}
+
+  @media (max-width:900px){
+    .honne-lp .honne-strength-grid{grid-template-columns:1fr;}
+    .honne-lp .honne-for-grid{grid-template-columns:1fr;}
+    .honne-lp .honne-works-grid{grid-template-columns:1fr;}
+    .honne-lp .honne-price-grid{grid-template-columns:1fr;}
+    .honne-lp section{padding:64px 20px;}
+    .honne-lp .honne-hero{padding:96px 20px 76px;}
+    .honne-lp .honne-contact{padding:84px 20px;}
+  }
+</style>
+
+<div class="honne-lp">
+
+  <!-- HERO -->
+  <section class="honne-hero">
+    <div class="honne-inner">
+      <span class="honne-eyebrow">Honne Interview Session</span>
+      <h1>その人の奥にある言葉を、<br>掘り起こして残す。</h1>
+      <p class="honne-sub">深掘りインタビュー取材・記事制作</p>
+      <p class="honne-lead">心理学ベースの人物分析で、本人も語れていなかった想いや背景まで徹底的に掘り起こし、「紹介で終わらない」読まれる一本にします。企業の社内報・採用から、個人の記録まで。</p>
+      <a class="honne-btn" href="https://www.cinelish-japan.tech/contact/">取材を相談する</a>
+      <p class="honne-note">※ 掲載の料金はすべて仮の目安です。</p>
+    </div>
+  </section>
+
+  <!-- STRENGTH -->
+  <section class="honne-strength">
+    <div class="honne-inner">
+      <div class="honne-head honne-reveal">
+        <span class="honne-eyebrow">Strength</span>
+        <h2>強みは、誰よりも深く掘ること。</h2>
+        <p class="honne-lead">表面的な紹介では出てこない「なぜ？」の奥まで、徹底的に掘り起こします。それを支えるのが、次の3つです。</p>
+      </div>
+      <div class="honne-strength-grid honne-reveal">
+        <div class="honne-strength-card">
+          <span class="honne-kana">その一</span>
+          <h3>徹底的な深掘り</h3>
+          <p>「なぜ？」を、本人が答えに詰まる一歩先まで掘り続ける。ここまで掘るのが、このサービスのすべてです。</p>
+        </div>
+        <div class="honne-strength-card">
+          <span class="honne-kana">その二</span>
+          <h3>メソッド演技による人物分析</h3>
+          <p>役の内面を読み解く「台本分析」の手法で、言葉の奥にある思考のパターンを分析。感覚ではなく、分析で掘り当てます。</p>
+        </div>
+        <div class="honne-strength-card">
+          <span class="honne-kana">その三</span>
+          <h3>編集者としての実績</h3>
+          <p>掘り起こしたものを、読まれる一本の記事に仕上げる。聞くだけで終わらせません。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR -->
+  <section class="honne-for">
+    <div class="honne-inner">
+      <div class="honne-head honne-reveal">
+        <span class="honne-eyebrow">For</span>
+        <h2>企業にも、個人にも。</h2>
+        <p class="honne-lead">同じ「深く掘る」技術を、相手に合わせて届けます。</p>
+      </div>
+      <div class="honne-for-grid honne-reveal">
+        <div class="honne-for-card">
+          <span class="honne-tag">企業の方へ</span>
+          <h3>社員・経営者の「人となり」を深く引き出し、読まれるコンテンツに。</h3>
+          <ul>
+            <li>社内報／社員インタビュー</li>
+            <li>採用コンテンツ（本音・入社理由）</li>
+            <li>経営者メッセージ・創業ストーリー</li>
+            <li>周年・記念の記録</li>
+          </ul>
+        </div>
+        <div class="honne-for-card">
+          <span class="honne-tag">個人の方へ</span>
+          <h3>あなた自身も気づいていない想いを掘り起こし、一本の記事に残す。</h3>
+          <ul>
+            <li>活動や作品の背景を言葉にして残したい</li>
+            <li>独立や転機など、節目の記録</li>
+            <li>自分でも言語化できない「なぜ」を引き出す</li>
+            <li>表現者・クリエイター・個人事業主</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="honne-flow">
+    <div class="honne-inner">
+      <div class="honne-head honne-reveal">
+        <span class="honne-eyebrow">Flow</span>
+        <h2>ひとつの記事ができるまで。</h2>
+        <p class="honne-lead">会う前に、事前シートを読み込んで分析する。だから当日は、いきなり核から掘れます。</p>
+      </div>
+      <div class="honne-flow-list honne-reveal">
+        <div class="honne-flow-item">
+          <div class="honne-flow-num">01</div>
+          <div class="honne-flow-body">
+            <h3>相談・事前シート</h3>
+            <p>目的を伺い、プロフィール・質問シートにご記入いただきます。</p>
+          </div>
+        </div>
+        <div class="honne-flow-item">
+          <div class="honne-flow-num">02</div>
+          <div class="honne-flow-body">
+            <h3>分析・設計</h3>
+            <p>シートを台本分析の手法で読み解き、深掘りする「核」と問いを設計します。</p>
+          </div>
+        </div>
+        <div class="honne-flow-item">
+          <div class="honne-flow-num">03</div>
+          <div class="honne-flow-body">
+            <h3>取材</h3>
+            <p>事前分析をもとに、核を徹底的に深掘り。「なぜ」を詰まる一歩先まで。</p>
+          </div>
+        </div>
+        <div class="honne-flow-item">
+          <div class="honne-flow-num">04</div>
+          <div class="honne-flow-body">
+            <h3>執筆・編集</h3>
+            <p>掘り起こしたものを、読まれる一本の記事に仕上げます。</p>
+          </div>
+        </div>
+        <div class="honne-flow-item">
+          <div class="honne-flow-num">05</div>
+          <div class="honne-flow-body">
+            <h3>確認・納品</h3>
+            <p>初稿を確認いただき、修正（1回）を経て納品します。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKS -->
+  <section class="honne-works">
+    <div class="honne-inner">
+      <div class="honne-head honne-reveal">
+        <span class="honne-eyebrow">Works</span>
+        <h2>これまで取材してきた人たち</h2>
+        <p class="honne-lead">CineLishに掲載してきたインタビューの一部です。仕上がりの手触りは、実際の記事でご確認ください。</p>
+      </div>
+      <div class="honne-works-grid honne-reveal">
+        <a class="honne-work-card" href="#">
+          <span class="honne-tag">Interview</span>
+          <h3>菅野 恵さん</h3>
+          <p>俳優への単独インタビュー</p>
+          <span class="honne-read">記事を読む →</span>
+        </a>
+        <a class="honne-work-card" href="#">
+          <span class="honne-tag">Interview</span>
+          <h3>いまおかしんじ 監督</h3>
+          <p>映画監督への単独インタビュー</p>
+          <span class="honne-read">記事を読む →</span>
+        </a>
+        <a class="honne-work-card" href="#">
+          <span class="honne-tag">Interview</span>
+          <h3>難波 プロデューサー</h3>
+          <p>映画『Mothers』プロデューサー</p>
+          <span class="honne-read">記事を読む →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE -->
+  <section class="honne-price">
+    <div class="honne-inner">
+      <div class="honne-head honne-reveal">
+        <span class="honne-eyebrow">Price</span>
+        <h2>料金</h2>
+        <p class="honne-lead">まずは一本から。料金はすべて仮の目安です。</p>
+      </div>
+      <div class="honne-price-grid honne-reveal">
+        <div class="honne-price-card">
+          <p class="honne-amount">30,000円<span>〜</span></p>
+          <h3>ライト｜言葉にする</h3>
+          <p>対話をとおして、考えや想いを短い文章に言語化。</p>
+        </div>
+        <div class="honne-price-card is-featured">
+          <span class="honne-badge">看板メニュー</span>
+          <p class="honne-amount">60,000円<span>〜</span></p>
+          <h3>深掘りインタビュー記事</h3>
+          <p>事前分析のうえで取材し、内面や「なぜ」まで掘り下げた一本の記事に。</p>
+          <p class="honne-opt">＋ ポートレート撮影（＋40,000円）・対面取材などのオプションもご用意。</p>
+        </div>
+      </div>
+      <p class="honne-price-foot honne-reveal"><strong>企業の方へ　</strong>社内報・採用などは、本数や規模に応じてお見積りします。継続契約（月◯本）にも対応します。</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="honne-contact">
+    <div class="honne-inner">
+      <span class="honne-eyebrow">Contact</span>
+      <h2>あなたの奥にある言葉を、掘り起こしに行きます。</h2>
+      <p class="honne-lead">企業の社内報・採用のご相談も、個人での取材も。まずは気軽にご相談ください。</p>
+      <a class="honne-btn" href="https://www.cinelish-japan.tech/contact/">取材を相談する</a>
+      <p class="honne-note">※ 料金はすべて仮の目安です。</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.honne-lp .honne-reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('is-visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>

@@ -2,8 +2,12 @@ name: Post to X
 
 on:
   schedule:
-    # 00:00 UTC = 09:00 JST, daily. Adjust to change frequency/time.
-    - cron: "0 0 * * *"
+    # 1日5回、JSTの08:00 / 11:30 / 15:00 / 18:30 / 21:30 に実行（UTC表記）。
+    - cron: "0 23 * * *"   # 08:00 JST
+    - cron: "30 2 * * *"   # 11:30 JST
+    - cron: "0 6 * * *"    # 15:00 JST
+    - cron: "30 9 * * *"   # 18:30 JST
+    - cron: "30 12 * * *"  # 21:30 JST
   workflow_dispatch: {}
 
 permissions:

@@ -1,4 +1,4 @@
-name: Post to X
+name: Surface X draft
 
 on:
   schedule:
@@ -12,13 +12,14 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
-  group: post-to-x
+  group: surface-x-draft
   cancel-in-progress: false
 
 jobs:
-  post:
+  surface:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -29,18 +30,16 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: Post next item in queue
+      - name: Open an issue with the next queued post
         env:
-          X_API_KEY: ${{ secrets.X_API_KEY }}
-          X_API_SECRET: ${{ secrets.X_API_SECRET }}
-          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
-          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
-        run: python scripts/post_to_x.py
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/surface_next_post.py
 
-      - name: Record queue/posted-log changes
+      - name: Record queue/delivered-log changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add content/queue.jsonl content/posted.jsonl
-          git diff --cached --quiet || git commit -m "chore: record posted X content"
+          git add content/queue.jsonl content/delivered.jsonl
+          git diff --cached --quiet || git commit -m "chore: record delivered X draft"
           git push

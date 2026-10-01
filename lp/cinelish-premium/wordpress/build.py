@@ -9,6 +9,7 @@ url_example = 'const SIGNUP_URL = "#"; // 例: "https://note.com/xxxx/membership
 # 1) ページテンプレート（子テーマに置く）
 img = "<?php echo esc_url( get_stylesheet_directory_uri() . '/cinelish/hero.webp' ); ?>"
 t = src.replace('src="hero.webp"', f'src="{img}"').replace('content="hero.webp"', f'content="{img}"')
+t = re.sub(r'src="img/([\w-]+\.jpg)"', lambda m: 'src="<?php echo esc_url( get_stylesheet_directory_uri() . \'/cinelish/img/' + m.group(1) + '\' ); ?>"', t)
 t = t.replace('<!doctype html>\n<html lang="ja">', '''<?php
 /**
  * Template Name: Cine Lish プレミアム LP
@@ -30,6 +31,7 @@ t = t.replace('const SIGNUP_URL = "#";', url_example)
 head = src[src.index('<link rel="preconnect"'):src.index("</head>")].strip()
 body = src[src.index('<div id="cinelish-lp">'):src.index("</body>")].strip()
 body = body.replace('src="hero.webp"', 'src="【ここに画像URL】"').replace('const SIGNUP_URL = "#";', url_example)
+body = re.sub(r'src="img/([\w-]+\.jpg)"', r'src="【画像URL：\1】"', body)
 (root / "wordpress" / "custom-html-block.html").write_text(
     "<!-- Cine Lish プレミアム LP：WordPressの「カスタムHTML」ブロックにこのファイルの中身を丸ごと貼り付け -->\n"
     "<!-- 【ここに画像URL】を、メディアにアップした hero.webp のURLに置き換える -->\n"
@@ -67,6 +69,7 @@ fonts = src[src.index('<link rel="preconnect"'):src.index("<style>")].strip()
     "<!-- Cine Lish プレミアム LP 用HTML（TCDテーマ）\n"
     "     貼り付け先：固定ページ本文の「カスタムHTML」ブロック（クラシックエディタなら「テキスト」タブ）\n"
     "     ・【ここに画像URL】→ メディアにアップした hero.webp のURL\n"
+    "     ・【画像URL：○○.jpg】→ それぞれの写真をメディアにアップしたURL（5か所）\n"
     '     ・SIGNUP_URL = "#" の # → 登録ページのURL\n'
     "     ※ エディタの自動整形で崩れないよう、あえて1行にしています（Ctrl+F で検索して書き換えてください） -->\n"
     + one_line(fonts + body) + "\n"
@@ -80,6 +83,7 @@ mini = re.sub(r"\s*([{};,>])\s*", r"\1", mini).strip()
     "<!-- Cine Lish プレミアム LP（TCDテーマ・CSS込み版）\n"
     "     これ1つを固定ページ本文の「カスタムHTML」ブロック（クラシックエディタなら「テキスト」タブ）に貼るだけ。追加CSSは不要。\n"
     "     ・【ここに画像URL】→ メディアにアップした hero.webp のURL\n"
+    "     ・【画像URL：○○.jpg】→ それぞれの写真をメディアにアップしたURL（5か所）\n"
     '     ・SIGNUP_URL = "#" の # → 登録ページのURL -->\n'
     + one_line(fonts + "<style>" + mini + "</style>" + body) + "\n"
 )

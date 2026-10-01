@@ -177,6 +177,10 @@
   #cinelish-lp .cl-pair .cl-passive,
   #cinelish-lp .cl-pair .cl-active { padding: 44px 32px 40px; }
   #cinelish-lp .cl-pair .cl-active { border-left: 1px solid var(--line); }
+  #cinelish-lp .cl-pair-photo { margin-bottom: 28px; aspect-ratio: 4 / 3; overflow: hidden; background: var(--line); }
+  #cinelish-lp .cl-pair-photo .cl-photo { height: 100%; object-fit: cover; }
+  #cinelish-lp .cl-passive .cl-pair-photo .cl-photo { filter: grayscale(.85) brightness(.82) contrast(.9); }
+  #cinelish-lp .cl-active .cl-pair-photo .cl-photo { filter: contrast(1.05); }
   #cinelish-lp .cl-pair h3 {
     font-family: var(--serif-en);
     font-style: italic;
@@ -215,24 +219,12 @@
     letter-spacing: .05em;
   }
 
-  /* ---------- 画像：ヒーロー写真の一部を切り出して使う ----------
-     .cl-crop の中の img は、JSがヒーロー画像と同じ画像を自動で入れる。
-     切り出す位置は --w（画像幅の倍率）/ --x / --y で指定。 */
-  #cinelish-lp .cl-crop { position: relative; overflow: hidden; background: var(--bg-alt); display: none; }
-  #cinelish-lp.cl-js .cl-crop { display: block; }
-  #cinelish-lp .cl-crop img {
-    position: absolute;
-    max-width: none;
-    width: var(--w);
-    left: var(--x);
-    top: var(--y);
-    filter: grayscale(1) contrast(1.02);
-  }
-  #cinelish-lp .cl-crop-book { aspect-ratio: 21 / 8; --w: 216.67%; --x: -104.55%; --y: -294.35%; }
-  #cinelish-lp .cl-crop-window { aspect-ratio: 4 / 5; --w: 386.49%; --x: -278.38%; --y: -21.62%; }
+  /* ---------- 写真 ---------- */
+  #cinelish-lp .cl-photo { display: block; width: 100%; height: auto; }
 
   /* フィルムの1コマ風（上下に黒帯＋タイムコード） */
-  #cinelish-lp .cl-shot { margin: 64px 0 56px; }
+  #cinelish-lp .cl-shot { margin: 0 0 64px; }
+  #cinelish-lp .cl-prologue .cl-shot { margin-bottom: 72px; }
   #cinelish-lp .cl-shot-frame { background: var(--dark); padding: 14px 0; }
   #cinelish-lp .cl-shot-cap {
     display: flex;
@@ -247,8 +239,8 @@
   }
 
   /* 縦長の写真（Epilogue） */
-  #cinelish-lp .cl-portrait { width: min(300px, 64%); margin: 0 auto 56px; }
-  #cinelish-lp .cl-portrait .cl-crop { outline: 1px solid var(--line); outline-offset: 8px; }
+  #cinelish-lp .cl-portrait { width: min(340px, 72%); margin: 0 auto 64px; }
+  #cinelish-lp .cl-portrait .cl-photo { outline: 1px solid var(--line); outline-offset: 8px; filter: saturate(.7); }
   #cinelish-lp .cl-portrait .cl-shot-cap { justify-content: center; margin-top: 22px; }
 
   /* ---------- Concept（黒・縦書き・フィルム） ---------- */
@@ -492,7 +484,8 @@
     #cinelish-lp .cl-benefits h3 { font-size: 16px; }
     #cinelish-lp .cl-benefits li p { font-size: 14px; }
     #cinelish-lp .cl-shot-cap { font-size: 10px; letter-spacing: .2em; }
-    #cinelish-lp .cl-portrait { width: 64%; }
+    #cinelish-lp .cl-portrait { width: 78%; }
+    #cinelish-lp .cl-pair-photo { margin-bottom: 22px; }
     #cinelish-lp .cl-ticket-main { padding: 22px 22px 34px; }
     #cinelish-lp .cl-ticket-stub { padding: 28px 22px 26px; }
     #cinelish-lp .cl-ticket-name { font-size: 27px; white-space: nowrap; }
@@ -501,6 +494,14 @@
     #cinelish-lp .cl-cta { padding: 18px 24px; letter-spacing: .12em; }
     #cinelish-lp .cl-fin { font-size: 38px; margin-top: 80px; }
     #cinelish-lp .cl-sticky { display: block; }
+    #cinelish-lp h2 { font-size: 22px; letter-spacing: .05em; }
+    #cinelish-lp .cl-question { font-size: 24px; letter-spacing: .04em; }
+    #cinelish-lp .cl-member { gap: 10px; font-size: 12px; letter-spacing: .16em; white-space: nowrap; }
+    #cinelish-lp .cl-member .cl-eb-line { width: 18px; }
+    #cinelish-lp .cl-lead { font-size: 21px; letter-spacing: .04em; }
+    #cinelish-lp .cl-ticket .cl-cta { padding: 18px 10px; gap: 10px; letter-spacing: .06em; }
+    #cinelish-lp .cl-ticket-info div { font-size: 13px; white-space: nowrap; padding-inline: 4px; }
+    #cinelish-lp .cl-sticky .cl-cta { letter-spacing: .08em; }
     #cinelish-lp .cl-br-pc { display: none; }
   }
   @media (min-width: 641px) { #cinelish-lp .cl-br-sp { display: none; } }
@@ -529,6 +530,10 @@
   <section class="cl-prologue">
     <div class="cl-wrap">
       <p class="cl-eyebrow cl-reveal"><i>Prologue</i></p>
+      <figure class="cl-shot cl-reveal">
+        <div class="cl-shot-frame"><img class="cl-photo" src="img/prologue.jpg" width="1400" height="586" alt="階段の前でこちらを見つめる女性"></div>
+        <figcaption class="cl-shot-cap"><span>TC 00:00:12:04</span><span>PROLOGUE</span></figcaption>
+      </figure>
       <p class="cl-question cl-reveal"><small>忙しい毎日の中で、</small>自分自身を<br class="cl-br-sp"><span class="cl-em">見失って</span>いませんか。</p>
       <span class="cl-vline cl-reveal"></span>
       <p class="cl-question cl-reveal"><small>日々、自分の一日の行動に</small><span class="cl-em">納得</span>できていますか？</p>
@@ -545,21 +550,19 @@
 
       <div class="cl-pair cl-reveal">
         <div class="cl-passive">
+          <figure class="cl-pair-photo"><img class="cl-photo" src="img/passive.jpg" width="900" height="675" alt="床に置き去りにされた古い本"></figure>
           <h3>Passive</h3>
           <small>受け身で眺める</small>
           <p>流れてくるものを、ただ眺めるだけの時間。あとに何も残らないことが多い。</p>
         </div>
         <div class="cl-active">
+          <figure class="cl-pair-photo"><img class="cl-photo" src="img/active.jpg" width="900" height="675" alt="ノートに指を添えて読み込む手元"></figure>
           <h3>Active</h3>
           <small>能動的に読む</small>
           <p>自分の意思で読み、考える時間。人が本来の力を発揮するのは、この瞬間です。</p>
         </div>
       </div>
 
-      <figure class="cl-shot cl-reveal">
-        <div class="cl-shot-frame"><div class="cl-crop cl-crop-book"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="開いたノートとペン"></div></div>
-        <figcaption class="cl-shot-cap"><span>TC 00:12:48:07</span><span>ACTIVE READING</span></figcaption>
-      </figure>
 
       <p class="cl-pull cl-reveal">人が本来力を発揮するのは、<br class="cl-br">自分の意思で、<span class="cl-em">能動的に<br class="cl-br-sp">行動しているとき</span>です。</p>
     </div>
@@ -589,7 +592,11 @@
   <section class="cl-benefits">
     <div class="cl-wrap">
       <p class="cl-eyebrow cl-reveal">SCENE 02<span class="cl-eb-line"></span><i>What you receive</i></p>
-      <h2 class="cl-reveal">CineLish プレミアムで<br class="cl-br">受け取れるもの</h2>
+      <h2 class="cl-reveal">CineLish <br class="cl-br-sp">プレミアムで<br class="cl-br">受け取れるもの</h2>
+      <figure class="cl-shot cl-reveal">
+        <div class="cl-shot-frame"><img class="cl-photo" src="img/essay.jpg" width="1400" height="586" alt="手書きのノートと万年筆"></div>
+        <figcaption class="cl-shot-cap"><span>TC 00:31:05:12</span><span>ESSAY</span></figcaption>
+      </figure>
       <ol>
         <li class="cl-reveal">
           <span class="cl-num">01</span>
@@ -643,7 +650,7 @@
     <div class="cl-wrap">
       <p class="cl-eyebrow cl-reveal"><i>Epilogue</i></p>
       <figure class="cl-portrait cl-reveal">
-        <div class="cl-crop cl-crop-window"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="光の入る窓辺と植物"></div>
+        <img class="cl-photo" src="img/epilogue.jpg" width="800" height="1000" alt="本を読みながら歩く人">
         <figcaption class="cl-shot-cap"><span>TC 01:52:16:21</span></figcaption>
       </figure>
       <p class="cl-soft cl-reveal">走り続けて自分を見失いそうなとき、<br class="cl-br">ここに戻ってくれば、<br class="cl-br-sp">また自分を取り戻せる。<br class="cl-br">そんな余白のような場所で<br class="cl-br-sp">ありたいと思っています。</p>
@@ -670,12 +677,6 @@
 <script>
 (() => {
     document.getElementById("cinelish-lp").classList.add("cl-js");
-
-    // 切り出し用の画像（仮の透明画像）を、ヒーロー画像と同じ画像に差し替える
-    const heroImg = document.querySelector("#cinelish-lp .cl-hero img");
-    document.querySelectorAll("#cinelish-lp .cl-crop img").forEach(img => {
-      if (heroImg && img.src.startsWith("data:")) img.src = heroImg.currentSrc || heroImg.src;
-    });
 
     // ▼ 登録ページのURLをここに入れてください（全ボタンに反映されます）
     const SIGNUP_URL = "#";

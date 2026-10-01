@@ -608,7 +608,7 @@
         <p class="cl-foryou-foot">ひとつでも当てはまったら、<br class="cl-br-sp">この先を読んでみてください。</p>
       </div>
       <div class="cl-cta-mid cl-reveal">
-        <a class="cl-cta cl-js-signup" href="#">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
+        <a class="cl-cta cl-js-signup" href="https://www.cinelish-japan.tech/register/">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
         <p class="cl-cta-note">月額500円・いつでも解約OK</p>
       </div>
     </div>
@@ -662,7 +662,7 @@
           </div>
         </div>
         <div class="cl-cta-mid cl-reveal">
-          <a class="cl-cta cl-js-signup" href="#">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
+          <a class="cl-cta cl-js-signup" href="https://www.cinelish-japan.tech/register/">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
           <p class="cl-cta-note">月額500円・いつでも解約OK</p>
         </div>
       </div>
@@ -754,7 +754,7 @@
         </div>
         <div class="cl-ticket-stub">
           <span class="cl-notch cl-notch-l"></span><span class="cl-notch cl-notch-r"></span>
-          <a class="cl-cta cl-js-signup" href="#">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
+          <a class="cl-cta cl-js-signup" href="https://www.cinelish-japan.tech/register/">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
           <p class="cl-ticket-foot">MONTHLY MEMBERSHIP</p>
         </div>
       </div>
@@ -780,7 +780,7 @@
       <p class="cl-lead cl-reveal">余韻に還り、夢を思い出す。<br class="cl-br">走り続けるあなたが、<br class="cl-br-sp"><span class="cl-em">折れないための場所。</span></p>
       <p class="cl-wait cl-reveal">あなたを待っています。</p>
       <div class="cl-cta-block cl-reveal">
-        <a class="cl-cta cl-js-signup" href="#">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
+        <a class="cl-cta cl-js-signup" href="https://www.cinelish-japan.tech/register/">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
         <p class="cl-cta-note">月額500円・いつでも解約OK</p>
       </div>
       <p class="cl-fin cl-reveal">Fin.</p>
@@ -793,7 +793,7 @@
 <div class="cl-footer">&copy; Cine Lish</div>
 
 <div class="cl-sticky" aria-hidden="true">
-  <a class="cl-cta cl-js-signup" href="#" tabindex="-1">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
+  <a class="cl-cta cl-js-signup" href="https://www.cinelish-japan.tech/register/" tabindex="-1">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
 </div>
 
 </div><!-- /#cinelish-lp -->
@@ -803,11 +803,11 @@
     document.getElementById("cinelish-lp").classList.add("cl-js");
 
     // ▼ 登録ページのURLをここに入れてください（全ボタンに反映されます）
-    const SIGNUP_URL = "#";
+    const SIGNUP_URL = "https://www.cinelish-japan.tech/register/";
 
     document.querySelectorAll("#cinelish-lp .cl-js-signup").forEach(a => {
       a.href = SIGNUP_URL;
-      if (/^https?:/.test(SIGNUP_URL)) { a.target = "_blank"; a.rel = "noopener"; }
+      if (/^https?:/.test(SIGNUP_URL) && new URL(SIGNUP_URL).host !== location.host) { a.target = "_blank"; a.rel = "noopener"; }
     });
 
     // スクロールでふわっと表示

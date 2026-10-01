@@ -82,7 +82,7 @@ fonts = src[src.index('<link rel="preconnect"'):src.index("<style>")].strip()
     "<!-- Cine Lish プレミアム LP 用HTML（TCDテーマ）\n"
     "     貼り付け先：固定ページ本文の「カスタムHTML」ブロック（クラシックエディタなら「テキスト」タブ）\n"
     "     ・画像URLは入力済み\n"
-    '     ・SIGNUP_URL = "#" の # → 登録ページのURL\n'
+    '     ・登録ボタンのリンク先：https://www.cinelish-japan.tech/register/（変更するときは SIGNUP_URL と href を書き換え）\n'
     "     ※ エディタの自動整形で崩れないよう、あえて1行にしています（Ctrl+F で検索して書き換えてください） -->\n"
     + one_line(fonts + tcd_body) + "\n"
 )

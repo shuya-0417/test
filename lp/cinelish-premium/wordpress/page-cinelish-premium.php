@@ -254,20 +254,18 @@
 
   /* ---------- Scene 01：Passive / Active ---------- */
   #cinelish-lp .cl-contrast { background: var(--bg-alt); }
+  /* 受け身（ぼんやり・色あせ）と能動（くっきり・黒地に金）の対比 */
   #cinelish-lp .cl-pair {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0;
-    margin: 0 0 56px;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    align-items: stretch;
+    margin: 0 0 60px;
   }
   #cinelish-lp .cl-pair .cl-passive,
-  #cinelish-lp .cl-pair .cl-active { padding: 32px 26px 32px; }
-  #cinelish-lp .cl-pair .cl-active { border-left: 1px solid var(--line); }
-  #cinelish-lp .cl-pair-photo { margin-bottom: 24px; aspect-ratio: 4 / 3; overflow: hidden; background: var(--line); }
+  #cinelish-lp .cl-pair .cl-active { position: relative; padding: 28px 24px 30px; }
+  #cinelish-lp .cl-pair-photo { position: relative; margin-bottom: 22px; aspect-ratio: 4 / 3; overflow: hidden; background: var(--line); }
   #cinelish-lp .cl-pair-photo .cl-photo { height: 100%; object-fit: cover; }
-  #cinelish-lp .cl-passive .cl-pair-photo .cl-photo { filter: grayscale(1) sepia(.16) brightness(.78) contrast(.9) blur(.4px); }
   #cinelish-lp .cl-pair h3 {
     font-family: var(--serif-en);
     font-style: italic;
@@ -277,14 +275,60 @@
     letter-spacing: .02em;
     margin-bottom: 8px;
   }
-  #cinelish-lp .cl-pair .cl-passive h3 {
-    color: var(--ink-faint);
-    text-decoration: line-through;
-    text-decoration-thickness: 1px;
-  }
-  #cinelish-lp .cl-pair .cl-active h3 { color: var(--brown); }
-  #cinelish-lp .cl-pair small { display: block; font-size: 12.5px; letter-spacing: .24em; color: var(--ink-faint); margin-bottom: 14px; }
+  #cinelish-lp .cl-pair small { display: block; font-size: 12.5px; letter-spacing: .24em; margin-bottom: 14px; }
   #cinelish-lp .cl-pair p { font-size: 15px; line-height: 1.95; }
+  #cinelish-lp .cl-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+  #cinelish-lp .cl-tags li { padding: 4px 10px; font-size: 12px; line-height: 1.6; letter-spacing: .08em; }
+
+  /* Passive：霧がかかったように */
+  #cinelish-lp .cl-passive { background: #dfdbd3; color: #8c847b; }
+  #cinelish-lp .cl-passive .cl-pair-photo .cl-photo { filter: grayscale(1) brightness(.92) contrast(.7) blur(1.4px); opacity: .7; transform: scale(1.04); }
+  #cinelish-lp .cl-passive h3 { color: #a59d93; text-decoration: line-through; text-decoration-thickness: 1px; }
+  #cinelish-lp .cl-passive small { color: #a59d93; }
+  #cinelish-lp .cl-passive .cl-tags li { border: 1px dashed #b5ada3; color: #9a9288; }
+  /* 動画アプリの自動再生バー（流されていく感じ） */
+  #cinelish-lp .cl-autoplay {
+    position: absolute; left: 10px; right: 10px; bottom: 10px;
+    display: flex; flex-direction: column; gap: 6px;
+    font-family: system-ui, sans-serif;
+    font-size: 11px; line-height: 1; letter-spacing: .04em;
+    color: #ffffff;
+  }
+  #cinelish-lp .cl-ap-bar { display: block; height: 3px; background: rgba(255, 255, 255, .35); }
+  #cinelish-lp .cl-ap-bar span { display: block; width: 72%; height: 100%; background: rgba(255, 255, 255, .9); }
+
+  /* Active：黒地に金でくっきり、少し前に出す */
+  #cinelish-lp .cl-active {
+    z-index: 1;
+    margin: -16px 0;
+    padding-top: 44px !important;
+    padding-bottom: 46px !important;
+    background: var(--dark);
+    color: var(--dark-ink);
+    box-shadow: 0 22px 44px rgba(23, 20, 18, .22);
+  }
+  #cinelish-lp .cl-active .cl-pair-photo { outline: 1px solid var(--gold-1); outline-offset: 5px; }
+  #cinelish-lp .cl-active .cl-pair-photo .cl-photo { filter: grayscale(1) sepia(.12) contrast(1.15) brightness(1.05); }
+  #cinelish-lp .cl-active h3 { color: var(--gold-2); font-weight: 400; }
+  #cinelish-lp .cl-active small { color: var(--gold-2); font-weight: 700; }
+  #cinelish-lp .cl-active p { color: var(--dark-ink); font-weight: 600; }
+  #cinelish-lp .cl-active .cl-tags li { border: 1px solid var(--gold-1); color: var(--gold-3); }
+
+  /* 受け身 → 能動 の矢印 */
+  #cinelish-lp .cl-vs {
+    position: absolute;
+    top: 50%; left: -22px;
+    width: 44px; height: 44px;
+    margin-top: -22px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    background: var(--gold-1);
+    color: var(--dark);
+    font-family: var(--serif-en);
+    font-size: 22px;
+    line-height: 1;
+    z-index: 2;
+  }
   #cinelish-lp .cl-pull {
     max-width: 560px;
     margin: 0 auto;
@@ -477,8 +521,9 @@
     #cinelish-lp .cl-foryou { margin-top: 48px; padding: 30px 18px 26px; }
     #cinelish-lp .cl-foryou li { font-size: 14.5px; gap: 12px; }
     #cinelish-lp .cl-pair { grid-template-columns: 1fr; margin-bottom: 44px; }
-    #cinelish-lp .cl-pair .cl-passive, #cinelish-lp .cl-pair .cl-active { padding: 28px 2px; }
-    #cinelish-lp .cl-pair .cl-active { border-left: 0; border-top: 1px solid var(--line); }
+    #cinelish-lp .cl-pair .cl-passive, #cinelish-lp .cl-pair .cl-active { padding: 24px 18px 28px; }
+    #cinelish-lp .cl-active { margin: 0 -6px; padding-top: 36px !important; padding-bottom: 32px !important; }
+    #cinelish-lp .cl-vs { top: -22px; left: 50%; margin: 0 0 0 -22px; transform: rotate(90deg); }
     #cinelish-lp .cl-pull { padding-left: 18px; }
     #cinelish-lp .cl-dark-pad { padding: 0; }
     #cinelish-lp .cl-dark-inner { padding: 64px 0 72px; }
@@ -570,16 +615,20 @@
 
       <div class="cl-pair cl-reveal">
         <div class="cl-passive">
-          <figure class="cl-pair-photo"><img class="cl-photo" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/cinelish/img/passive.jpg' ); ?>" width="900" height="675" alt="床に置き去りにされた古い本"></figure>
+          <figure class="cl-pair-photo"><img class="cl-photo" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/cinelish/img/passive.jpg' ); ?>" width="900" height="675" alt="床に置き去りにされた古い本">
+            <span class="cl-autoplay" aria-hidden="true"><span>▶ 次の動画を自動再生します</span><span class="cl-ap-bar"><span></span></span></span></figure>
           <h3>Passive</h3>
           <small>受け身で眺める</small>
           <p>流れてくるものを、ただ眺めるだけの時間。あとに何も残らないことが多い。</p>
+          <ul class="cl-tags"><li>流れてくる</li><li>眺めるだけ</li><li>何も残らない</li></ul>
         </div>
         <div class="cl-active">
+          <span class="cl-vs" aria-hidden="true">→</span>
           <figure class="cl-pair-photo"><img class="cl-photo" src="<?php echo esc_url( get_stylesheet_directory_uri() . '/cinelish/img/active.jpg' ); ?>" width="900" height="675" alt="ノートに指を添えて読み込む手元"></figure>
           <h3>Active</h3>
           <small>能動的に読む</small>
           <p>自分の意思で読み、考える時間。人が本来の力を発揮するのは、この瞬間です。</p>
+          <ul class="cl-tags"><li>自分で選ぶ</li><li>読んで考える</li><li>自分に残る</li></ul>
         </div>
       </div>
 

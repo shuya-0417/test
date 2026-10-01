@@ -92,12 +92,12 @@ mini = re.sub(r"\s*([{};,>])\s*", r"\1", mini).strip()
 pv_head = src[src.index("<title>"):src.index("</head>")]
 pv_head = pv_head.replace('<meta property="og:image" content="hero.webp">\n', "")
 pv_body = src[src.index('<div id="cinelish-lp">'):src.index("</body>")]
-pv_body = pv_body.replace('document.getElementById("cinelish-lp").classList.add("cl-js");', "")
 frame = """<style>
   /* プレビュー枠：実サイトの本文幅（690px）を再現 */
   html, body { background: #ffffff; color: #262220; }
   body { padding-block: 0; padding-inline: 20px; }
   .pv-frame { max-width: 690px; margin: 0 auto; }
+  #cinelish-lp.cl-js .cl-reveal { opacity: 1; transform: none; }
   .pv-note { max-width: 690px; margin: 0 auto; padding: 14px 0; font: 12px/1.6 system-ui, sans-serif; color: #7a736b; letter-spacing: .04em; }
 </style>
 """

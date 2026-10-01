@@ -64,6 +64,8 @@
   #cinelish-lp li::marker { content: none; }
   /* テーマが見出しの上に !important で余白を足すことがあるので打ち消す */
   #cinelish-lp h2, #cinelish-lp h3 { margin-top: 0 !important; }
+  /* WordPressの自動整形で勝手に入る改行（class無しのbr）は無視する */
+  #cinelish-lp br:not([class]) { display: none; }
 
   /* ---------- Hero ---------- */
   #cinelish-lp .cl-hero { position: relative; background: #e9e8e5; }
@@ -343,8 +345,8 @@
   <section class="cl-statement">
     <div class="cl-wrap">
       <p class="cl-eyebrow cl-reveal">Concept</p>
-      <p class="cl-big cl-reveal">あえて、<br>「文章を能動的に読む」<br>体験を。</p>
-      <p class="cl-reveal">映画や日々の話をきっかけに、<br>自分のペースで読み、考え、自分に立ち返る。</p>
+      <p class="cl-big cl-reveal">あえて、<br class="cl-br">「文章を能動的に読む」<br class="cl-br">体験を。</p>
+      <p class="cl-reveal">映画や日々の話をきっかけに、<br class="cl-br">自分のペースで読み、考え、自分に立ち返る。</p>
       <p class="cl-reveal">その時間が、流し見では得られないものを残し、<br class="cl-br-pc">夢を追うあなたが前を向くきっかけになります。</p>
       <p class="cl-reveal">夢の途中で立ち止まりたくなったときにこそ、<br class="cl-br-pc">ぴったりの場所です。</p>
     </div>
@@ -354,7 +356,7 @@
   <section class="cl-benefits">
     <div class="cl-wrap">
       <p class="cl-eyebrow cl-reveal">What you receive</p>
-      <h2 class="cl-reveal">CineLish プレミアムで<br>受け取れるもの</h2>
+      <h2 class="cl-reveal">CineLish プレミアムで<br class="cl-br">受け取れるもの</h2>
       <ol>
         <li class="cl-reveal">
           <span class="cl-num">01</span>
@@ -399,8 +401,8 @@
   <section class="cl-closing">
     <div class="cl-wrap">
       <div class="cl-rule cl-reveal"></div>
-      <p class="cl-reveal cl-soft">走り続けて自分を見失いそうなとき、<br>ここに戻ってくれば、また自分を取り戻せる。<br>そんな余白のような場所でありたいと思っています。</p>
-      <p class="cl-lead cl-reveal">余韻に還り、夢を思い出す。<br>走り続けるあなたが、<br class="cl-br-sp">折れないための場所。</p>
+      <p class="cl-reveal cl-soft">走り続けて自分を見失いそうなとき、<br class="cl-br">ここに戻ってくれば、また自分を取り戻せる。<br class="cl-br">そんな余白のような場所でありたいと思っています。</p>
+      <p class="cl-lead cl-reveal">余韻に還り、夢を思い出す。<br class="cl-br">走り続けるあなたが、<br class="cl-br-sp">折れないための場所。</p>
       <p class="cl-wait cl-reveal">あなたを待っています。</p>
       <div class="cl-cta-block cl-reveal">
         <a class="cl-cta cl-js-signup" href="#">Cine Lish プレミアムに登録する<span class="cl-arrow" aria-hidden="true">→</span></a>

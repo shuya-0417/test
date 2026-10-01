@@ -54,6 +54,8 @@
 #cinelish-lp#cinelish-lp li::marker { content: none; }
 /* テーマが見出しの上に !important で余白を足すことがあるので打ち消す */
 #cinelish-lp#cinelish-lp h2, #cinelish-lp#cinelish-lp h3 { margin-top: 0 !important; }
+/* WordPressの自動整形で勝手に入る改行（class無しのbr）は無視する */
+#cinelish-lp#cinelish-lp br:not([class]) { display: none; }
 
 /* ---------- Hero ---------- */
 #cinelish-lp#cinelish-lp .cl-hero { position: relative; background: #e9e8e5; }

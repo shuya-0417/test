@@ -54,6 +54,8 @@
   #cinelish-lp ol, #cinelish-lp ul { padding: 0; margin-left: 0; }
   #cinelish-lp li { list-style: none; }
   #cinelish-lp li::marker { content: none; }
+  /* テーマが見出しの上に !important で余白を足すことがあるので打ち消す */
+  #cinelish-lp h2, #cinelish-lp h3 { margin-top: 0 !important; }
 
   /* ---------- Hero ---------- */
   #cinelish-lp .cl-hero { position: relative; background: #e9e8e5; }

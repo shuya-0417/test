@@ -11,7 +11,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="『能動的に読む』時間で自分を取り戻す。走り続けるあなたが、折れないための場所。映画編集者Shuyaのエッセイを毎週お届けします。月額500円・いつでも解約OK。">
+<meta name="description" content="『能動的に読む』時間で自分を取り戻す。走り続けるあなたが、折れないための場所。映画編集者Shuyaのエッセイを毎週公開。月額500円・いつでも解約OK。">
 <meta property="og:title" content="Cine Lish プレミアム">
 <meta property="og:description" content="『能動的に読む』時間で自分を取り戻す。走り続けるあなたが、折れないための場所。">
 <meta property="og:image" content="<?php echo esc_url( get_stylesheet_directory_uri() . '/cinelish/hero.webp' ); ?>">
@@ -666,7 +666,7 @@
           <h2>流されていく毎日に、<br class="cl-br">自分を見つめ直す<br class="cl-br">時間を。</h2>
           <p>今の時代は、気づけばだらだらと時間が過ぎていってしまいます。自分から何かに向き合い、自分を客観的に見つめる時間は、どんどん少なくなっているように感じます。</p>
           <p>だからこそ、流されていく毎日の中に、<span class="cl-em">立ち止まって自分を見つめ直す時間</span>が必要なのではないか。そう思っています。</p>
-          <p>「読む」ことは、能動的な行為にとても近いものです。週に一度、きちんと読む習慣を持つこと。それが、このエッセイを通してあなたに届けたいものです。</p>
+          <p>「読む」ことは、能動的な行為にとても近いものです。週に一度、きちんと読む習慣を持つこと。それが、このエッセイを通してあなたに手渡したいものです。</p>
           <p class="cl-sign"><small>映画編集者</small><span>Shuya</span></p>
         </div>
       </div>
@@ -704,16 +704,16 @@
     </div>
   </section>
 
-  <!-- A week with CineLish：届く → 読む → 還る -->
+  <!-- A week with CineLish：開く → 読む → 還る -->
   <section class="cl-week">
     <div class="cl-wrap">
       <div class="cl-scene-head"><span class="cl-bigno" aria-hidden="true">03</span>
       <p class="cl-eyebrow cl-reveal">SCENE 03<span class="cl-eb-line"></span><i>A week with CineLish</i></p>
-      <h2 class="cl-reveal">毎週、ひとつの余韻が<br class="cl-br-sp">届く。</h2></div>
+      <h2 class="cl-reveal">毎週、ひとつの余韻に<br class="cl-br-sp">出会う。</h2></div>
       <ol class="cl-steps cl-reveal">
         <li><span class="cl-step-line"></span><span class="cl-step-dot"></span>
-          <div><span class="cl-step-label">STEP 01</span><span class="cl-step-word">届く</span>
-          <p>毎週1本程度、<br class="cl-br-pc">エッセイが届きます。</p></div></li>
+          <div><span class="cl-step-label">STEP 01</span><span class="cl-step-word">開く</span>
+          <p>毎週1本程度更新される<br class="cl-br-pc">エッセイを開く。</p></div></li>
         <li><span class="cl-step-line"></span><span class="cl-step-dot"></span>
           <div><span class="cl-step-label">STEP 02</span><span class="cl-step-word">読む</span>
           <p>好きな時間に、<br class="cl-br-pc">自分のペースで読む。</p></div></li>
@@ -734,7 +734,7 @@
           <p class="cl-ticket-name">Cine Lish<span class="cl-gold">プレミアム</span></p>
           <p class="cl-price">¥500<small>／月</small></p>
           <div class="cl-ticket-info">
-            <div><span>Delivery</span>毎週1本程度</div>
+            <div><span>Update</span>毎週1本程度</div>
             <div><span>Cancel</span>いつでも解約OK</div>
           </div>
         </div>
@@ -747,7 +747,7 @@
 
       <dl class="cl-faq cl-reveal">
         <div><span class="cl-q">Q.</span><dt>料金はいくらですか？</dt><dd>月額500円です。</dd></div>
-        <div><span class="cl-q">Q.</span><dt>どのくらいの頻度で届きますか？</dt><dd>毎週1本程度、月3〜4本のエッセイをお届けします。</dd></div>
+        <div><span class="cl-q">Q.</span><dt>どのくらいの頻度で更新されますか？</dt><dd>毎週1本程度、月3〜4本のエッセイを公開します。</dd></div>
         <div><span class="cl-q">Q.</span><dt>途中でやめることはできますか？</dt><dd>はい。いつでも解約できます。</dd></div>
       </dl>
     </div>

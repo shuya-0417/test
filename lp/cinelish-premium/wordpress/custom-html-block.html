@@ -240,7 +240,7 @@
   }
   #cinelish-lp .cl-closing .cl-wait { font-size: 18px; letter-spacing: .3em; margin-top: 48px; }
 
-  #cinelish-lp footer {
+  #cinelish-lp .cl-footer {
     padding: 48px 0 120px;
     text-align: center;
     font-family: var(--serif-en);
@@ -265,10 +265,11 @@
   #cinelish-lp .cl-sticky .cl-cta { width: 100%; padding: 16px 20px; font-size: 15px; }
 
   /* Reveal */
-  #cinelish-lp .cl-reveal { opacity: 0; transform: translateY(16px); transition: opacity 1.2s ease, transform 1.2s ease; }
-  #cinelish-lp .cl-reveal.cl-in { opacity: 1; transform: none; }
+  /* JSが動いたときだけ隠す（scriptが消されても文章は必ず表示される） */
+  #cinelish-lp.cl-js .cl-reveal { opacity: 0; transform: translateY(16px); transition: opacity 1.2s ease, transform 1.2s ease; }
+  #cinelish-lp.cl-js .cl-reveal.cl-in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
-    #cinelish-lp .cl-reveal { opacity: 1; transform: none; transition: none; }
+    #cinelish-lp.cl-js .cl-reveal { opacity: 1; transform: none; transition: none; }
   }
 
   @media (max-width: 640px) {
@@ -289,12 +290,12 @@
 
 <div id="cinelish-lp">
 
-<header class="cl-hero">
+<div class="cl-hero">
   <img src="【ここに画像URL】" width="1430" height="1046"
        alt="Cine Lish プレミアム ―『能動的に読む』時間で自分を取り戻す。走り続けるあなたが、折れないための場所。">
-</header>
+</div>
 
-<main>
+<div class="cl-main">
 
   <!-- 問いかけ -->
   <section class="cl-questions">
@@ -399,9 +400,9 @@
     </div>
   </section>
 
-</main>
+</div>
 
-<footer>&copy; Cine Lish</footer>
+<div class="cl-footer">&copy; Cine Lish</div>
 
 <div class="cl-sticky" aria-hidden="true">
   <a class="cl-cta cl-js-signup" href="#" tabindex="-1">プレミアム会員に登録する</a>
@@ -411,6 +412,8 @@
 
 <script>
 (() => {
+    document.getElementById("cinelish-lp").classList.add("cl-js");
+
     // ▼ 登録ページのURLをここに入れてください（全ボタンに反映されます）
     const SIGNUP_URL = "#"; // 例: "https://note.com/xxxx/membership"
 

@@ -238,7 +238,7 @@
 }
 #cinelish-lp#cinelish-lp .cl-closing .cl-wait { font-size: 18px; letter-spacing: .3em; margin-top: 48px; }
 
-#cinelish-lp#cinelish-lp footer {
+#cinelish-lp#cinelish-lp .cl-footer {
   padding: 48px 0 120px;
   text-align: center;
   font-family: var(--serif-en);
@@ -263,10 +263,11 @@
 #cinelish-lp#cinelish-lp .cl-sticky .cl-cta { width: 100%; padding: 16px 20px; font-size: 15px; }
 
 /* Reveal */
-#cinelish-lp#cinelish-lp .cl-reveal { opacity: 0; transform: translateY(16px); transition: opacity 1.2s ease, transform 1.2s ease; }
-#cinelish-lp#cinelish-lp .cl-reveal.cl-in { opacity: 1; transform: none; }
+/* JSが動いたときだけ隠す（scriptが消されても文章は必ず表示される） */
+#cinelish-lp#cinelish-lp.cl-js .cl-reveal { opacity: 0; transform: translateY(16px); transition: opacity 1.2s ease, transform 1.2s ease; }
+#cinelish-lp#cinelish-lp.cl-js .cl-reveal.cl-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
-  #cinelish-lp#cinelish-lp .cl-reveal { opacity: 1; transform: none; transition: none; }
+  #cinelish-lp#cinelish-lp.cl-js .cl-reveal { opacity: 1; transform: none; transition: none; }
 }
 
 @media (max-width: 640px) {

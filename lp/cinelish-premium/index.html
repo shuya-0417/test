@@ -25,8 +25,8 @@
     --gold-3: #f1e2b0;
     --dark: #1d1b19;
     --dark-ink: #e9e5de;
-    --serif-en: "Cormorant Garamond", "Times New Roman", serif;
-    --serif-ja: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --serif-en: Cormorant Garamond, Times New Roman, serif;
+    --serif-ja: Shippori Mincho, Hiragino Mincho ProN, Yu Mincho, serif;
   }
 
   #cinelish-lp, #cinelish-lp * { box-sizing: border-box; margin: 0; padding: 0; border: 0; box-shadow: none; }
@@ -68,8 +68,7 @@
   /* ---------- Hero ---------- */
   #cinelish-lp .cl-hero { position: relative; background: #e9e8e5; }
   #cinelish-lp .cl-hero img { width: 100%; max-width: 1440px; margin-inline: auto; }
-  #cinelish-lp .cl-hero::after {
-    content: "";
+  #cinelish-lp .cl-hero-fade {
     position: absolute; inset: auto 0 0 0; height: 18%;
     background: linear-gradient(to bottom, transparent, var(--bg));
     pointer-events: none;
@@ -131,7 +130,7 @@
     border: 1px solid var(--line);
     margin: 56px 0;
   }
-  #cinelish-lp .cl-pair > div { background: var(--bg-alt); padding: 36px 28px; }
+  #cinelish-lp .cl-pair .cl-passive, #cinelish-lp .cl-pair .cl-active { background: var(--bg-alt); padding: 36px 28px; }
   #cinelish-lp .cl-pair h3 {
     font-family: var(--serif-en);
     font-weight: 500;
@@ -188,8 +187,7 @@
     background: #fbfaf8;
     position: relative;
   }
-  #cinelish-lp .cl-price-card::before {
-    content: "";
+  #cinelish-lp .cl-frame {
     position: absolute; inset: 8px;
     border: 1px solid #ece8e1;
     pointer-events: none;
@@ -230,9 +228,9 @@
     transition: background .4s ease, color .4s ease;
     overflow: hidden;
   }
-  #cinelish-lp .cl-cta::after { content: "→"; font-family: var(--serif-en); transition: transform .4s ease; }
+  #cinelish-lp .cl-arrow { font-family: var(--serif-en); transition: transform .4s ease; }
   #cinelish-lp .cl-cta:hover { background: transparent; color: var(--dark); }
-  #cinelish-lp .cl-cta:hover::after { transform: translateX(4px); }
+  #cinelish-lp .cl-cta:hover .cl-arrow { transform: translateX(4px); }
   #cinelish-lp .cl-cta:focus-visible { outline: 2px solid var(--gold-1); outline-offset: 4px; }
   #cinelish-lp .cl-cta-block { text-align: center; margin-top: 56px; }
   #cinelish-lp .cl-cta-note { margin-top: 14px; font-size: 12px; color: var(--ink-faint); letter-spacing: .14em; }
@@ -301,7 +299,7 @@
 <body>
 <div id="cinelish-lp">
 
-<div class="cl-hero">
+<div class="cl-hero"><span class="cl-hero-fade"></span>
   <img src="hero.webp" width="1430" height="1046"
        alt="Cine Lish プレミアム ―『能動的に読む』時間で自分を取り戻す。走り続けるあなたが、折れないための場所。">
 </div>
@@ -385,14 +383,14 @@
   <!-- 料金 -->
   <section id="join" style="padding-top:0">
     <div class="cl-wrap">
-      <div class="cl-price-card cl-reveal">
+      <div class="cl-price-card cl-reveal"><span class="cl-frame"></span>
         <p class="cl-name">Cine Lish<span class="cl-gold">プレミアム</span></p>
         <p class="cl-price">¥500<small>／月</small></p>
         <ul>
           <li>毎週1本程度お届け</li>
           <li>いつでも解約OK</li>
         </ul>
-        <a class="cl-cta cl-js-signup" href="#">プレミアム会員に登録する</a>
+        <a class="cl-cta cl-js-signup" href="#">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -405,7 +403,7 @@
       <p class="cl-lead cl-reveal">余韻に還り、夢を思い出す。<br>走り続けるあなたが、<br class="cl-br-sp">折れないための場所。</p>
       <p class="cl-wait cl-reveal">あなたを待っています。</p>
       <div class="cl-cta-block cl-reveal">
-        <a class="cl-cta cl-js-signup" href="#">Cine Lish プレミアムに登録する</a>
+        <a class="cl-cta cl-js-signup" href="#">Cine Lish プレミアムに登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
         <p class="cl-cta-note">月額500円・いつでも解約OK</p>
       </div>
     </div>
@@ -416,7 +414,7 @@
 <div class="cl-footer">&copy; Cine Lish</div>
 
 <div class="cl-sticky" aria-hidden="true">
-  <a class="cl-cta cl-js-signup" href="#" tabindex="-1">プレミアム会員に登録する</a>
+  <a class="cl-cta cl-js-signup" href="#" tabindex="-1">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
 </div>
 
 </div><!-- /#cinelish-lp -->

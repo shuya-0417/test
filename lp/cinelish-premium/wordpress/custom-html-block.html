@@ -2,7 +2,7 @@
 <!-- 【ここに画像URL】を、メディアにアップした hero.webp のURLに置き換える -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   /* ============================================================
      Cine Lish プレミアム LP
@@ -13,9 +13,10 @@
     --bg: #f3f1ec;
     --bg-alt: #e9e5de;
     --paper: #fbfaf7;
-    --ink: #221e1b;
-    --ink-soft: #4d4741;
-    --ink-faint: #857d74;
+    --ink: #171412;
+    --ink-soft: #35302b;
+    --ink-faint: #6e665d;
+    --mark: rgba(201, 168, 84, .38);
     --line: #d9d3c9;
     --brown: #4a2c22;
     --gold-1: #a8873a;
@@ -24,7 +25,7 @@
     --dark: #1b1917;
     --dark-2: #2a2724;
     --dark-ink: #e8e3da;
-    --dark-soft: #a69f95;
+    --dark-soft: #d3ccc1;
     --serif-en: Cormorant Garamond, Times New Roman, serif;
     --serif-ja: Shippori Mincho, Hiragino Mincho ProN, Yu Mincho, serif;
   }
@@ -36,9 +37,9 @@
     color: var(--ink);
     font-family: var(--serif-ja);
     font-size: 16px;
+    font-weight: 500;
     line-height: 2.05;
     letter-spacing: .05em;
-    -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     word-break: auto-phrase;   /* 日本語を文節で改行（対応ブラウザのみ） */
     text-wrap: pretty;
@@ -94,10 +95,10 @@
   #cinelish-lp .cl-eb-line { display: block; width: 40px; height: 1px; background: var(--gold-1); opacity: .6; }
 
   #cinelish-lp h2 {
-    font-weight: 500;
-    font-size: clamp(22px, 3.6vw, 28px);
-    line-height: 1.85;
-    letter-spacing: .1em;
+    font-weight: 700;
+    font-size: clamp(25px, 4.6vw, 32px);
+    line-height: 1.75;
+    letter-spacing: .08em;
     text-align: center;
     margin-bottom: 44px;
   }
@@ -127,10 +128,22 @@
   /* ---------- Prologue ---------- */
   #cinelish-lp .cl-prologue { text-align: center; padding-top: 104px; }
   #cinelish-lp .cl-question {
-    font-size: clamp(18px, 3vw, 21px);
-    line-height: 2;
-    letter-spacing: .08em;
+    font-size: clamp(25px, 5.4vw, 34px);
+    font-weight: 700;
+    line-height: 1.75;
+    letter-spacing: .06em;
+    color: var(--ink);
   }
+  #cinelish-lp .cl-question small {
+    display: block;
+    margin-bottom: 6px;
+    font-size: .58em;
+    font-weight: 500;
+    letter-spacing: .12em;
+    color: var(--ink-soft);
+  }
+  /* 大事な言葉に引くマーカー */
+  #cinelish-lp .cl-em { background: linear-gradient(transparent 64%, var(--mark) 64%); padding: 0 .08em; }
   #cinelish-lp .cl-vline {
     display: block;
     width: 1px; height: 64px;
@@ -151,7 +164,7 @@
 
   /* ---------- Scene 01：Passive / Active ---------- */
   #cinelish-lp .cl-contrast { background: var(--bg-alt); }
-  #cinelish-lp .cl-intro { text-align: center; color: var(--ink-soft); max-width: 32em; margin-inline: auto; }
+  #cinelish-lp .cl-intro { text-align: center; color: var(--ink); font-size: 17px; max-width: 32em; margin-inline: auto; }
   #cinelish-lp .cl-pair {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -186,17 +199,18 @@
     margin-bottom: 20px;
   }
   #cinelish-lp .cl-pair p { font-size: 15px; line-height: 2; }
-  #cinelish-lp .cl-pair .cl-passive p { color: var(--ink-faint); }
+  #cinelish-lp .cl-pair .cl-passive p { color: var(--ink-soft); }
 
   #cinelish-lp .cl-pull {
     position: relative;
-    max-width: 480px;
+    max-width: 560px;
     margin: 0 auto;
     padding: 4px 0 4px 28px;
     border-left: 1px solid var(--gold-1);
-    font-size: clamp(16px, 2.6vw, 18px);
-    line-height: 2;
-    letter-spacing: .06em;
+    font-size: clamp(18px, 3.4vw, 21px);
+    font-weight: 600;
+    line-height: 1.9;
+    letter-spacing: .05em;
   }
 
   /* ---------- 画像：ヒーロー写真の一部を切り出して使う ----------
@@ -291,7 +305,7 @@
     font-variant-numeric: lining-nums;
     color: var(--gold-1);
   }
-  #cinelish-lp .cl-benefits h3 { font-weight: 500; font-size: 17.5px; line-height: 1.8; letter-spacing: .06em; }
+  #cinelish-lp .cl-benefits h3 { font-weight: 700; font-size: 18px; line-height: 1.8; letter-spacing: .06em; }
   #cinelish-lp .cl-benefits li p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.95; }
 
   /* ---------- Ticket（料金） ---------- */
@@ -404,12 +418,13 @@
   }
   #cinelish-lp .cl-closing .cl-soft { font-size: 15.5px; max-width: 32em; margin-inline: auto; }
   #cinelish-lp .cl-lead {
-    font-size: clamp(20px, 3.4vw, 26px);
-    line-height: 2;
-    letter-spacing: .14em;
+    font-size: clamp(23px, 4.6vw, 30px);
+    font-weight: 700;
+    line-height: 1.85;
+    letter-spacing: .08em;
     margin: 48px 0 0;
   }
-  #cinelish-lp p.cl-wait { margin-top: 40px; font-size: 17px; letter-spacing: .24em; }
+  #cinelish-lp p.cl-wait { margin-top: 40px; font-size: 18px; font-weight: 600; letter-spacing: .2em; }
   #cinelish-lp .cl-cta-block { margin-top: 56px; }
   #cinelish-lp .cl-cta-note { margin-top: 14px; font-size: 12.5px; color: var(--ink-faint); letter-spacing: .16em; }
   #cinelish-lp .cl-fin {
@@ -503,9 +518,9 @@
   <section class="cl-prologue">
     <div class="cl-wrap">
       <p class="cl-eyebrow cl-reveal"><i>Prologue</i></p>
-      <p class="cl-question cl-reveal">忙しい毎日の中で、<br class="cl-br-sp">自分自身を見失っていませんか。</p>
+      <p class="cl-question cl-reveal"><small>忙しい毎日の中で、</small>自分自身を<br class="cl-br-sp"><span class="cl-em">見失って</span>いませんか。</p>
       <span class="cl-vline cl-reveal"></span>
-      <p class="cl-question cl-reveal">日々、自分の一日の行動に<br class="cl-br-sp">納得できていますか？</p>
+      <p class="cl-question cl-reveal"><small>日々、自分の一日の行動に</small><span class="cl-em">納得</span>できていますか？</p>
       <p class="cl-member cl-reveal"><span class="cl-eb-line"></span>CineLish プレミアム会員<span class="cl-eb-line"></span></p>
     </div>
   </section>
@@ -515,7 +530,7 @@
     <div class="cl-wrap">
       <p class="cl-eyebrow cl-reveal">SCENE 01<span class="cl-eb-line"></span><i>Passive / Active</i></p>
       <h2 class="cl-reveal">時間が、<br class="cl-br-sp">溶けていませんか。</h2>
-      <p class="cl-intro cl-reveal">夢を追っているはずなのに、<br class="cl-br-pc">気づけば動画やSNSのリールを流し見して、<br class="cl-br-pc">時間が溶けていた…。</p>
+      <p class="cl-intro cl-reveal">夢を追っているはずなのに、<br class="cl-br-pc">気づけば動画やSNSのリールを流し見して、<br class="cl-br-pc"><span class="cl-em">時間が溶けていた…。</span></p>
 
       <div class="cl-pair cl-reveal">
         <div class="cl-passive">
@@ -535,7 +550,7 @@
         <figcaption class="cl-shot-cap"><span>TC 00:12:48:07</span><span>ACTIVE READING</span></figcaption>
       </figure>
 
-      <p class="cl-pull cl-reveal">人が本来力を発揮するのは、<br class="cl-br">自分の意思で、能動的に<br class="cl-br-sp">行動しているときです。</p>
+      <p class="cl-pull cl-reveal">人が本来力を発揮するのは、<br class="cl-br">自分の意思で、<span class="cl-em">能動的に<br class="cl-br-sp">行動しているとき</span>です。</p>
     </div>
   </section>
 
@@ -621,7 +636,7 @@
         <figcaption class="cl-shot-cap"><span>TC 01:52:16:21</span></figcaption>
       </figure>
       <p class="cl-soft cl-reveal">走り続けて自分を見失いそうなとき、<br class="cl-br">ここに戻ってくれば、<br class="cl-br-sp">また自分を取り戻せる。<br class="cl-br">そんな余白のような場所で<br class="cl-br-sp">ありたいと思っています。</p>
-      <p class="cl-lead cl-reveal">余韻に還り、夢を思い出す。<br class="cl-br">走り続けるあなたが、<br class="cl-br-sp">折れないための場所。</p>
+      <p class="cl-lead cl-reveal">余韻に還り、夢を思い出す。<br class="cl-br">走り続けるあなたが、<br class="cl-br-sp"><span class="cl-em">折れないための場所。</span></p>
       <p class="cl-wait cl-reveal">あなたを待っています。</p>
       <div class="cl-cta-block cl-reveal">
         <a class="cl-cta cl-js-signup" href="#">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>

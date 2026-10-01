@@ -17,48 +17,50 @@
 <meta property="og:image" content="<?php echo esc_url( get_stylesheet_directory_uri() . '/cinelish/hero.webp' ); ?>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
 <?php wp_head(); ?>
 <style>
+  /* ============================================================
+     Cine Lish プレミアム LP
+     ・CSSは #cinelish-lp の内側だけに効く（サイトの他の部分に影響しない）
+     ・WordPressのCSS欄で記号が変換されても壊れないよう、引用符と不等号は使わない
+     ============================================================ */
   #cinelish-lp {
-    --bg: #f4f2ee;
-    --bg-alt: #ebe8e2;
-    --ink: #2b2724;
-    --ink-soft: #5e5852;
-    --ink-faint: #8d867e;
-    --line: #d6d1c9;
+    --bg: #f3f1ec;
+    --bg-alt: #e9e5de;
+    --paper: #fbfaf7;
+    --ink: #262220;
+    --ink-soft: #5b544d;
+    --ink-faint: #958d84;
+    --line: #d9d3c9;
     --brown: #4a2c22;
     --gold-1: #a8873a;
-    --gold-2: #d9bf72;
-    --gold-3: #f1e2b0;
-    --dark: #1d1b19;
-    --dark-ink: #e9e5de;
+    --gold-2: #d4b866;
+    --gold-3: #efdfae;
+    --dark: #1b1917;
+    --dark-2: #2a2724;
+    --dark-ink: #e8e3da;
+    --dark-soft: #a69f95;
     --serif-en: Cormorant Garamond, Times New Roman, serif;
     --serif-ja: Shippori Mincho, Hiragino Mincho ProN, Yu Mincho, serif;
   }
 
   #cinelish-lp, #cinelish-lp * { box-sizing: border-box; margin: 0; padding: 0; border: 0; box-shadow: none; }
   #cinelish-lp {
+    position: relative;
     background: var(--bg);
     color: var(--ink);
     font-family: var(--serif-ja);
-    font-size: 16px;
-    line-height: 2.1;
-    letter-spacing: .06em;
+    font-size: 15.5px;
+    line-height: 2.15;
+    letter-spacing: .07em;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    word-break: auto-phrase;   /* 日本語を文節で改行（対応ブラウザのみ） */
+    text-wrap: pretty;
   }
   #cinelish-lp img { display: block; max-width: 100%; height: auto; }
   #cinelish-lp a { color: inherit; }
-
-  #cinelish-lp .cl-wrap { width: min(680px, 100% - 40px); margin-inline: auto; }
-
-  #cinelish-lp .cl-gold {
-    background: linear-gradient(100deg, var(--gold-1) 0%, var(--gold-2) 45%, var(--gold-3) 70%, var(--gold-2) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
 
   /* テーマ側の見出し装飾などをLP内だけ打ち消す（サイト全体には影響しません） */
   #cinelish-lp h2, #cinelish-lp h3 {
@@ -75,203 +77,346 @@
   /* WordPressの自動整形で勝手に入る改行（class無しのbr）は無視する */
   #cinelish-lp br:not([class]) { display: none; }
 
+  #cinelish-lp .cl-wrap { width: min(640px, 100% - 48px); margin-inline: auto; }
+  #cinelish-lp section { padding: 128px 0; position: relative; }
+  #cinelish-lp p + p { margin-top: 1.5em; }
+  #cinelish-lp .cl-center { text-align: center; }
+  #cinelish-lp .cl-soft { color: var(--ink-soft); }
+  #cinelish-lp .cl-en { font-family: var(--serif-en); }
+
+  #cinelish-lp .cl-gold {
+    background: linear-gradient(100deg, var(--gold-1) 0%, var(--gold-2) 45%, var(--gold-3) 70%, var(--gold-2) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ---------- 見出しラベル（Scene 01 ―― Passive / Active） ---------- */
+  #cinelish-lp .cl-eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    font-family: var(--serif-en);
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: .22em;
+    color: var(--ink-faint);
+    font-variant-numeric: lining-nums;
+  }
+  #cinelish-lp .cl-eyebrow i { font-style: italic; letter-spacing: .12em; }
+  #cinelish-lp .cl-eb-line { display: block; width: 40px; height: 1px; background: var(--gold-1); opacity: .6; }
+
+  #cinelish-lp h2 {
+    font-weight: 500;
+    font-size: clamp(22px, 3.6vw, 28px);
+    line-height: 1.85;
+    letter-spacing: .14em;
+    text-align: center;
+    margin-bottom: 52px;
+  }
+
   /* ---------- Hero ---------- */
   #cinelish-lp .cl-hero { position: relative; background: #e9e8e5; }
   #cinelish-lp .cl-hero img { width: 100%; max-width: 1440px; margin-inline: auto; }
   #cinelish-lp .cl-hero-fade {
-    position: absolute; inset: auto 0 0 0; height: 18%;
+    position: absolute; inset: auto 0 0 0; height: 22%;
     background: linear-gradient(to bottom, transparent, var(--bg));
     pointer-events: none;
   }
-
-  /* ---------- Sections ---------- */
-  #cinelish-lp section { padding: 120px 0; }
-  #cinelish-lp .cl-eyebrow {
+  #cinelish-lp .cl-showing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 28px 0 0;
     font-family: var(--serif-en);
-    font-style: italic;
-    font-size: 15px;
-    letter-spacing: .25em;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: .4em;
     color: var(--ink-faint);
-    text-align: center;
-    margin-bottom: 18px;
   }
-  #cinelish-lp .cl-rule {
-    width: 1px; height: 64px; margin: 0 auto 56px;
-    background: linear-gradient(var(--line), transparent);
-  }
-  #cinelish-lp h2 {
-    font-weight: 500;
-    font-size: clamp(22px, 4.2vw, 30px);
-    line-height: 1.8;
+  #cinelish-lp .cl-dot { display: block; width: 6px; height: 6px; border-radius: 50%; background: #b0412e; opacity: .85; }
+
+  /* ---------- Prologue ---------- */
+  #cinelish-lp .cl-prologue { text-align: center; padding-top: 104px; }
+  #cinelish-lp .cl-question {
+    font-size: clamp(18px, 3vw, 21px);
+    line-height: 2.1;
     letter-spacing: .12em;
-    text-align: center;
-    margin-bottom: 48px;
   }
-  #cinelish-lp p + p { margin-top: 1.6em; }
-  #cinelish-lp .cl-center { text-align: center; }
-  #cinelish-lp .cl-soft { color: var(--ink-soft); }
-
-  /* Intro questions */
-  #cinelish-lp .cl-questions p {
-    font-size: clamp(18px, 3.4vw, 22px);
-    text-align: center;
-    line-height: 2;
-  }
-
-  #cinelish-lp .cl-tag {
+  #cinelish-lp .cl-vline {
     display: block;
-    width: fit-content;
-    margin: 72px auto 0;
-    padding: 10px 28px;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    font-size: 14px;
-    letter-spacing: .3em;
+    width: 1px; height: 64px;
+    margin: 36px auto;
+    background: linear-gradient(transparent, var(--line), transparent);
+  }
+  #cinelish-lp .cl-member {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 72px;
+    font-size: 13px;
+    line-height: 1;
+    letter-spacing: .32em;
     color: var(--ink-soft);
   }
+  #cinelish-lp .cl-member .cl-eb-line { width: 28px; }
 
-  /* Contrast */
+  /* ---------- Scene 01：Passive / Active ---------- */
   #cinelish-lp .cl-contrast { background: var(--bg-alt); }
+  #cinelish-lp .cl-intro { text-align: center; color: var(--ink-soft); }
   #cinelish-lp .cl-pair {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--line);
-    border: 1px solid var(--line);
-    margin: 56px 0;
+    margin: 64px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
   }
-  #cinelish-lp .cl-pair .cl-passive, #cinelish-lp .cl-pair .cl-active { background: var(--bg-alt); padding: 36px 28px; }
+  #cinelish-lp .cl-pair .cl-passive,
+  #cinelish-lp .cl-pair .cl-active { padding: 44px 32px 40px; }
+  #cinelish-lp .cl-pair .cl-active { border-left: 1px solid var(--line); }
   #cinelish-lp .cl-pair h3 {
     font-family: var(--serif-en);
-    font-weight: 500;
-    font-size: 26px;
-    letter-spacing: .08em;
-    margin-bottom: 4px;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: .02em;
+    margin-bottom: 10px;
   }
-  #cinelish-lp .cl-pair small { display: block; font-size: 13px; color: var(--ink-faint); margin-bottom: 18px; letter-spacing: .2em; }
-  #cinelish-lp .cl-pair p { font-size: 15px; line-height: 2; }
-  #cinelish-lp .cl-pair .cl-passive { color: var(--ink-faint); }
+  #cinelish-lp .cl-pair .cl-passive h3 {
+    color: var(--ink-faint);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--ink-faint);
+  }
   #cinelish-lp .cl-pair .cl-active h3 { color: var(--brown); }
+  #cinelish-lp .cl-pair small {
+    display: block;
+    font-size: 12px;
+    letter-spacing: .28em;
+    color: var(--ink-faint);
+    margin-bottom: 20px;
+  }
+  #cinelish-lp .cl-pair p { font-size: 14.5px; line-height: 2.05; }
+  #cinelish-lp .cl-pair .cl-passive p { color: var(--ink-faint); }
 
-  /* Statement */
+  #cinelish-lp .cl-pull {
+    position: relative;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 4px 0 4px 28px;
+    border-left: 1px solid var(--gold-1);
+    font-size: clamp(16px, 2.6vw, 18px);
+    line-height: 2.1;
+    letter-spacing: .1em;
+  }
+
+  /* ---------- Concept（黒・縦書き・フィルム） ---------- */
   #cinelish-lp .cl-statement {
     background: var(--dark);
     color: var(--dark-ink);
-    text-align: center;
+    padding: 0;
   }
-  #cinelish-lp .cl-statement .cl-eyebrow { color: #8a837a; }
-  #cinelish-lp .cl-statement .cl-big {
-    font-size: clamp(22px, 4.6vw, 34px);
-    line-height: 1.9;
-    letter-spacing: .14em;
-    margin-bottom: 48px;
+  #cinelish-lp .cl-film {
+    display: block;
+    height: 26px;
+    background:
+      repeating-linear-gradient(90deg, transparent 0 9px, #3b3733 9px 21px, transparent 21px 30px) center / 100% 10px no-repeat,
+      var(--dark-2);
   }
-  #cinelish-lp .cl-statement p { color: #bdb6ac; }
+  #cinelish-lp .cl-statement-inner { padding: 96px 0 104px; }
+  #cinelish-lp .cl-statement .cl-eyebrow { color: var(--dark-soft); }
+  #cinelish-lp .cl-concept {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 56px;
+  }
+  #cinelish-lp .cl-vertical {
+    grid-column: 2;
+    grid-row: 1;
+    writing-mode: vertical-rl;
+    font-size: clamp(24px, 3.6vw, 30px);
+    line-height: 2;
+    letter-spacing: .22em;
+    font-weight: 500;
+    color: #f3eee5;
+    margin: 0 auto;
+  }
+  #cinelish-lp .cl-vertical .cl-gold { font-weight: 500; }
+  #cinelish-lp .cl-concept-body { grid-column: 1; grid-row: 1; color: var(--dark-soft); font-size: 14.5px; }
+  #cinelish-lp .cl-concept-body p + p { margin-top: 1.4em; }
+  #cinelish-lp .cl-concept-body .cl-hl { color: var(--dark-ink); }
 
-  /* Benefits */
-  #cinelish-lp .cl-benefits ol { list-style: none; border-top: 1px solid var(--line); }
+  /* ---------- Scene 02：受け取れるもの ---------- */
+  #cinelish-lp .cl-benefits ol { border-top: 1px solid var(--line); }
   #cinelish-lp .cl-benefits li {
     display: grid;
-    grid-template-columns: 72px 1fr;
-    gap: 8px 20px;
-    padding: 40px 0;
+    grid-template-columns: 76px 1fr;
+    gap: 6px 16px;
+    padding: 38px 0;
     border-bottom: 1px solid var(--line);
   }
   #cinelish-lp .cl-benefits .cl-num {
+    grid-row: span 2;
     font-family: var(--serif-en);
-    font-size: 44px;
-    line-height: 1;
-    color: var(--gold-1);
     font-style: italic;
+    font-weight: 300;
+    font-size: 46px;
+    line-height: .9;
+    font-variant-numeric: lining-nums;
+    color: var(--gold-1);
   }
-  #cinelish-lp .cl-benefits h3 { font-weight: 500; font-size: 18px; line-height: 1.8; letter-spacing: .08em; }
-  #cinelish-lp .cl-benefits li p { grid-column: 2; font-size: 14px; color: var(--ink-soft); line-height: 1.9; }
+  #cinelish-lp .cl-benefits h3 { font-weight: 500; font-size: 17px; line-height: 1.85; letter-spacing: .08em; }
+  #cinelish-lp .cl-benefits li p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.95; }
 
-  /* Price */
-  #cinelish-lp .cl-price-card {
+  /* ---------- Ticket（料金） ---------- */
+  #cinelish-lp .cl-ticket-sec { padding-top: 24px; }
+  #cinelish-lp .cl-ticket {
+    position: relative;
+    max-width: 440px;
     margin: 0 auto;
-    max-width: 460px;
-    padding: 56px 32px;
-    text-align: center;
-    border: 1px solid var(--line);
-    background: #fbfaf8;
-    position: relative;
+    background: var(--paper);
+    border: 1px solid #e2ddd3;
   }
-  #cinelish-lp .cl-frame {
-    position: absolute; inset: 8px;
-    border: 1px solid #ece8e1;
-    pointer-events: none;
-  }
-  #cinelish-lp .cl-price-card .cl-name {
+  #cinelish-lp .cl-ticket-main { padding: 26px 36px 40px; text-align: center; }
+  #cinelish-lp .cl-ticket-head {
+    display: flex;
+    justify-content: space-between;
     font-family: var(--serif-en);
-    font-size: 30px;
-    color: var(--brown);
-    letter-spacing: .06em;
-    line-height: 1.4;
-  }
-  #cinelish-lp .cl-price-card .cl-name span { font-family: var(--serif-ja); font-size: 22px; margin-left: .3em; }
-  #cinelish-lp .cl-price {
-    margin: 28px 0 8px;
-    font-family: var(--serif-en);
-    font-size: 64px;
+    font-size: 11px;
     line-height: 1;
-    letter-spacing: .02em;
+    letter-spacing: .32em;
+    color: var(--ink-faint);
+    margin-bottom: 40px;
+    font-variant-numeric: lining-nums;
   }
-  #cinelish-lp .cl-price small { font-family: var(--serif-ja); font-size: 16px; color: var(--ink-soft); margin-left: 4px; }
-  #cinelish-lp .cl-price-card ul { list-style: none; margin: 24px 0 36px; font-size: 14px; color: var(--ink-soft); line-height: 2.2; }
-
-  /* CTA */
-  #cinelish-lp .cl-cta {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    min-width: min(100%, 340px);
-    padding: 20px 40px;
-    background: var(--dark);
-    color: #f5efe2;
-    text-decoration: none;
-    font-size: 16px;
-    letter-spacing: .16em;
-    border: 1px solid var(--dark);
-    transition: background .4s ease, color .4s ease;
-    overflow: hidden;
-  }
-  #cinelish-lp .cl-arrow { font-family: var(--serif-en); transition: transform .4s ease; }
-  #cinelish-lp .cl-cta:hover { background: transparent; color: var(--dark); }
-  #cinelish-lp .cl-cta:hover .cl-arrow { transform: translateX(4px); }
-  #cinelish-lp .cl-cta:focus-visible { outline: 2px solid var(--gold-1); outline-offset: 4px; }
-  #cinelish-lp .cl-cta-block { text-align: center; margin-top: 56px; }
-  #cinelish-lp .cl-cta-note { margin-top: 14px; font-size: 12px; color: var(--ink-faint); letter-spacing: .14em; }
-
-  /* Closing */
-  #cinelish-lp .cl-closing {
-    background: linear-gradient(var(--bg), var(--bg-alt));
-    text-align: center;
-  }
-  #cinelish-lp .cl-closing .cl-lead {
-    font-size: clamp(20px, 4vw, 28px);
-    line-height: 2;
-    letter-spacing: .14em;
-    margin: 40px 0;
-  }
-  #cinelish-lp .cl-closing .cl-wait { font-size: 18px; letter-spacing: .3em; margin-top: 48px; }
-
-  #cinelish-lp .cl-footer {
-    padding: 48px 0 120px;
-    text-align: center;
+  #cinelish-lp .cl-ticket-name {
     font-family: var(--serif-en);
-    font-size: 13px;
+    font-size: 32px;
+    line-height: 1.3;
+    letter-spacing: .06em;
+    color: var(--brown);
+  }
+  #cinelish-lp .cl-ticket-name .cl-gold { font-family: var(--serif-ja); font-size: 20px; margin-left: .4em; letter-spacing: .14em; }
+  #cinelish-lp .cl-price {
+    margin-top: 22px;
+    font-family: var(--serif-en);
+    font-weight: 300;
+    font-size: 76px;
+    line-height: 1;
+    letter-spacing: 0;
+    font-variant-numeric: lining-nums;
+  }
+  #cinelish-lp .cl-price small { font-family: var(--serif-ja); font-size: 15px; color: var(--ink-soft); margin-left: 6px; letter-spacing: .1em; }
+  #cinelish-lp .cl-ticket-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 34px;
+    border-top: 1px solid var(--line);
+  }
+  #cinelish-lp .cl-ticket-info div { padding: 16px 8px 0; font-size: 13.5px; line-height: 1.7; }
+  #cinelish-lp .cl-ticket-info div + div { border-left: 1px solid var(--line); }
+  #cinelish-lp .cl-ticket-info span {
+    display: block;
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12px;
     letter-spacing: .2em;
     color: var(--ink-faint);
   }
+  #cinelish-lp .cl-ticket-stub {
+    position: relative;
+    padding: 32px 36px 30px;
+    border-top: 1px dashed #cfc8bc;
+    text-align: center;
+  }
+  #cinelish-lp .cl-notch {
+    position: absolute;
+    top: -12px;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--bg);
+  }
+  #cinelish-lp .cl-notch-l { left: -12px; }
+  #cinelish-lp .cl-notch-r { right: -12px; }
+  #cinelish-lp .cl-ticket .cl-cta { width: 100%; }
+  #cinelish-lp .cl-ticket-foot {
+    margin-top: 16px;
+    font-family: var(--serif-en);
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: .32em;
+    color: var(--ink-faint);
+  }
 
-  /* Sticky CTA (mobile) */
+  /* ---------- ボタン ---------- */
+  #cinelish-lp .cl-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    min-width: min(100%, 320px);
+    padding: 20px 40px;
+    background: var(--dark);
+    color: #f4eee3;
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: .18em;
+    border: 1px solid var(--dark);
+    transition: background .5s ease, color .5s ease;
+  }
+  #cinelish-lp .cl-arrow { font-family: var(--serif-en); transition: transform .5s ease; }
+  #cinelish-lp .cl-cta:hover { background: transparent; color: var(--dark); }
+  #cinelish-lp .cl-cta:hover .cl-arrow { transform: translateX(5px); }
+  #cinelish-lp .cl-cta:focus-visible { outline: 2px solid var(--gold-1); outline-offset: 4px; }
+
+  /* ---------- Epilogue ---------- */
+  #cinelish-lp .cl-closing {
+    text-align: center;
+    background: linear-gradient(var(--bg), var(--bg-alt));
+    padding-bottom: 96px;
+  }
+  #cinelish-lp .cl-closing .cl-soft { font-size: 14.5px; }
+  #cinelish-lp .cl-lead {
+    font-size: clamp(20px, 3.4vw, 26px);
+    line-height: 2;
+    letter-spacing: .14em;
+    margin: 48px 0 0;
+  }
+  #cinelish-lp p.cl-wait { margin-top: 40px; font-size: 16px; letter-spacing: .34em; }
+  #cinelish-lp .cl-cta-block { margin-top: 56px; }
+  #cinelish-lp .cl-cta-note { margin-top: 14px; font-size: 12px; color: var(--ink-faint); letter-spacing: .16em; }
+  #cinelish-lp .cl-fin {
+    margin-top: 96px;
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 44px;
+    line-height: 1;
+    letter-spacing: .06em;
+    color: var(--ink-soft);
+  }
+
+  #cinelish-lp .cl-footer {
+    padding: 0 0 120px;
+    background: var(--bg-alt);
+    text-align: center;
+    font-family: var(--serif-en);
+    font-size: 12px;
+    letter-spacing: .3em;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- スマホ下部の固定ボタン ---------- */
   #cinelish-lp .cl-sticky {
     position: fixed; left: 0; right: 0; bottom: 0;
     padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
-    background: rgba(244,242,238,.92);
+    background: rgba(243,241,236,.92);
     backdrop-filter: blur(8px);
     border-top: 1px solid var(--line);
     transform: translateY(100%);
@@ -280,27 +425,41 @@
     display: none;
   }
   #cinelish-lp .cl-sticky.cl-show { transform: translateY(0); }
-  #cinelish-lp .cl-sticky .cl-cta { width: 100%; padding: 16px 20px; font-size: 15px; }
+  #cinelish-lp .cl-sticky .cl-cta { width: 100%; padding: 16px 20px; font-size: 14px; }
 
-  /* Reveal */
-  /* JSが動いたときだけ隠す（scriptが消されても文章は必ず表示される） */
-  #cinelish-lp.cl-js .cl-reveal { opacity: 0; transform: translateY(16px); transition: opacity 1.2s ease, transform 1.2s ease; }
+  /* ---------- ふわっと表示（JSが動いたときだけ隠す） ---------- */
+  #cinelish-lp.cl-js .cl-reveal { opacity: 0; transform: translateY(18px); transition: opacity 1.4s ease, transform 1.4s ease; }
   #cinelish-lp.cl-js .cl-reveal.cl-in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
     #cinelish-lp.cl-js .cl-reveal { opacity: 1; transform: none; transition: none; }
   }
 
+  /* ---------- スマホ ---------- */
   @media (max-width: 640px) {
-    #cinelish-lp { font-size: 15px; line-height: 2; }
-    #cinelish-lp section { padding: 88px 0; }
-    #cinelish-lp .cl-wrap { width: calc(100% - 32px); }
-    #cinelish-lp .cl-pair { grid-template-columns: 1fr; }
-    #cinelish-lp .cl-benefits li { grid-template-columns: 52px 1fr; padding: 32px 0; }
+    #cinelish-lp { font-size: 14.5px; line-height: 2.05; letter-spacing: .05em; }
+    #cinelish-lp section { padding: 92px 0; }
+    #cinelish-lp .cl-wrap { width: calc(100% - 36px); }
+    #cinelish-lp .cl-prologue { padding-top: 80px; }
+    #cinelish-lp .cl-pair { grid-template-columns: 1fr; margin: 48px 0; }
+    #cinelish-lp .cl-pair .cl-passive, #cinelish-lp .cl-pair .cl-active { padding: 32px 4px; }
+    #cinelish-lp .cl-pair .cl-active { border-left: 0; border-top: 1px solid var(--line); }
+    #cinelish-lp .cl-pull { padding-left: 20px; }
+    #cinelish-lp .cl-statement { padding: 0; }
+    #cinelish-lp .cl-statement-inner { padding: 84px 0; }
+    #cinelish-lp .cl-concept { grid-template-columns: 1fr; gap: 48px; }
+    #cinelish-lp .cl-vertical { grid-column: 1; grid-row: 1; }
+    #cinelish-lp .cl-concept-body { grid-column: 1; grid-row: 2; text-align: center; }
+    #cinelish-lp .cl-benefits li { grid-template-columns: 52px 1fr; gap: 4px 12px; padding: 30px 0; }
     #cinelish-lp .cl-benefits .cl-num { font-size: 36px; }
+    #cinelish-lp .cl-benefits h3 { font-size: 15.5px; }
+    #cinelish-lp .cl-ticket-main { padding: 22px 22px 34px; }
+    #cinelish-lp .cl-ticket-stub { padding: 28px 22px 26px; }
+    #cinelish-lp .cl-ticket-name { font-size: 27px; white-space: nowrap; }
+    #cinelish-lp .cl-ticket-name .cl-gold { font-size: 17px; }
+    #cinelish-lp .cl-price { font-size: 64px; }
+    #cinelish-lp .cl-cta { padding: 18px 24px; letter-spacing: .12em; }
+    #cinelish-lp .cl-fin { font-size: 38px; margin-top: 80px; }
     #cinelish-lp .cl-sticky { display: block; }
-    #cinelish-lp .cl-price-card { padding: 48px 20px; }
-    #cinelish-lp .cl-price-card .cl-name { font-size: 26px; white-space: nowrap; }
-    #cinelish-lp .cl-price-card .cl-name span { font-size: 18px; }
     #cinelish-lp .cl-br-pc { display: none; }
   }
   @media (min-width: 641px) { #cinelish-lp .cl-br-sp { display: none; } }
@@ -314,24 +473,27 @@
   <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/cinelish/hero.webp' ); ?>" width="1430" height="1046"
        alt="Cine Lish プレミアム ―『能動的に読む』時間で自分を取り戻す。走り続けるあなたが、折れないための場所。">
 </div>
+<p class="cl-showing"><span class="cl-dot"></span>NOW SHOWING<span class="cl-dot"></span></p>
 
 <div class="cl-main">
 
-  <!-- 問いかけ -->
-  <section class="cl-questions">
+  <!-- Prologue：問いかけ -->
+  <section class="cl-prologue">
     <div class="cl-wrap">
-      <p class="cl-reveal">忙しい毎日の中で、<br class="cl-br-sp">自分自身を見失っていませんか。</p>
-      <p class="cl-reveal">日々、自分の一日の行動に<br class="cl-br-sp">納得できていますか？</p>
-      <span class="cl-tag cl-reveal">CineLish プレミアム会員</span>
+      <p class="cl-eyebrow cl-reveal"><i>Prologue</i></p>
+      <p class="cl-question cl-reveal">忙しい毎日の中で、<br class="cl-br-sp">自分自身を見失っていませんか。</p>
+      <span class="cl-vline cl-reveal"></span>
+      <p class="cl-question cl-reveal">日々、自分の一日の行動に<br class="cl-br-sp">納得できていますか？</p>
+      <p class="cl-member cl-reveal"><span class="cl-eb-line"></span>CineLish プレミアム会員<span class="cl-eb-line"></span></p>
     </div>
   </section>
 
-  <!-- 受け身 vs 能動 -->
+  <!-- Scene 01：受け身 vs 能動 -->
   <section class="cl-contrast">
     <div class="cl-wrap">
-      <p class="cl-eyebrow cl-reveal">Passive / Active</p>
+      <p class="cl-eyebrow cl-reveal">SCENE 01<span class="cl-eb-line"></span><i>Passive / Active</i></p>
       <h2 class="cl-reveal">時間が、<br class="cl-br-sp">溶けていませんか。</h2>
-      <p class="cl-reveal">夢を追っているはずなのに、気づけば動画やSNSのリールを流し見して、時間が溶けていた…。</p>
+      <p class="cl-intro cl-reveal">夢を追っているはずなのに、<br class="cl-br-pc">気づけば動画やSNSのリールを流し見して、<br class="cl-br-pc">時間が溶けていた…。</p>
 
       <div class="cl-pair cl-reveal">
         <div class="cl-passive">
@@ -346,25 +508,34 @@
         </div>
       </div>
 
-      <p class="cl-reveal cl-center cl-soft">人が本来力を発揮するのは、<br class="cl-br-sp">自分の意思で、<br class="cl-br-pc">能動的に行動しているときです。</p>
+      <p class="cl-pull cl-reveal">人が本来力を発揮するのは、<br class="cl-br">自分の意思で、能動的に<br class="cl-br-sp">行動しているときです。</p>
     </div>
   </section>
 
-  <!-- ステートメント -->
+  <!-- Concept：黒・縦書き -->
   <section class="cl-statement">
-    <div class="cl-wrap">
-      <p class="cl-eyebrow cl-reveal">Concept</p>
-      <p class="cl-big cl-reveal">あえて、<br class="cl-br">「文章を能動的に読む」<br class="cl-br">体験を。</p>
-      <p class="cl-reveal">映画や日々の話をきっかけに、<br class="cl-br">自分のペースで読み、考え、自分に立ち返る。</p>
-      <p class="cl-reveal">その時間が、流し見では得られないものを残し、<br class="cl-br-pc">夢を追うあなたが前を向くきっかけになります。</p>
-      <p class="cl-reveal">夢の途中で立ち止まりたくなったときにこそ、<br class="cl-br-pc">ぴったりの場所です。</p>
+    <span class="cl-film"></span>
+    <div class="cl-statement-inner">
+      <div class="cl-wrap">
+        <p class="cl-eyebrow cl-reveal"><i>Concept</i></p>
+        <div class="cl-concept">
+          <p class="cl-vertical cl-reveal">あえて、<br class="cl-br"><span class="cl-gold">文章を能動的に読む</span><br class="cl-br">体験を。</p>
+          <div class="cl-concept-body cl-reveal">
+            <p><span class="cl-hl">CineLishプレミアムは、</span><br class="cl-br">あえて「文章を能動的に読む体験」を<br class="cl-br-pc">提供する場所です。</p>
+            <p>映画や日々の話をきっかけに、<br class="cl-br">自分のペースで読み、考え、<br class="cl-br-sp">自分に立ち返る。</p>
+            <p>その時間が、流し見では得られないものを残し、<br class="cl-br-pc">夢を追うあなたが前を向くきっかけになります。</p>
+            <p>夢の途中で立ち止まりたくなったときにこそ、<br class="cl-br-pc">ぴったりの場所です。</p>
+          </div>
+        </div>
+      </div>
     </div>
+    <span class="cl-film"></span>
   </section>
 
-  <!-- 受け取れるもの -->
+  <!-- Scene 02：受け取れるもの -->
   <section class="cl-benefits">
     <div class="cl-wrap">
-      <p class="cl-eyebrow cl-reveal">What you receive</p>
+      <p class="cl-eyebrow cl-reveal">SCENE 02<span class="cl-eb-line"></span><i>What you receive</i></p>
       <h2 class="cl-reveal">CineLish プレミアムで<br class="cl-br">受け取れるもの</h2>
       <ol>
         <li class="cl-reveal">
@@ -391,32 +562,41 @@
     </div>
   </section>
 
-  <!-- 料金 -->
-  <section id="join" style="padding-top:0">
+  <!-- Ticket：料金 -->
+  <section id="join" class="cl-ticket-sec">
     <div class="cl-wrap">
-      <div class="cl-price-card cl-reveal"><span class="cl-frame"></span>
-        <p class="cl-name">Cine Lish<span class="cl-gold">プレミアム</span></p>
-        <p class="cl-price">¥500<small>／月</small></p>
-        <ul>
-          <li>毎週1本程度お届け</li>
-          <li>いつでも解約OK</li>
-        </ul>
-        <a class="cl-cta cl-js-signup" href="#">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
+      <p class="cl-eyebrow cl-reveal"><i>Ticket</i></p>
+      <div class="cl-ticket cl-reveal">
+        <div class="cl-ticket-main">
+          <p class="cl-ticket-head"><span>ADMIT ONE</span><span>No. 0500</span></p>
+          <p class="cl-ticket-name">Cine Lish<span class="cl-gold">プレミアム</span></p>
+          <p class="cl-price">¥500<small>／月</small></p>
+          <div class="cl-ticket-info">
+            <div><span>Delivery</span>毎週1本程度</div>
+            <div><span>Cancel</span>いつでも解約OK</div>
+          </div>
+        </div>
+        <div class="cl-ticket-stub">
+          <span class="cl-notch cl-notch-l"></span><span class="cl-notch cl-notch-r"></span>
+          <a class="cl-cta cl-js-signup" href="#">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
+          <p class="cl-ticket-foot">MONTHLY MEMBERSHIP</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- クロージング -->
+  <!-- Epilogue：クロージング -->
   <section class="cl-closing">
     <div class="cl-wrap">
-      <div class="cl-rule cl-reveal"></div>
-      <p class="cl-reveal cl-soft">走り続けて自分を見失いそうなとき、<br class="cl-br">ここに戻ってくれば、また自分を取り戻せる。<br class="cl-br">そんな余白のような場所でありたいと思っています。</p>
+      <p class="cl-eyebrow cl-reveal"><i>Epilogue</i></p>
+      <p class="cl-soft cl-reveal">走り続けて自分を見失いそうなとき、<br class="cl-br">ここに戻ってくれば、また自分を取り戻せる。<br class="cl-br">そんな余白のような場所で<br class="cl-br-sp">ありたいと思っています。</p>
       <p class="cl-lead cl-reveal">余韻に還り、夢を思い出す。<br class="cl-br">走り続けるあなたが、<br class="cl-br-sp">折れないための場所。</p>
       <p class="cl-wait cl-reveal">あなたを待っています。</p>
       <div class="cl-cta-block cl-reveal">
         <a class="cl-cta cl-js-signup" href="#">Cine Lish プレミアムに登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
         <p class="cl-cta-note">月額500円・いつでも解約OK</p>
       </div>
+      <p class="cl-fin cl-reveal">Fin.</p>
     </div>
   </section>
 

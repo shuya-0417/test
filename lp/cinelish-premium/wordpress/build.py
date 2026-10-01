@@ -86,3 +86,22 @@ mini = re.sub(r"\s*([{};,>])\s*", r"\1", mini).strip()
 
 # 5) TCDテーマ用：1行に圧縮したCSS（コピー漏れを防ぐため）
 (tcd / "cinelish-lp.min.css").write_text(mini + "\n")
+
+# 6) プレビュー用ページ（Artifact で公開して、スマホ・PCで確認しながら調整する用）
+#    実サイト（TCD CODE.）の本文幅 690px を再現。プレビューではフェードインを切って最初から全部見せる。
+pv_head = src[src.index("<title>"):src.index("</head>")]
+pv_head = pv_head.replace('<meta property="og:image" content="hero.webp">\n', "")
+pv_body = src[src.index('<div id="cinelish-lp">'):src.index("</body>")]
+pv_body = pv_body.replace('document.getElementById("cinelish-lp").classList.add("cl-js");', "")
+frame = """<style>
+  /* プレビュー枠：実サイトの本文幅（690px）を再現 */
+  html, body { background: #ffffff; color: #262220; }
+  body { padding-block: 0; padding-inline: 20px; }
+  .pv-frame { max-width: 690px; margin: 0 auto; }
+  .pv-note { max-width: 690px; margin: 0 auto; padding: 14px 0; font: 12px/1.6 system-ui, sans-serif; color: #7a736b; letter-spacing: .04em; }
+</style>
+"""
+pv = (pv_head + frame + '<p class="pv-note">プレビュー（実サイトの本文幅 690px で表示）</p>\n<div class="pv-frame">\n'
+      + pv_body + "</div>\n")
+(root / "preview").mkdir(exist_ok=True)
+(root / "preview" / "index.html").write_text(pv)

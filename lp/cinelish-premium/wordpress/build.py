@@ -83,3 +83,6 @@ mini = re.sub(r"\s*([{};,>])\s*", r"\1", mini).strip()
     '     ・SIGNUP_URL = "#" の # → 登録ページのURL -->\n'
     + one_line(fonts + "<style>" + mini + "</style>" + body) + "\n"
 )
+
+# 5) TCDテーマ用：1行に圧縮したCSS（コピー漏れを防ぐため）
+(tcd / "cinelish-lp.min.css").write_text(mini + "\n")

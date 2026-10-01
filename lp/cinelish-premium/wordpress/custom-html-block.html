@@ -355,7 +355,7 @@
     border: 1px solid var(--gold-1);
     opacity: .7;
   }
-  #cinelish-lp .cl-note-photo .cl-photo { position: relative; aspect-ratio: 4 / 5; object-fit: cover; }
+  #cinelish-lp .cl-note-photo .cl-photo { position: relative; aspect-ratio: 4 / 5; object-fit: cover; object-position: 68% 50%; }
   #cinelish-lp .cl-note-body { min-width: 0; }
   #cinelish-lp .cl-note-body h2 { text-align: left; font-size: clamp(21px, 3.4vw, 24px); margin-bottom: 22px; }
   #cinelish-lp .cl-note-body p { font-size: 15px; line-height: 2; color: var(--ink-soft); }
@@ -459,15 +459,18 @@
   #cinelish-lp .cl-closing { text-align: center; }
   #cinelish-lp .cl-closing .cl-dark-inner { padding-bottom: 72px; }
   #cinelish-lp .cl-portrait { width: min(320px, 72%); margin: 0 auto 52px; }
-  #cinelish-lp .cl-portrait .cl-photo { outline: 1px solid #5a534c; outline-offset: 8px; }
+  #cinelish-lp .cl-portrait .cl-photo { aspect-ratio: 4 / 5; object-fit: cover; object-position: 48% 40%; outline: 1px solid #5a534c; outline-offset: 8px; }
   #cinelish-lp .cl-closing .cl-soft { font-size: 15.5px; color: var(--dark-soft); max-width: 32em; margin-inline: auto; }
   #cinelish-lp .cl-lead { color: #f6f1e8; font-size: clamp(22px, 4vw, 27px); font-weight: 700; line-height: 1.85; letter-spacing: .08em; margin: 40px 0 0; }
   #cinelish-lp p.cl-wait { margin-top: 32px; font-size: 18px; font-weight: 600; letter-spacing: .2em; }
   #cinelish-lp .cl-cta-block { margin-top: 44px; }
   #cinelish-lp .cl-cta-note { margin-top: 14px; font-size: 12.5px; color: #a69f95; letter-spacing: .16em; }
   #cinelish-lp .cl-fin { margin-top: 80px; font-family: var(--serif-en); font-style: italic; font-weight: 300; font-size: 44px; line-height: 1; letter-spacing: .06em; color: var(--dark-soft); }
-  #cinelish-lp .cl-closing .cl-cta { background: var(--paper); color: var(--dark); border-color: var(--paper); }
-  #cinelish-lp .cl-closing .cl-cta:hover { background: transparent; color: var(--paper); }
+  #cinelish-lp .cl-dark .cl-cta { background: var(--paper); color: var(--dark); border-color: var(--paper); }
+  #cinelish-lp .cl-dark .cl-cta:hover { background: transparent; color: var(--paper); }
+  /* 途中の登録ボタン */
+  #cinelish-lp .cl-cta-mid { margin-top: 48px; text-align: center; }
+  #cinelish-lp .cl-cta-mid .cl-cta-note { color: #a69f95; }
   #cinelish-lp .cl-footer { padding: 0 0 120px; background: var(--dark); text-align: center; font-family: var(--serif-en); font-size: 12px; letter-spacing: .3em; color: var(--ink-faint); }
 
   /* ---------- スマホ下部の固定ボタン ---------- */
@@ -514,7 +517,14 @@
     #cinelish-lp .cl-bigno { font-size: 110px; }
     #cinelish-lp .cl-scene-head { padding-top: 92px; }
     #cinelish-lp .cl-concept { grid-template-columns: 1fr; gap: 44px; }
-    #cinelish-lp .cl-vertical { grid-column: 1; grid-row: 1; }
+    #cinelish-lp .cl-vertical {
+      grid-column: 1; grid-row: 1;
+      writing-mode: horizontal-tb;
+      text-align: center;
+      font-size: 25px;
+      line-height: 1.75;
+      letter-spacing: .08em;
+    }
     #cinelish-lp .cl-concept-body { grid-column: 1; grid-row: 2; text-align: center; }
     #cinelish-lp .cl-note-grid { grid-template-columns: 1fr; gap: 44px; }
     #cinelish-lp .cl-note-photo { width: 78%; margin: 0 auto; }
@@ -583,6 +593,10 @@
         </ul>
         <p class="cl-foryou-foot">ひとつでも当てはまったら、<br class="cl-br-sp">この先を読んでみてください。</p>
       </div>
+      <div class="cl-cta-mid cl-reveal">
+        <a class="cl-cta cl-js-signup" href="#">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
+        <p class="cl-cta-note">月額500円・いつでも解約OK</p>
+      </div>
     </div>
     </div>
   </section>
@@ -632,6 +646,10 @@
             <p>その時間が、流し見では得られないものを残し、<br class="cl-br-pc">夢を追うあなたが前を向くきっかけになります。</p>
             <p>夢の途中で立ち止まりたくなったときにこそ、<br class="cl-br-pc">ぴったりの場所です。</p>
           </div>
+        </div>
+        <div class="cl-cta-mid cl-reveal">
+          <a class="cl-cta cl-js-signup" href="#">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
+          <p class="cl-cta-note">月額500円・いつでも解約OK</p>
         </div>
       </div>
     </div>

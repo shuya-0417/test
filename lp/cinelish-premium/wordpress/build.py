@@ -32,6 +32,19 @@ head = src[src.index('<link rel="preconnect"'):src.index("</head>")].strip()
 body = src[src.index('<div id="cinelish-lp">'):src.index("</body>")].strip()
 body = body.replace('src="hero.webp"', 'src="【画像URL：hero.webp】"').replace('const SIGNUP_URL = "#";', url_example)
 body = re.sub(r'src="img/([\w-]+\.jpg)"', r'src="【画像URL：\1】"', body)
+
+# WordPressのメディアにアップ済みの画像URL（TCD用HTMLにそのまま入れる）
+IMAGE_URLS = {
+    "hero.webp": "https://www.cinelish-japan.tech/wp-content/uploads/2026/09/Premium-Subscription-Thumbnail.jpg",
+    "prologue.jpg": "https://www.cinelish-japan.tech/wp-content/uploads/2026/10/18606FC4-C246-4C80-AB93-40FA6263E31B.jpg",
+    "passive.jpg": "https://www.cinelish-japan.tech/wp-content/uploads/2026/10/laura-brain-YWQcSnBvmk0-unsplash-scaled.jpg",
+    "active.jpg": "https://www.cinelish-japan.tech/wp-content/uploads/2026/10/jaeyoung-geoffrey-kang-V8TJgSmkJ0-unsplash-scaled.jpg",
+    "note.jpg": "https://www.cinelish-japan.tech/wp-content/uploads/2026/10/aaron-burden-CKlHKtCJZKk-unsplash-scaled.jpg",
+    "epilogue.jpg": "https://www.cinelish-japan.tech/wp-content/uploads/2026/10/valeriia-fokina-m0TID6J9Ahg-unsplash-scaled.jpg",
+}
+tcd_body = body
+for name, url in IMAGE_URLS.items():
+    tcd_body = tcd_body.replace("【画像URL：" + name + "】", url)
 (root / "wordpress" / "custom-html-block.html").write_text(
     "<!-- Cine Lish プレミアム LP：WordPressの「カスタムHTML」ブロックにこのファイルの中身を丸ごと貼り付け -->\n"
     "<!-- 【ここに画像URL】を、メディアにアップした hero.webp のURLに置き換える -->\n"
@@ -68,10 +81,10 @@ fonts = src[src.index('<link rel="preconnect"'):src.index("<style>")].strip()
 (tcd / "cinelish-lp.html").write_text(
     "<!-- Cine Lish プレミアム LP 用HTML（TCDテーマ）\n"
     "     貼り付け先：固定ページ本文の「カスタムHTML」ブロック（クラシックエディタなら「テキスト」タブ）\n"
-    "     ・【画像URL：○○】→ 同じ名前の画像をメディアにアップしたURL（全6か所）\n"
+    "     ・画像URLは入力済み\n"
     '     ・SIGNUP_URL = "#" の # → 登録ページのURL\n'
     "     ※ エディタの自動整形で崩れないよう、あえて1行にしています（Ctrl+F で検索して書き換えてください） -->\n"
-    + one_line(fonts + body) + "\n"
+    + one_line(fonts + tcd_body) + "\n"
 )
 
 # 4) TCDテーマ用：CSS込みのHTML1枚（追加CSSが効かない環境向け）
@@ -81,9 +94,9 @@ mini = re.sub(r"\s*([{};,>])\s*", r"\1", mini).strip()
 (tcd / "cinelish-lp-all-in-one.html").write_text(
     "<!-- Cine Lish プレミアム LP（TCDテーマ・CSS込み版）\n"
     "     これ1つを固定ページ本文の「カスタムHTML」ブロック（クラシックエディタなら「テキスト」タブ）に貼るだけ。追加CSSは不要。\n"
-    "     ・【画像URL：○○】→ 同じ名前の画像をメディアにアップしたURL（全6か所）\n"
+    "     ・画像URLは入力済み\n"
     '     ・SIGNUP_URL = "#" の # → 登録ページのURL -->\n'
-    + one_line(fonts + "<style>" + mini + "</style>" + body) + "\n"
+    + one_line(fonts + "<style>" + mini + "</style>" + tcd_body) + "\n"
 )
 
 # 5) TCDテーマ用：1行に圧縮したCSS（コピー漏れを防ぐため）

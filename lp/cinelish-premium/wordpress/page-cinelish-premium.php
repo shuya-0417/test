@@ -37,7 +37,7 @@
     --serif-ja: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
   }
 
-  #cinelish-lp, #cinelish-lp * { box-sizing: border-box; margin: 0; padding: 0; }
+  #cinelish-lp, #cinelish-lp * { box-sizing: border-box; margin: 0; padding: 0; border: 0; box-shadow: none; }
   #cinelish-lp {
     background: var(--bg);
     color: var(--ink);
@@ -295,6 +295,9 @@
     #cinelish-lp .cl-benefits li { grid-template-columns: 52px 1fr; padding: 32px 0; }
     #cinelish-lp .cl-benefits .cl-num { font-size: 36px; }
     #cinelish-lp .cl-sticky { display: block; }
+    #cinelish-lp .cl-price-card { padding: 48px 20px; }
+    #cinelish-lp .cl-price-card .cl-name { font-size: 26px; white-space: nowrap; }
+    #cinelish-lp .cl-price-card .cl-name span { font-size: 18px; }
     #cinelish-lp .cl-br-pc { display: none; }
   }
   @media (min-width: 641px) { #cinelish-lp .cl-br-sp { display: none; } }
@@ -425,28 +428,30 @@
 </div><!-- /#cinelish-lp -->
 
 <script>
-  // ▼ 登録ページのURLをここに入れてください（全ボタンに反映されます）
-  const SIGNUP_URL = "#"; // 例: "https://note.com/xxxx/membership"
+(() => {
+    // ▼ 登録ページのURLをここに入れてください（全ボタンに反映されます）
+    const SIGNUP_URL = "#"; // 例: "https://note.com/xxxx/membership"
 
-  document.querySelectorAll("#cinelish-lp .cl-js-signup").forEach(a => {
-    a.href = SIGNUP_URL;
-    if (/^https?:/.test(SIGNUP_URL)) { a.target = "_blank"; a.rel = "noopener"; }
-  });
+    document.querySelectorAll("#cinelish-lp .cl-js-signup").forEach(a => {
+      a.href = SIGNUP_URL;
+      if (/^https?:/.test(SIGNUP_URL)) { a.target = "_blank"; a.rel = "noopener"; }
+    });
 
-  // スクロールでふわっと表示
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("cl-in"); io.unobserve(e.target); } });
-  }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
-  document.querySelectorAll("#cinelish-lp .cl-reveal").forEach(el => io.observe(el));
+    // スクロールでふわっと表示
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("cl-in"); io.unobserve(e.target); } });
+    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+    document.querySelectorAll("#cinelish-lp .cl-reveal").forEach(el => io.observe(el));
 
-  // スマホ下部の固定ボタン：ヒーローを過ぎたら表示、料金カードが見えている間は隠す
-  const sticky = document.querySelector("#cinelish-lp .cl-sticky");
-  const hero = document.querySelector("#cinelish-lp .cl-hero");
-  const join = document.querySelector("#cinelish-lp #join");
-  let pastHero = false, joinVisible = false;
-  const update = () => sticky.classList.toggle("cl-show", pastHero && !joinVisible);
-  new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; update(); }).observe(hero);
-  new IntersectionObserver(([e]) => { joinVisible = e.isIntersecting; update(); }).observe(join);
+    // スマホ下部の固定ボタン：ヒーローを過ぎたら表示、料金カードが見えている間は隠す
+    const sticky = document.querySelector("#cinelish-lp .cl-sticky");
+    const hero = document.querySelector("#cinelish-lp .cl-hero");
+    const join = document.querySelector("#cinelish-lp #join");
+    let pastHero = false, joinVisible = false;
+    const update = () => sticky.classList.toggle("cl-show", pastHero && !joinVisible);
+    new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; update(); }).observe(hero);
+    new IntersectionObserver(([e]) => { joinVisible = e.isIntersecting; update(); }).observe(join);
+})();
 </script>
 <?php wp_footer(); ?>
 </body>

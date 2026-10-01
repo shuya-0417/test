@@ -34,3 +34,39 @@ body = body.replace('src="hero.webp"', 'src="【ここに画像URL】"').replace
     "<!-- 【ここに画像URL】を、メディアにアップした hero.webp のURLに置き換える -->\n"
     + head + "\n\n" + body + "\n"
 )
+
+def one_line(html):
+    """クラシックエディタの自動整形（改行→<br>/<p>）で崩れないよう、1行にまとめる"""
+    import re
+    html = re.sub(r"<!--.*?-->", "", html, flags=re.S)
+    # <script> 内のJS行コメントを /* */ に（1行にしても後ろのコードが消えないように）
+    html = re.sub(r"<script>.*?</script>",
+                  lambda m: re.sub(r"(?<![:\"])//\s*(.*?)$", r"/* \1 */", m.group(0), flags=re.M),
+                  html, flags=re.S)
+    html = re.sub(r"\s*\n\s*", " ", html)
+    return re.sub(r">\s+<", "><", html).strip()
+
+
+# 3) TCDテーマ用：CSS と HTML を分けて出力
+#    TCDの本文用スタイル（#article .post_content p など）より確実に優先させるため、
+#    セレクタを #cinelish-lp#cinelish-lp（IDを2回）にして詳細度を上げている。
+tcd = root / "wordpress" / "tcd"
+tcd.mkdir(exist_ok=True)
+css = src[src.index("<style>") + len("<style>"):src.index("</style>")].strip("\n")
+css = css.replace("#cinelish-lp", "#cinelish-lp#cinelish-lp")
+css = "\n".join(line[2:] if line.startswith("  ") else line for line in css.split("\n"))
+(tcd / "cinelish-lp.css").write_text(
+    "/* Cine Lish プレミアム LP 用CSS（TCDテーマ）\n"
+    " * 貼り付け先：外観 → カスタマイズ → 追加CSS（またはTCDの「カスタムCSS」欄）\n"
+    " * すべて #cinelish-lp の内側だけに効くので、サイトの他の部分には影響しません。 */\n\n"
+    + css + "\n"
+)
+fonts = src[src.index('<link rel="preconnect"'):src.index("<style>")].strip()
+(tcd / "cinelish-lp.html").write_text(
+    "<!-- Cine Lish プレミアム LP 用HTML（TCDテーマ）\n"
+    "     貼り付け先：固定ページ本文の「カスタムHTML」ブロック（クラシックエディタなら「テキスト」タブ）\n"
+    "     ・【ここに画像URL】→ メディアにアップした hero.webp のURL\n"
+    '     ・SIGNUP_URL = "#" の # → 登録ページのURL\n'
+    "     ※ エディタの自動整形で崩れないよう、あえて1行にしています（Ctrl+F で検索して書き換えてください） -->\n"
+    + one_line(fonts + body) + "\n"
+)

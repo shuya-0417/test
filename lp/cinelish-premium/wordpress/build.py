@@ -30,7 +30,7 @@ t = t.replace('const SIGNUP_URL = "#";', url_example)
 # 2) カスタムHTMLブロック用（固定ページ本文に貼る）
 head = src[src.index('<link rel="preconnect"'):src.index("</head>")].strip()
 body = src[src.index('<div id="cinelish-lp">'):src.index("</body>")].strip()
-body = body.replace('src="hero.webp"', 'src="【ここに画像URL】"').replace('const SIGNUP_URL = "#";', url_example)
+body = body.replace('src="hero.webp"', 'src="【画像URL：hero.webp】"').replace('const SIGNUP_URL = "#";', url_example)
 body = re.sub(r'src="img/([\w-]+\.jpg)"', r'src="【画像URL：\1】"', body)
 (root / "wordpress" / "custom-html-block.html").write_text(
     "<!-- Cine Lish プレミアム LP：WordPressの「カスタムHTML」ブロックにこのファイルの中身を丸ごと貼り付け -->\n"
@@ -68,8 +68,7 @@ fonts = src[src.index('<link rel="preconnect"'):src.index("<style>")].strip()
 (tcd / "cinelish-lp.html").write_text(
     "<!-- Cine Lish プレミアム LP 用HTML（TCDテーマ）\n"
     "     貼り付け先：固定ページ本文の「カスタムHTML」ブロック（クラシックエディタなら「テキスト」タブ）\n"
-    "     ・【ここに画像URL】→ メディアにアップした hero.webp のURL\n"
-    "     ・【画像URL：○○.jpg】→ それぞれの写真をメディアにアップしたURL（5か所）\n"
+    "     ・【画像URL：○○】→ 同じ名前の画像をメディアにアップしたURL（全6か所）\n"
     '     ・SIGNUP_URL = "#" の # → 登録ページのURL\n'
     "     ※ エディタの自動整形で崩れないよう、あえて1行にしています（Ctrl+F で検索して書き換えてください） -->\n"
     + one_line(fonts + body) + "\n"
@@ -82,8 +81,7 @@ mini = re.sub(r"\s*([{};,>])\s*", r"\1", mini).strip()
 (tcd / "cinelish-lp-all-in-one.html").write_text(
     "<!-- Cine Lish プレミアム LP（TCDテーマ・CSS込み版）\n"
     "     これ1つを固定ページ本文の「カスタムHTML」ブロック（クラシックエディタなら「テキスト」タブ）に貼るだけ。追加CSSは不要。\n"
-    "     ・【ここに画像URL】→ メディアにアップした hero.webp のURL\n"
-    "     ・【画像URL：○○.jpg】→ それぞれの写真をメディアにアップしたURL（5か所）\n"
+    "     ・【画像URL：○○】→ 同じ名前の画像をメディアにアップしたURL（全6か所）\n"
     '     ・SIGNUP_URL = "#" の # → 登録ページのURL -->\n'
     + one_line(fonts + "<style>" + mini + "</style>" + body) + "\n"
 )

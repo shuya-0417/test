@@ -65,6 +65,8 @@
 #cinelish-lp#cinelish-lp section { padding: 96px 0; position: relative; }
 #cinelish-lp#cinelish-lp p + p { margin-top: 1.4em; }
 #cinelish-lp#cinelish-lp .cl-center { text-align: center; }
+/* 文節のまとまり：この中では改行しない（iPhoneのSafariでも自然な位置で折り返す） */
+#cinelish-lp#cinelish-lp .cl-nw { display: inline-block; }
 #cinelish-lp#cinelish-lp .cl-em { background: linear-gradient(transparent 64%, var(--mark) 64%); padding: 0 .08em; }
 #cinelish-lp#cinelish-lp .cl-gold {
   background: linear-gradient(100deg, var(--gold-1) 0%, var(--gold-2) 45%, var(--gold-3) 70%, var(--gold-2) 100%);
@@ -517,12 +519,15 @@
   #cinelish-lp#cinelish-lp .cl-concept { grid-template-columns: 1fr; gap: 44px; }
   #cinelish-lp#cinelish-lp .cl-vertical {
     grid-column: 1; grid-row: 1;
+    -webkit-writing-mode: horizontal-tb;
     writing-mode: horizontal-tb;
     text-align: center;
-    font-size: 25px;
-    line-height: 1.75;
-    letter-spacing: .08em;
+    font-size: clamp(20px, 6.2vw, 25px);
+    line-height: 1.8;
+    letter-spacing: .05em;
   }
+  #cinelish-lp#cinelish-lp .cl-vertical .cl-line { display: block; white-space: nowrap; }
+  #cinelish-lp#cinelish-lp .cl-vertical .cl-vbr { display: none; }
   #cinelish-lp#cinelish-lp .cl-concept-body { grid-column: 1; grid-row: 2; text-align: center; }
   #cinelish-lp#cinelish-lp .cl-note-grid { grid-template-columns: 1fr; gap: 44px; }
   #cinelish-lp#cinelish-lp .cl-note-photo { width: 78%; margin: 0 auto; }

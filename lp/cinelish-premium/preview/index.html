@@ -69,6 +69,8 @@
   #cinelish-lp section { padding: 96px 0; position: relative; }
   #cinelish-lp p + p { margin-top: 1.4em; }
   #cinelish-lp .cl-center { text-align: center; }
+  /* 文節のまとまり：この中では改行しない（iPhoneのSafariでも自然な位置で折り返す） */
+  #cinelish-lp .cl-nw { display: inline-block; }
   #cinelish-lp .cl-em { background: linear-gradient(transparent 64%, var(--mark) 64%); padding: 0 .08em; }
   #cinelish-lp .cl-gold {
     background: linear-gradient(100deg, var(--gold-1) 0%, var(--gold-2) 45%, var(--gold-3) 70%, var(--gold-2) 100%);
@@ -521,12 +523,15 @@
     #cinelish-lp .cl-concept { grid-template-columns: 1fr; gap: 44px; }
     #cinelish-lp .cl-vertical {
       grid-column: 1; grid-row: 1;
+      -webkit-writing-mode: horizontal-tb;
       writing-mode: horizontal-tb;
       text-align: center;
-      font-size: 25px;
-      line-height: 1.75;
-      letter-spacing: .08em;
+      font-size: clamp(20px, 6.2vw, 25px);
+      line-height: 1.8;
+      letter-spacing: .05em;
     }
+    #cinelish-lp .cl-vertical .cl-line { display: block; white-space: nowrap; }
+    #cinelish-lp .cl-vertical .cl-vbr { display: none; }
     #cinelish-lp .cl-concept-body { grid-column: 1; grid-row: 2; text-align: center; }
     #cinelish-lp .cl-note-grid { grid-template-columns: 1fr; gap: 44px; }
     #cinelish-lp .cl-note-photo { width: 78%; margin: 0 auto; }
@@ -595,12 +600,12 @@
       <p class="cl-question cl-question-2 cl-reveal"><small>日々、自分の一日の行動に</small><span class="cl-em">納得</span>できていますか？</p>
 
       <div class="cl-foryou cl-reveal">
-        <p class="cl-foryou-title">こんな毎日に、心当たりはありませんか。</p>
+        <p class="cl-foryou-title"><span class="cl-nw">こんな毎日に、</span><span class="cl-nw">心当たりはありませんか。</span></p>
         <ul>
-          <li><span class="cl-check"><span></span></span>夢を追っているはずなのに、気づけば時間が溶けている</li>
-          <li><span class="cl-check"><span></span></span>動画やSNSを流し見して、一日が終わってしまう</li>
-          <li><span class="cl-check"><span></span></span>自分のペースで、ゆっくり考える時間がほしい</li>
-          <li><span class="cl-check"><span></span></span>走り続けて、少しだけ立ち止まりたくなっている</li>
+          <li><span class="cl-check"><span></span></span><span><span class="cl-nw">夢を追っているはずなのに、</span><span class="cl-nw">気づけば</span><span class="cl-nw">時間が溶けている</span></span></li>
+          <li><span class="cl-check"><span></span></span><span><span class="cl-nw">動画やSNSを</span><span class="cl-nw">流し見して、</span><span class="cl-nw">一日が</span><span class="cl-nw">終わってしまう</span></span></li>
+          <li><span class="cl-check"><span></span></span><span><span class="cl-nw">自分のペースで、</span><span class="cl-nw">ゆっくり</span><span class="cl-nw">考える時間がほしい</span></span></li>
+          <li><span class="cl-check"><span></span></span><span><span class="cl-nw">走り続けて、</span><span class="cl-nw">少しだけ</span><span class="cl-nw">立ち止まりたくなっている</span></span></li>
         </ul>
         <p class="cl-foryou-foot">ひとつでも当てはまったら、<br class="cl-br-sp">この先を読んでみてください。</p>
       </div>
@@ -618,7 +623,7 @@
       <div class="cl-scene-head"><span class="cl-bigno" aria-hidden="true">01</span>
       <p class="cl-eyebrow cl-reveal">SCENE 01<span class="cl-eb-line"></span><i>Passive / Active</i></p>
       <h2 class="cl-reveal">時間が、<br class="cl-br-sp">溶けていませんか。</h2></div>
-      <p class="cl-lede cl-reveal">夢を追っているはずなのに、<br class="cl-br-pc">気づけば動画やSNSのリールを流し見して、<br class="cl-br-pc"><span class="cl-em">時間が溶けていた…。</span></p>
+      <p class="cl-lede cl-reveal"><span class="cl-nw">夢を追っているはずなのに、</span><br class="cl-br-pc"><span class="cl-nw">気づけば</span><span class="cl-nw">動画やSNSのリールを</span><span class="cl-nw">流し見して、</span><br class="cl-br-pc"><span class="cl-em cl-nw">時間が溶けていた…。</span></p>
 
       <div class="cl-pair cl-reveal">
         <div class="cl-passive">
@@ -650,12 +655,12 @@
       <div class="cl-wrap">
         <p class="cl-eyebrow cl-reveal"><i>Concept</i></p>
         <div class="cl-concept">
-          <p class="cl-vertical cl-reveal">あえて、<br class="cl-br"><span class="cl-gold">文章を能動的に読む</span><br class="cl-br">体験を。</p>
+          <p class="cl-vertical cl-reveal"><span class="cl-line">あえて、</span><br class="cl-br cl-vbr"><span class="cl-line cl-gold">文章を能動的に読む</span><br class="cl-br cl-vbr"><span class="cl-line">体験を。</span></p>
           <div class="cl-concept-body cl-reveal">
-            <p><span class="cl-hl">CineLishプレミアムは、</span><br class="cl-br">あえて「文章を能動的に読む体験」を<br class="cl-br-pc">提供する場所です。</p>
-            <p>映画や日々の話をきっかけに、<br class="cl-br">自分のペースで読み、考え、<br class="cl-br-sp">自分に立ち返る。</p>
-            <p>その時間が、流し見では得られないものを残し、<br class="cl-br-pc">夢を追うあなたが前を向くきっかけになります。</p>
-            <p>夢の途中で立ち止まりたくなったときにこそ、<br class="cl-br-pc">ぴったりの場所です。</p>
+            <p><span class="cl-hl">CineLishプレミアムは、</span><br class="cl-br">あえて<span class="cl-nw">「文章を能動的に読む体験」を</span><br class="cl-br-pc"><span class="cl-nw">提供する場所です。</span></p>
+            <p><span class="cl-nw">映画や日々の話を</span><span class="cl-nw">きっかけに、</span><br class="cl-br"><span class="cl-nw">自分のペースで</span><span class="cl-nw">読み、考え、</span><span class="cl-nw">自分に立ち返る。</span></p>
+            <p><span class="cl-nw">その時間が、</span><span class="cl-nw">流し見では</span><span class="cl-nw">得られないものを残し、</span><br class="cl-br-pc"><span class="cl-nw">夢を追うあなたが</span><span class="cl-nw">前を向く</span><span class="cl-nw">きっかけになります。</span></p>
+            <p><span class="cl-nw">夢の途中で</span><span class="cl-nw">立ち止まりたくなった</span><span class="cl-nw">ときにこそ、</span><br class="cl-br-pc"><span class="cl-nw">ぴったりの場所です。</span></p>
           </div>
         </div>
         <div class="cl-cta-mid cl-reveal">
@@ -693,22 +698,22 @@
       <ol class="cl-cards">
         <li class="cl-reveal">
           <span class="cl-num">01</span>
-          <h3>月3〜4本、映画編集者Shuyaの気づきと発見を深めるエッセイ</h3>
+          <h3><span class="cl-nw">月3〜4本、</span><span class="cl-nw">映画編集者Shuyaの</span><span class="cl-nw">気づきと発見を深める</span><span class="cl-nw">エッセイ</span></h3>
           <p>映画や日常から生まれた、余韻に浸る言葉と想い。</p>
         </li>
         <li class="cl-reveal">
           <span class="cl-num">02</span>
-          <h3>「能動的に読む」体験と、自分に還る時間</h3>
+          <h3><span class="cl-nw">「能動的に読む」</span><span class="cl-nw">体験と、</span><span class="cl-nw">自分に還る時間</span></h3>
           <p>動画の流し見ではなく、自分のペースで読み、考える時間を。</p>
         </li>
         <li class="cl-reveal">
           <span class="cl-num">03</span>
-          <h3>夢の途中で立ち止まりたくなったときに、戻ってこられる場所</h3>
+          <h3><span class="cl-nw">夢の途中で</span><span class="cl-nw">立ち止まりたくなった</span><span class="cl-nw">ときに、</span><span class="cl-nw">戻ってこられる場所</span></h3>
           <p>走り続けて自分を見失いそうなとき、ここに戻れば、また自分を取り戻せる。</p>
         </li>
         <li class="cl-reveal">
           <span class="cl-num">04</span>
-          <h3>会員向けのキャンペーン・イベント・コミュニティ企画</h3>
+          <h3><span class="cl-nw">会員向けの</span><span class="cl-nw">キャンペーン・</span><span class="cl-nw">イベント・</span><span class="cl-nw">コミュニティ企画</span></h3>
           <p>今後、会員の皆さまに向けた企画も予定しています。</p>
         </li>
       </ol>

@@ -1,4 +1,5 @@
 """index.html から WordPress 用ファイルを生成する: python3 wordpress/build.py"""
+import re
 from pathlib import Path
 
 root = Path(__file__).resolve().parent.parent
@@ -69,4 +70,16 @@ fonts = src[src.index('<link rel="preconnect"'):src.index("<style>")].strip()
     '     ・SIGNUP_URL = "#" の # → 登録ページのURL\n'
     "     ※ エディタの自動整形で崩れないよう、あえて1行にしています（Ctrl+F で検索して書き換えてください） -->\n"
     + one_line(fonts + body) + "\n"
+)
+
+# 4) TCDテーマ用：CSS込みのHTML1枚（追加CSSが効かない環境向け）
+mini = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+mini = re.sub(r"\s*\n\s*", " ", mini)
+mini = re.sub(r"\s*([{};,>])\s*", r"\1", mini).strip()
+(tcd / "cinelish-lp-all-in-one.html").write_text(
+    "<!-- Cine Lish プレミアム LP（TCDテーマ・CSS込み版）\n"
+    "     これ1つを固定ページ本文の「カスタムHTML」ブロック（クラシックエディタなら「テキスト」タブ）に貼るだけ。追加CSSは不要。\n"
+    "     ・【ここに画像URL】→ メディアにアップした hero.webp のURL\n"
+    '     ・SIGNUP_URL = "#" の # → 登録ページのURL -->\n'
+    + one_line(fonts + "<style>" + mini + "</style>" + body) + "\n"
 )

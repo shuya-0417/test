@@ -1,24 +1,8 @@
-<?php
-/**
- * Template Name: Cine Lish プレミアム LP
- *
- * 使い方：子テーマ直下にこのファイルを置き、画像を「子テーマ/cinelish/hero.webp」に置く。
- * 固定ページの「テンプレート」でこのLPを選ぶ。
- * CSSはすべて #cinelish-lp の内側だけに効くので、サイトの他のページや設定には影響しません。
- */
-?><!doctype html>
-<html <?php language_attributes(); ?>>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="『能動的に読む』時間で自分を取り戻す。走り続けるあなたが、折れないための場所。映画編集者Shuyaのエッセイを毎週お届けします。月額500円・いつでも解約OK。">
-<meta property="og:title" content="Cine Lish プレミアム">
-<meta property="og:description" content="『能動的に読む』時間で自分を取り戻す。走り続けるあなたが、折れないための場所。">
-<meta property="og:image" content="<?php echo esc_url( get_stylesheet_directory_uri() . '/cinelish/hero.webp' ); ?>">
+<!-- Cine Lish プレミアム LP：WordPressの「カスタムHTML」ブロックにこのファイルの中身を丸ごと貼り付け -->
+<!-- 【ここに画像URL】を、メディアにアップした hero.webp のURLに置き換える -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
-<?php wp_head(); ?>
 <style>
   #cinelish-lp {
     --bg: #f4f2ee;
@@ -299,13 +283,11 @@
   }
   @media (min-width: 641px) { #cinelish-lp .cl-br-sp { display: none; } }
 </style>
-</head>
-<body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
+
 <div id="cinelish-lp">
 
 <header class="cl-hero">
-  <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/cinelish/hero.webp' ); ?>" width="1430" height="1046"
+  <img src="【ここに画像URL】" width="1430" height="1046"
        alt="Cine Lish プレミアム ―『能動的に読む』時間で自分を取り戻す。走り続けるあなたが、折れないための場所。">
 </header>
 
@@ -448,6 +430,3 @@
   new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; update(); }).observe(hero);
   new IntersectionObserver(([e]) => { joinVisible = e.isIntersecting; update(); }).observe(join);
 </script>
-<?php wp_footer(); ?>
-</body>
-</html>

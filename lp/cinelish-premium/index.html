@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Shippori+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root {
+  #cinelish-lp {
     --bg: #f4f2ee;
     --bg-alt: #ebe8e2;
     --ink: #2b2724;
@@ -29,9 +29,8 @@
     --serif-ja: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
+  #cinelish-lp, #cinelish-lp * { box-sizing: border-box; margin: 0; padding: 0; }
+  #cinelish-lp {
     background: var(--bg);
     color: var(--ink);
     font-family: var(--serif-ja);
@@ -41,32 +40,42 @@
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
-  img { display: block; max-width: 100%; height: auto; }
-  a { color: inherit; }
+  #cinelish-lp img { display: block; max-width: 100%; height: auto; }
+  #cinelish-lp a { color: inherit; }
 
-  .wrap { width: min(680px, 100% - 40px); margin-inline: auto; }
+  #cinelish-lp .cl-wrap { width: min(680px, 100% - 40px); margin-inline: auto; }
 
-  .gold {
+  #cinelish-lp .cl-gold {
     background: linear-gradient(100deg, var(--gold-1) 0%, var(--gold-2) 45%, var(--gold-3) 70%, var(--gold-2) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
+  /* テーマ側の見出し装飾などをLP内だけ打ち消す（サイト全体には影響しません） */
+  #cinelish-lp h2, #cinelish-lp h3 {
+    background: none; border: 0; box-shadow: none; padding: 0; color: inherit;
+    font-family: inherit;
+  }
+  #cinelish-lp h2::before, #cinelish-lp h2::after,
+  #cinelish-lp h3::before, #cinelish-lp h3::after { content: none; display: none; }
+  #cinelish-lp ol, #cinelish-lp ul { padding: 0; margin-left: 0; }
+  #cinelish-lp li { list-style: none; }
+  #cinelish-lp li::marker { content: none; }
+
   /* ---------- Hero ---------- */
-  .hero { position: relative; background: #e9e8e5; }
-  .hero img { width: 100%; max-width: 1440px; margin-inline: auto; }
-  .hero::after {
+  #cinelish-lp .cl-hero { position: relative; background: #e9e8e5; }
+  #cinelish-lp .cl-hero img { width: 100%; max-width: 1440px; margin-inline: auto; }
+  #cinelish-lp .cl-hero::after {
     content: "";
     position: absolute; inset: auto 0 0 0; height: 18%;
     background: linear-gradient(to bottom, transparent, var(--bg));
     pointer-events: none;
   }
-  .hero-copy { display: none; }
 
   /* ---------- Sections ---------- */
-  section { padding: 120px 0; }
-  .eyebrow {
+  #cinelish-lp section { padding: 120px 0; }
+  #cinelish-lp .cl-eyebrow {
     font-family: var(--serif-en);
     font-style: italic;
     font-size: 15px;
@@ -75,11 +84,11 @@
     text-align: center;
     margin-bottom: 18px;
   }
-  .rule {
+  #cinelish-lp .cl-rule {
     width: 1px; height: 64px; margin: 0 auto 56px;
     background: linear-gradient(var(--line), transparent);
   }
-  h2 {
+  #cinelish-lp h2 {
     font-weight: 500;
     font-size: clamp(22px, 4.2vw, 30px);
     line-height: 1.8;
@@ -87,18 +96,18 @@
     text-align: center;
     margin-bottom: 48px;
   }
-  p + p { margin-top: 1.6em; }
-  .center { text-align: center; }
-  .soft { color: var(--ink-soft); }
+  #cinelish-lp p + p { margin-top: 1.6em; }
+  #cinelish-lp .cl-center { text-align: center; }
+  #cinelish-lp .cl-soft { color: var(--ink-soft); }
 
   /* Intro questions */
-  .questions p {
+  #cinelish-lp .cl-questions p {
     font-size: clamp(18px, 3.4vw, 22px);
     text-align: center;
     line-height: 2;
   }
 
-  .tag {
+  #cinelish-lp .cl-tag {
     display: block;
     width: fit-content;
     margin: 72px auto 0;
@@ -111,8 +120,8 @@
   }
 
   /* Contrast */
-  .contrast { background: var(--bg-alt); }
-  .pair {
+  #cinelish-lp .cl-contrast { background: var(--bg-alt); }
+  #cinelish-lp .cl-pair {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1px;
@@ -120,55 +129,55 @@
     border: 1px solid var(--line);
     margin: 56px 0;
   }
-  .pair > div { background: var(--bg-alt); padding: 36px 28px; }
-  .pair h3 {
+  #cinelish-lp .cl-pair > div { background: var(--bg-alt); padding: 36px 28px; }
+  #cinelish-lp .cl-pair h3 {
     font-family: var(--serif-en);
     font-weight: 500;
     font-size: 26px;
     letter-spacing: .08em;
     margin-bottom: 4px;
   }
-  .pair small { display: block; font-size: 13px; color: var(--ink-faint); margin-bottom: 18px; letter-spacing: .2em; }
-  .pair p { font-size: 15px; line-height: 2; }
-  .pair .passive { color: var(--ink-faint); }
-  .pair .active h3 { color: var(--brown); }
+  #cinelish-lp .cl-pair small { display: block; font-size: 13px; color: var(--ink-faint); margin-bottom: 18px; letter-spacing: .2em; }
+  #cinelish-lp .cl-pair p { font-size: 15px; line-height: 2; }
+  #cinelish-lp .cl-pair .cl-passive { color: var(--ink-faint); }
+  #cinelish-lp .cl-pair .cl-active h3 { color: var(--brown); }
 
   /* Statement */
-  .statement {
+  #cinelish-lp .cl-statement {
     background: var(--dark);
     color: var(--dark-ink);
     text-align: center;
   }
-  .statement .eyebrow { color: #8a837a; }
-  .statement .big {
+  #cinelish-lp .cl-statement .cl-eyebrow { color: #8a837a; }
+  #cinelish-lp .cl-statement .cl-big {
     font-size: clamp(22px, 4.6vw, 34px);
     line-height: 1.9;
     letter-spacing: .14em;
     margin-bottom: 48px;
   }
-  .statement p { color: #bdb6ac; }
+  #cinelish-lp .cl-statement p { color: #bdb6ac; }
 
   /* Benefits */
-  .benefits ol { list-style: none; border-top: 1px solid var(--line); }
-  .benefits li {
+  #cinelish-lp .cl-benefits ol { list-style: none; border-top: 1px solid var(--line); }
+  #cinelish-lp .cl-benefits li {
     display: grid;
     grid-template-columns: 72px 1fr;
     gap: 8px 20px;
     padding: 40px 0;
     border-bottom: 1px solid var(--line);
   }
-  .benefits .num {
+  #cinelish-lp .cl-benefits .cl-num {
     font-family: var(--serif-en);
     font-size: 44px;
     line-height: 1;
     color: var(--gold-1);
     font-style: italic;
   }
-  .benefits h3 { font-weight: 500; font-size: 18px; line-height: 1.8; letter-spacing: .08em; }
-  .benefits li p { grid-column: 2; font-size: 14px; color: var(--ink-soft); line-height: 1.9; }
+  #cinelish-lp .cl-benefits h3 { font-weight: 500; font-size: 18px; line-height: 1.8; letter-spacing: .08em; }
+  #cinelish-lp .cl-benefits li p { grid-column: 2; font-size: 14px; color: var(--ink-soft); line-height: 1.9; }
 
   /* Price */
-  .price-card {
+  #cinelish-lp .cl-price-card {
     margin: 0 auto;
     max-width: 460px;
     padding: 56px 32px;
@@ -177,32 +186,32 @@
     background: #fbfaf8;
     position: relative;
   }
-  .price-card::before {
+  #cinelish-lp .cl-price-card::before {
     content: "";
     position: absolute; inset: 8px;
     border: 1px solid #ece8e1;
     pointer-events: none;
   }
-  .price-card .name {
+  #cinelish-lp .cl-price-card .cl-name {
     font-family: var(--serif-en);
     font-size: 30px;
     color: var(--brown);
     letter-spacing: .06em;
     line-height: 1.4;
   }
-  .price-card .name span { font-family: var(--serif-ja); font-size: 22px; margin-left: .3em; }
-  .price {
+  #cinelish-lp .cl-price-card .cl-name span { font-family: var(--serif-ja); font-size: 22px; margin-left: .3em; }
+  #cinelish-lp .cl-price {
     margin: 28px 0 8px;
     font-family: var(--serif-en);
     font-size: 64px;
     line-height: 1;
     letter-spacing: .02em;
   }
-  .price small { font-family: var(--serif-ja); font-size: 16px; color: var(--ink-soft); margin-left: 4px; }
-  .price-card ul { list-style: none; margin: 24px 0 36px; font-size: 14px; color: var(--ink-soft); line-height: 2.2; }
+  #cinelish-lp .cl-price small { font-family: var(--serif-ja); font-size: 16px; color: var(--ink-soft); margin-left: 4px; }
+  #cinelish-lp .cl-price-card ul { list-style: none; margin: 24px 0 36px; font-size: 14px; color: var(--ink-soft); line-height: 2.2; }
 
   /* CTA */
-  .cta {
+  #cinelish-lp .cl-cta {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -219,27 +228,27 @@
     transition: background .4s ease, color .4s ease;
     overflow: hidden;
   }
-  .cta::after { content: "→"; font-family: var(--serif-en); transition: transform .4s ease; }
-  .cta:hover { background: transparent; color: var(--dark); }
-  .cta:hover::after { transform: translateX(4px); }
-  .cta:focus-visible { outline: 2px solid var(--gold-1); outline-offset: 4px; }
-  .cta-block { text-align: center; margin-top: 56px; }
-  .cta-note { margin-top: 14px; font-size: 12px; color: var(--ink-faint); letter-spacing: .14em; }
+  #cinelish-lp .cl-cta::after { content: "→"; font-family: var(--serif-en); transition: transform .4s ease; }
+  #cinelish-lp .cl-cta:hover { background: transparent; color: var(--dark); }
+  #cinelish-lp .cl-cta:hover::after { transform: translateX(4px); }
+  #cinelish-lp .cl-cta:focus-visible { outline: 2px solid var(--gold-1); outline-offset: 4px; }
+  #cinelish-lp .cl-cta-block { text-align: center; margin-top: 56px; }
+  #cinelish-lp .cl-cta-note { margin-top: 14px; font-size: 12px; color: var(--ink-faint); letter-spacing: .14em; }
 
   /* Closing */
-  .closing {
+  #cinelish-lp .cl-closing {
     background: linear-gradient(var(--bg), var(--bg-alt));
     text-align: center;
   }
-  .closing .lead {
+  #cinelish-lp .cl-closing .cl-lead {
     font-size: clamp(20px, 4vw, 28px);
     line-height: 2;
     letter-spacing: .14em;
     margin: 40px 0;
   }
-  .closing .wait { font-size: 18px; letter-spacing: .3em; margin-top: 48px; }
+  #cinelish-lp .cl-closing .cl-wait { font-size: 18px; letter-spacing: .3em; margin-top: 48px; }
 
-  footer {
+  #cinelish-lp footer {
     padding: 48px 0 120px;
     text-align: center;
     font-family: var(--serif-en);
@@ -249,7 +258,7 @@
   }
 
   /* Sticky CTA (mobile) */
-  .sticky {
+  #cinelish-lp .cl-sticky {
     position: fixed; left: 0; right: 0; bottom: 0;
     padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
     background: rgba(244,242,238,.92);
@@ -260,33 +269,33 @@
     z-index: 10;
     display: none;
   }
-  .sticky.show { transform: translateY(0); }
-  .sticky .cta { width: 100%; padding: 16px 20px; font-size: 15px; }
+  #cinelish-lp .cl-sticky.cl-show { transform: translateY(0); }
+  #cinelish-lp .cl-sticky .cl-cta { width: 100%; padding: 16px 20px; font-size: 15px; }
 
   /* Reveal */
-  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 1.2s ease, transform 1.2s ease; }
-  .reveal.in { opacity: 1; transform: none; }
+  #cinelish-lp .cl-reveal { opacity: 0; transform: translateY(16px); transition: opacity 1.2s ease, transform 1.2s ease; }
+  #cinelish-lp .cl-reveal.cl-in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
-    html { scroll-behavior: auto; }
+    #cinelish-lp .cl-reveal { opacity: 1; transform: none; transition: none; }
   }
 
   @media (max-width: 640px) {
-    body { font-size: 15px; line-height: 2; }
-    section { padding: 88px 0; }
-    .wrap { width: calc(100% - 32px); }
-    .pair { grid-template-columns: 1fr; }
-    .benefits li { grid-template-columns: 52px 1fr; padding: 32px 0; }
-    .benefits .num { font-size: 36px; }
-    .sticky { display: block; }
-    .br-pc { display: none; }
+    #cinelish-lp { font-size: 15px; line-height: 2; }
+    #cinelish-lp section { padding: 88px 0; }
+    #cinelish-lp .cl-wrap { width: calc(100% - 32px); }
+    #cinelish-lp .cl-pair { grid-template-columns: 1fr; }
+    #cinelish-lp .cl-benefits li { grid-template-columns: 52px 1fr; padding: 32px 0; }
+    #cinelish-lp .cl-benefits .cl-num { font-size: 36px; }
+    #cinelish-lp .cl-sticky { display: block; }
+    #cinelish-lp .cl-br-pc { display: none; }
   }
-  @media (min-width: 641px) { .br-sp { display: none; } }
+  @media (min-width: 641px) { #cinelish-lp .cl-br-sp { display: none; } }
 </style>
 </head>
 <body>
+<div id="cinelish-lp">
 
-<header class="hero">
+<header class="cl-hero">
   <img src="hero.webp" width="1430" height="1046"
        alt="Cine Lish プレミアム ―『能動的に読む』時間で自分を取り戻す。走り続けるあなたが、折れないための場所。">
 </header>
@@ -294,73 +303,73 @@
 <main>
 
   <!-- 問いかけ -->
-  <section class="questions">
-    <div class="wrap">
-      <p class="reveal">忙しい毎日の中で、<br class="br-sp">自分自身を見失っていませんか。</p>
-      <p class="reveal">日々、自分の一日の行動に<br class="br-sp">納得できていますか？</p>
-      <span class="tag reveal">CineLish プレミアム会員</span>
+  <section class="cl-questions">
+    <div class="cl-wrap">
+      <p class="cl-reveal">忙しい毎日の中で、<br class="cl-br-sp">自分自身を見失っていませんか。</p>
+      <p class="cl-reveal">日々、自分の一日の行動に<br class="cl-br-sp">納得できていますか？</p>
+      <span class="cl-tag cl-reveal">CineLish プレミアム会員</span>
     </div>
   </section>
 
   <!-- 受け身 vs 能動 -->
-  <section class="contrast">
-    <div class="wrap">
-      <p class="eyebrow reveal">Passive / Active</p>
-      <h2 class="reveal">時間が、<br class="br-sp">溶けていませんか。</h2>
-      <p class="reveal">夢を追っているはずなのに、気づけば動画やSNSのリールを流し見して、時間が溶けていた…。</p>
+  <section class="cl-contrast">
+    <div class="cl-wrap">
+      <p class="cl-eyebrow cl-reveal">Passive / Active</p>
+      <h2 class="cl-reveal">時間が、<br class="cl-br-sp">溶けていませんか。</h2>
+      <p class="cl-reveal">夢を追っているはずなのに、気づけば動画やSNSのリールを流し見して、時間が溶けていた…。</p>
 
-      <div class="pair reveal">
-        <div class="passive">
+      <div class="cl-pair cl-reveal">
+        <div class="cl-passive">
           <h3>Passive</h3>
           <small>受け身で眺める</small>
           <p>流れてくるものを、ただ眺めるだけの時間。あとに何も残らないことが多い。</p>
         </div>
-        <div class="active">
+        <div class="cl-active">
           <h3>Active</h3>
           <small>能動的に読む</small>
           <p>自分の意思で読み、考える時間。人が本来の力を発揮するのは、この瞬間です。</p>
         </div>
       </div>
 
-      <p class="reveal center soft">人が本来力を発揮するのは、<br class="br-sp">自分の意思で、<br class="br-pc">能動的に行動しているときです。</p>
+      <p class="cl-reveal cl-center cl-soft">人が本来力を発揮するのは、<br class="cl-br-sp">自分の意思で、<br class="cl-br-pc">能動的に行動しているときです。</p>
     </div>
   </section>
 
   <!-- ステートメント -->
-  <section class="statement">
-    <div class="wrap">
-      <p class="eyebrow reveal">Concept</p>
-      <p class="big reveal">あえて、<br>「文章を能動的に読む」<br>体験を。</p>
-      <p class="reveal">映画や日々の話をきっかけに、<br>自分のペースで読み、考え、自分に立ち返る。</p>
-      <p class="reveal">その時間が、流し見では得られないものを残し、<br class="br-pc">夢を追うあなたが前を向くきっかけになります。</p>
-      <p class="reveal">夢の途中で立ち止まりたくなったときにこそ、<br class="br-pc">ぴったりの場所です。</p>
+  <section class="cl-statement">
+    <div class="cl-wrap">
+      <p class="cl-eyebrow cl-reveal">Concept</p>
+      <p class="cl-big cl-reveal">あえて、<br>「文章を能動的に読む」<br>体験を。</p>
+      <p class="cl-reveal">映画や日々の話をきっかけに、<br>自分のペースで読み、考え、自分に立ち返る。</p>
+      <p class="cl-reveal">その時間が、流し見では得られないものを残し、<br class="cl-br-pc">夢を追うあなたが前を向くきっかけになります。</p>
+      <p class="cl-reveal">夢の途中で立ち止まりたくなったときにこそ、<br class="cl-br-pc">ぴったりの場所です。</p>
     </div>
   </section>
 
   <!-- 受け取れるもの -->
-  <section class="benefits">
-    <div class="wrap">
-      <p class="eyebrow reveal">What you receive</p>
-      <h2 class="reveal">CineLish プレミアムで<br>受け取れるもの</h2>
+  <section class="cl-benefits">
+    <div class="cl-wrap">
+      <p class="cl-eyebrow cl-reveal">What you receive</p>
+      <h2 class="cl-reveal">CineLish プレミアムで<br>受け取れるもの</h2>
       <ol>
-        <li class="reveal">
-          <span class="num">01</span>
-          <h3>月3〜4本、映画編集者Shuyaの<br class="br-pc">気づきと発見を深めるエッセイ</h3>
+        <li class="cl-reveal">
+          <span class="cl-num">01</span>
+          <h3>月3〜4本、映画編集者Shuyaの<br class="cl-br-pc">気づきと発見を深めるエッセイ</h3>
           <p>映画や日常から生まれた、余韻に浸る言葉と想い。</p>
         </li>
-        <li class="reveal">
-          <span class="num">02</span>
-          <h3>「能動的に読む」体験と、<br class="br-sp">自分に還る時間</h3>
+        <li class="cl-reveal">
+          <span class="cl-num">02</span>
+          <h3>「能動的に読む」体験と、<br class="cl-br-sp">自分に還る時間</h3>
           <p>動画の流し見ではなく、自分のペースで読み、考える時間を。</p>
         </li>
-        <li class="reveal">
-          <span class="num">03</span>
-          <h3>夢の途中で立ち止まりたくなったときに、<br class="br-pc">戻ってこられる場所</h3>
+        <li class="cl-reveal">
+          <span class="cl-num">03</span>
+          <h3>夢の途中で立ち止まりたくなったときに、<br class="cl-br-pc">戻ってこられる場所</h3>
           <p>走り続けて自分を見失いそうなとき、ここに戻れば、また自分を取り戻せる。</p>
         </li>
-        <li class="reveal">
-          <span class="num">04</span>
-          <h3>会員向けのキャンペーン・イベント・<br class="br-pc">コミュニティ企画</h3>
+        <li class="cl-reveal">
+          <span class="cl-num">04</span>
+          <h3>会員向けのキャンペーン・イベント・<br class="cl-br-pc">コミュニティ企画</h3>
           <p>今後、会員の皆さまに向けた企画も予定しています。</p>
         </li>
       </ol>
@@ -369,29 +378,29 @@
 
   <!-- 料金 -->
   <section id="join" style="padding-top:0">
-    <div class="wrap">
-      <div class="price-card reveal">
-        <p class="name">Cine Lish<span class="gold">プレミアム</span></p>
-        <p class="price">¥500<small>／月</small></p>
+    <div class="cl-wrap">
+      <div class="cl-price-card cl-reveal">
+        <p class="cl-name">Cine Lish<span class="cl-gold">プレミアム</span></p>
+        <p class="cl-price">¥500<small>／月</small></p>
         <ul>
           <li>毎週1本程度お届け</li>
           <li>いつでも解約OK</li>
         </ul>
-        <a class="cta js-signup" href="#">プレミアム会員に登録する</a>
+        <a class="cl-cta cl-js-signup" href="#">プレミアム会員に登録する</a>
       </div>
     </div>
   </section>
 
   <!-- クロージング -->
-  <section class="closing">
-    <div class="wrap">
-      <div class="rule reveal"></div>
-      <p class="reveal soft">走り続けて自分を見失いそうなとき、<br>ここに戻ってくれば、また自分を取り戻せる。<br>そんな余白のような場所でありたいと思っています。</p>
-      <p class="lead reveal">余韻に還り、夢を思い出す。<br>走り続けるあなたが、<br class="br-sp">折れないための場所。</p>
-      <p class="wait reveal">あなたを待っています。</p>
-      <div class="cta-block reveal">
-        <a class="cta js-signup" href="#">Cine Lish プレミアムに登録する</a>
-        <p class="cta-note">月額500円・いつでも解約OK</p>
+  <section class="cl-closing">
+    <div class="cl-wrap">
+      <div class="cl-rule cl-reveal"></div>
+      <p class="cl-reveal cl-soft">走り続けて自分を見失いそうなとき、<br>ここに戻ってくれば、また自分を取り戻せる。<br>そんな余白のような場所でありたいと思っています。</p>
+      <p class="cl-lead cl-reveal">余韻に還り、夢を思い出す。<br>走り続けるあなたが、<br class="cl-br-sp">折れないための場所。</p>
+      <p class="cl-wait cl-reveal">あなたを待っています。</p>
+      <div class="cl-cta-block cl-reveal">
+        <a class="cl-cta cl-js-signup" href="#">Cine Lish プレミアムに登録する</a>
+        <p class="cl-cta-note">月額500円・いつでも解約OK</p>
       </div>
     </div>
   </section>
@@ -400,31 +409,33 @@
 
 <footer>&copy; Cine Lish</footer>
 
-<div class="sticky" aria-hidden="true">
-  <a class="cta js-signup" href="#" tabindex="-1">プレミアム会員に登録する</a>
+<div class="cl-sticky" aria-hidden="true">
+  <a class="cl-cta cl-js-signup" href="#" tabindex="-1">プレミアム会員に登録する</a>
 </div>
+
+</div><!-- /#cinelish-lp -->
 
 <script>
   // ▼ 登録ページのURLをここに入れてください（全ボタンに反映されます）
   const SIGNUP_URL = "#";
 
-  document.querySelectorAll(".js-signup").forEach(a => {
+  document.querySelectorAll("#cinelish-lp .cl-js-signup").forEach(a => {
     a.href = SIGNUP_URL;
     if (/^https?:/.test(SIGNUP_URL)) { a.target = "_blank"; a.rel = "noopener"; }
   });
 
   // スクロールでふわっと表示
   const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("cl-in"); io.unobserve(e.target); } });
   }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
-  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  document.querySelectorAll("#cinelish-lp .cl-reveal").forEach(el => io.observe(el));
 
   // スマホ下部の固定ボタン：ヒーローを過ぎたら表示、料金カードが見えている間は隠す
-  const sticky = document.querySelector(".sticky");
-  const hero = document.querySelector(".hero");
-  const join = document.querySelector("#join");
+  const sticky = document.querySelector("#cinelish-lp .cl-sticky");
+  const hero = document.querySelector("#cinelish-lp .cl-hero");
+  const join = document.querySelector("#cinelish-lp #join");
   let pastHero = false, joinVisible = false;
-  const update = () => sticky.classList.toggle("show", pastHero && !joinVisible);
+  const update = () => sticky.classList.toggle("cl-show", pastHero && !joinVisible);
   new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; update(); }).observe(hero);
   new IntersectionObserver(([e]) => { joinVisible = e.isIntersecting; update(); }).observe(join);
 </script>

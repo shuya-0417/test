@@ -39,8 +39,8 @@
     --serif-ja: Shippori Mincho, Hiragino Mincho ProN, Yu Mincho, serif;
   }
 
-  /* codocの登録ボタン（.cl-widget の中）には、このLPのリセットを当てない */
-  #cinelish-lp, #cinelish-lp *:not(.cl-widget *) { box-sizing: border-box; margin: 0; padding: 0; border: 0; box-shadow: none; }
+  /* codocの登録ボタン（.cl-widget の中）には、このLPのリセットを当てない（:where で優先度は上げない） */
+  #cinelish-lp, #cinelish-lp *:where(:not(.cl-widget *)) { box-sizing: border-box; margin: 0; padding: 0; border: 0; box-shadow: none; }
   #cinelish-lp {
     position: relative;
     background: var(--bg);
@@ -54,27 +54,27 @@
     word-break: auto-phrase;
     text-wrap: pretty;
   }
-  #cinelish-lp img:not(.cl-widget *) { display: block; max-width: 100%; height: auto; }
-  #cinelish-lp figure:not(.cl-widget *) { margin: 0; }
-  #cinelish-lp a:not(.cl-widget *) { color: inherit; }
+  #cinelish-lp img:where(:not(.cl-widget *)) { display: block; max-width: 100%; height: auto; }
+  #cinelish-lp figure:where(:not(.cl-widget *)) { margin: 0; }
+  #cinelish-lp a:where(:not(.cl-widget *)) { color: inherit; }
 
   /* テーマ側の見出し装飾などをLP内だけ打ち消す（サイト全体には影響しません） */
-  #cinelish-lp h2:not(.cl-widget *), #cinelish-lp h3:not(.cl-widget *) {
+  #cinelish-lp h2:where(:not(.cl-widget *)), #cinelish-lp h3:where(:not(.cl-widget *)) {
     background: none; border: 0; box-shadow: none; padding: 0; color: inherit;
     font-family: inherit;
   }
-  #cinelish-lp h2:not(.cl-widget *)::before, #cinelish-lp h2:not(.cl-widget *)::after,
-  #cinelish-lp h3:not(.cl-widget *)::before, #cinelish-lp h3:not(.cl-widget *)::after { content: none; display: none; }
-  #cinelish-lp ol:not(.cl-widget *), #cinelish-lp ul:not(.cl-widget *), #cinelish-lp dl:not(.cl-widget *) { padding: 0; margin-left: 0; }
-  #cinelish-lp li:not(.cl-widget *) { list-style: none; }
-  #cinelish-lp li:not(.cl-widget *)::marker { content: none; }
-  #cinelish-lp h2:not(.cl-widget *), #cinelish-lp h3:not(.cl-widget *) { margin-top: 0 !important; }
+  #cinelish-lp h2:where(:not(.cl-widget *))::before, #cinelish-lp h2:where(:not(.cl-widget *))::after,
+  #cinelish-lp h3:where(:not(.cl-widget *))::before, #cinelish-lp h3:where(:not(.cl-widget *))::after { content: none; display: none; }
+  #cinelish-lp ol:where(:not(.cl-widget *)), #cinelish-lp ul:where(:not(.cl-widget *)), #cinelish-lp dl:where(:not(.cl-widget *)) { padding: 0; margin-left: 0; }
+  #cinelish-lp li:where(:not(.cl-widget *)) { list-style: none; }
+  #cinelish-lp li:where(:not(.cl-widget *))::marker { content: none; }
+  #cinelish-lp h2:where(:not(.cl-widget *)), #cinelish-lp h3:where(:not(.cl-widget *)) { margin-top: 0 !important; }
   /* WordPressの自動整形で勝手に入る改行（class無しのbr）は無視する */
-  #cinelish-lp br:not([class]):not(.cl-widget *) { display: none; }
+  #cinelish-lp br:not([class]):where(:not(.cl-widget *)) { display: none; }
 
   #cinelish-lp .cl-wrap { width: min(640px, 100% - 48px); margin-inline: auto; }
   #cinelish-lp section { padding: 96px 0; position: relative; }
-  #cinelish-lp p:not(.cl-widget *) + p { margin-top: 1.4em; }
+  #cinelish-lp p:where(:not(.cl-widget *)) + p { margin-top: 1.4em; }
   #cinelish-lp .cl-center { text-align: center; }
   /* 文節のまとまり：この中では改行しない（iPhoneのSafariでも自然な位置で折り返す） */
   #cinelish-lp .cl-nw { display: inline-block; }
@@ -448,6 +448,8 @@
     text-wrap: wrap;
     color: initial;
   }
+  /* テーマの段落余白がcodocのボタン内に入らないように（codoc本来の余白に戻す） */
+  #cinelish-lp .cl-widget .codoc-subscription-list p { margin: 0; }
   #cinelish-lp .cl-widget-note { margin-top: 14px; font-size: 12px; line-height: 1.8; color: var(--ink-faint); letter-spacing: .06em; }
   #cinelish-lp .cl-ticket-foot { margin-top: 14px; font-family: var(--serif-en); font-size: 11px; line-height: 1; letter-spacing: .32em; color: var(--ink-faint); }
 

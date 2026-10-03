@@ -438,21 +438,6 @@
   text-wrap: wrap;
   color: initial;
 }
-/* codocのボタンをLPのトーンに合わせる（色・角・書体だけ） */
-#cinelish-lp#cinelish-lp .cl-widget .codoc-subscription-list { width: 100%; margin: 4px auto 0 !important; }
-#cinelish-lp#cinelish-lp .cl-widget .codoc-subscription-list li { border: 1px solid var(--line); border-radius: 0; background: var(--paper); text-align: left; }
-#cinelish-lp#cinelish-lp .cl-widget .codoc-subscription-title { font-family: var(--serif-ja); font-weight: 700; color: var(--ink); }
-#cinelish-lp#cinelish-lp .cl-widget .codoc-subscription-description { color: var(--ink-faint); }
-#cinelish-lp#cinelish-lp .cl-widget .codoc-subscription-price { font-family: var(--serif-ja); color: var(--ink); }
-#cinelish-lp#cinelish-lp .cl-widget .codoc-btn {
-  background: var(--dark) !important;
-  color: #f4eee3 !important;
-  border-radius: 0 !important;
-  font-family: var(--serif-ja);
-  letter-spacing: .12em;
-}
-#cinelish-lp#cinelish-lp .cl-widget .codoc-btn:hover { background: var(--brown) !important; }
-#cinelish-lp#cinelish-lp .cl-widget .codoc-subscription-term-toggle.codoc-is-active { background: var(--dark); color: #f4eee3; }
 #cinelish-lp#cinelish-lp .cl-widget-note { margin-top: 14px; font-size: 12px; line-height: 1.8; color: var(--ink-faint); letter-spacing: .06em; }
 #cinelish-lp#cinelish-lp .cl-ticket-foot { margin-top: 14px; font-family: var(--serif-en); font-size: 11px; line-height: 1; letter-spacing: .32em; color: var(--ink-faint); }
 
@@ -489,7 +474,8 @@
 /* ---------- Epilogue ---------- */
 #cinelish-lp#cinelish-lp .cl-closing { text-align: center; }
 #cinelish-lp#cinelish-lp .cl-closing .cl-dark-inner { padding-bottom: 72px; }
-#cinelish-lp#cinelish-lp .cl-portrait { width: min(320px, 72%); margin: 0 auto 52px; }
+#cinelish-lp#cinelish-lp .cl-portrait { display: flex; justify-content: center; width: 100%; margin: 0 0 52px; }
+#cinelish-lp#cinelish-lp .cl-portrait .cl-photo { width: min(320px, 72%); }
 #cinelish-lp#cinelish-lp .cl-portrait .cl-photo { aspect-ratio: 4 / 5; object-fit: cover; object-position: 48% 40%; outline: 1px solid #5a534c; outline-offset: 8px; }
 #cinelish-lp#cinelish-lp .cl-closing .cl-soft { font-size: 15.5px; color: var(--dark-soft); max-width: 32em; margin-inline: auto; }
 #cinelish-lp#cinelish-lp .cl-lead { color: #f6f1e8; font-size: clamp(22px, 4vw, 27px); font-weight: 700; line-height: 1.85; letter-spacing: .08em; margin: 40px 0 0; }
@@ -581,7 +567,7 @@
   #cinelish-lp#cinelish-lp .cl-ticket-info div { font-size: 13px; white-space: nowrap; padding-inline: 4px; }
   #cinelish-lp#cinelish-lp .cl-cta { padding: 18px 20px; letter-spacing: .08em; }
   #cinelish-lp#cinelish-lp .cl-ticket .cl-cta { padding: 18px 10px; gap: 10px; letter-spacing: .06em; }
-  #cinelish-lp#cinelish-lp .cl-portrait { width: 76%; }
+  #cinelish-lp#cinelish-lp .cl-portrait .cl-photo { width: 76%; }
   #cinelish-lp#cinelish-lp .cl-lead { font-size: 21px; letter-spacing: .04em; }
   #cinelish-lp#cinelish-lp .cl-fin { font-size: 38px; margin-top: 64px; }
   #cinelish-lp#cinelish-lp .cl-sticky { display: block; }

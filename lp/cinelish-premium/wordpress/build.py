@@ -120,3 +120,36 @@ pv = (pv_head + frame + '<p class="pv-note">プレビュー（実サイトの本
       + pv_body + "</div>\n")
 (root / "preview").mkdir(exist_ok=True)
 (root / "preview" / "index.html").write_text(pv)
+
+# 7) 登録ページ（codocの登録ボタン入り）
+reg = (root / "register" / "index.html").read_text()
+reg_css = reg[reg.index("<style>") + len("<style>"):reg.index("</style>")]
+reg_css = reg_css.replace("#cinelish-reg", "#cinelish-reg#cinelish-reg")
+reg_mini = re.sub(r"/\*.*?\*/", "", reg_css, flags=re.S)
+reg_mini = re.sub(r"\s*\n\s*", " ", reg_mini)
+reg_mini = re.sub(r"\s*([{};,>])\s*", r"\1", reg_mini).strip()
+(tcd / "register.min.css").write_text(reg_mini + "\n")
+reg_fonts = reg[reg.index('<link rel="preconnect"'):reg.index("<style>")].strip()
+reg_body = reg[reg.index('<div id="cinelish-reg">'):reg.index("</body>")].strip()
+(tcd / "register.html").write_text(
+    "<!-- Cine Lish プレミアム 登録ページ用HTML（TCDテーマ）\n"
+    "     貼り付け先：登録ページ（/register/）本文の「テキスト」タブ（またはカスタムHTMLブロック）\n"
+    "     CSSは register.min.css を、このページのカスタムCSS欄へ\n"
+    "     ※ 1行にしています。codocの登録ボタンのコードも入っています -->\n"
+    + one_line(reg_fonts + reg_body) + "\n"
+)
+# 登録ページのプレビュー（codocのボタンは表示できないので見本の枠を置く）
+mock = ('<div style="display:inline-block;padding:16px 36px;border-radius:6px;'
+        'background:linear-gradient(90deg,#ff6b6b,#f7b733,#4ecdc4,#5567ff);color:#fff;'
+        'font:700 15px/1.4 system-ui,sans-serif;letter-spacing:.04em">月額500円で購読する（codocのボタン見本）</div>')
+reg_pv = reg[reg.index("<title>"):reg.index("</head>")] + """<style>
+  html, body { background: #ffffff; color: #262220; }
+  body { padding-block: 0; padding-inline: 20px; }
+  .pv-frame { max-width: 690px; margin: 0 auto; }
+  .pv-note { max-width: 690px; margin: 0 auto; padding: 14px 0; font: 12px/1.6 system-ui, sans-serif; color: #7a736b; }
+</style>
+<p class="pv-note">プレビュー（登録ページ／codocのボタンは見本を表示）</p>
+<div class="pv-frame">
+""" + reg_body.replace('<div id="codoc-subscription-tuq1lf60NQ" class="codoc-subscriptions"></div>', mock) + "</div>\n"
+reg_pv = re.sub(r'<script src="https://codoc.jp[^<]*</script>', "", reg_pv)
+(root / "register" / "preview.html").write_text(reg_pv)

@@ -47,7 +47,8 @@
     --serif-ja: Shippori Mincho, Hiragino Mincho ProN, Yu Mincho, serif;
   }
 
-  #cinelish-lp, #cinelish-lp * { box-sizing: border-box; margin: 0; padding: 0; border: 0; box-shadow: none; }
+  /* codocの登録ボタン（.cl-widget の中）には、このLPのリセットを当てない */
+  #cinelish-lp, #cinelish-lp *:not(.cl-widget *) { box-sizing: border-box; margin: 0; padding: 0; border: 0; box-shadow: none; }
   #cinelish-lp {
     position: relative;
     background: var(--bg);
@@ -61,27 +62,27 @@
     word-break: auto-phrase;
     text-wrap: pretty;
   }
-  #cinelish-lp img { display: block; max-width: 100%; height: auto; }
-  #cinelish-lp figure { margin: 0; }
-  #cinelish-lp a { color: inherit; }
+  #cinelish-lp img:not(.cl-widget *) { display: block; max-width: 100%; height: auto; }
+  #cinelish-lp figure:not(.cl-widget *) { margin: 0; }
+  #cinelish-lp a:not(.cl-widget *) { color: inherit; }
 
   /* テーマ側の見出し装飾などをLP内だけ打ち消す（サイト全体には影響しません） */
-  #cinelish-lp h2, #cinelish-lp h3 {
+  #cinelish-lp h2:not(.cl-widget *), #cinelish-lp h3:not(.cl-widget *) {
     background: none; border: 0; box-shadow: none; padding: 0; color: inherit;
     font-family: inherit;
   }
-  #cinelish-lp h2::before, #cinelish-lp h2::after,
-  #cinelish-lp h3::before, #cinelish-lp h3::after { content: none; display: none; }
-  #cinelish-lp ol, #cinelish-lp ul, #cinelish-lp dl { padding: 0; margin-left: 0; }
-  #cinelish-lp li { list-style: none; }
-  #cinelish-lp li::marker { content: none; }
-  #cinelish-lp h2, #cinelish-lp h3 { margin-top: 0 !important; }
+  #cinelish-lp h2:not(.cl-widget *)::before, #cinelish-lp h2:not(.cl-widget *)::after,
+  #cinelish-lp h3:not(.cl-widget *)::before, #cinelish-lp h3:not(.cl-widget *)::after { content: none; display: none; }
+  #cinelish-lp ol:not(.cl-widget *), #cinelish-lp ul:not(.cl-widget *), #cinelish-lp dl:not(.cl-widget *) { padding: 0; margin-left: 0; }
+  #cinelish-lp li:not(.cl-widget *) { list-style: none; }
+  #cinelish-lp li:not(.cl-widget *)::marker { content: none; }
+  #cinelish-lp h2:not(.cl-widget *), #cinelish-lp h3:not(.cl-widget *) { margin-top: 0 !important; }
   /* WordPressの自動整形で勝手に入る改行（class無しのbr）は無視する */
-  #cinelish-lp br:not([class]) { display: none; }
+  #cinelish-lp br:not([class]):not(.cl-widget *) { display: none; }
 
   #cinelish-lp .cl-wrap { width: min(640px, 100% - 48px); margin-inline: auto; }
   #cinelish-lp section { padding: 96px 0; position: relative; }
-  #cinelish-lp p + p { margin-top: 1.4em; }
+  #cinelish-lp p:not(.cl-widget *) + p { margin-top: 1.4em; }
   #cinelish-lp .cl-center { text-align: center; }
   /* 文節のまとまり：この中では改行しない（iPhoneのSafariでも自然な位置で折り返す） */
   #cinelish-lp .cl-nw { display: inline-block; }
@@ -441,6 +442,21 @@
   #cinelish-lp .cl-notch-l { left: -12px; }
   #cinelish-lp .cl-notch-r { right: -12px; }
   #cinelish-lp .cl-ticket .cl-cta { width: 100%; }
+  #cinelish-lp .cl-stub-label { margin: 0 0 14px; font-size: 15px; font-weight: 700; letter-spacing: .12em; }
+  #cinelish-lp .cl-stub-label span { color: var(--gold-1); }
+  /* codocの登録ボタンが入る場所（中身には触らない） */
+  #cinelish-lp .cl-widget {
+    display: flex; justify-content: center;
+    min-height: 48px;
+    font-family: system-ui, sans-serif;
+    font-weight: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    word-break: normal;
+    text-wrap: wrap;
+    color: initial;
+  }
+  #cinelish-lp .cl-widget-note { margin-top: 14px; font-size: 12px; line-height: 1.8; color: var(--ink-faint); letter-spacing: .06em; }
   #cinelish-lp .cl-ticket-foot { margin-top: 14px; font-family: var(--serif-en); font-size: 11px; line-height: 1; letter-spacing: .32em; color: var(--ink-faint); }
 
   /* ---------- FAQ ---------- */
@@ -617,7 +633,7 @@
         <p class="cl-foryou-foot">ひとつでも当てはまったら、<br class="cl-br-sp">この先を読んでみてください。</p>
       </div>
       <div class="cl-cta-mid cl-reveal">
-        <a class="cl-cta cl-js-signup" href="https://www.cinelish-japan.tech/register/">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
+        <a class="cl-cta cl-js-signup" href="#join">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
         <p class="cl-cta-note">月額500円・いつでも解約OK</p>
       </div>
     </div>
@@ -671,7 +687,7 @@
           </div>
         </div>
         <div class="cl-cta-mid cl-reveal">
-          <a class="cl-cta cl-js-signup" href="https://www.cinelish-japan.tech/register/">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
+          <a class="cl-cta cl-js-signup" href="#join">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
           <p class="cl-cta-note">月額500円・いつでも解約OK</p>
         </div>
       </div>
@@ -763,7 +779,9 @@
         </div>
         <div class="cl-ticket-stub">
           <span class="cl-notch cl-notch-l"></span><span class="cl-notch cl-notch-r"></span>
-          <a class="cl-cta cl-js-signup" href="https://www.cinelish-japan.tech/register/">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
+          <p class="cl-stub-label"><span>↓</span> ご登録はこちら <span>↓</span></p>
+          <div class="cl-widget"><div id="codoc-subscription-tuq1lf60NQ" class="codoc-subscriptions"></div></div>
+          <p class="cl-widget-note"><span class="cl-nw">お支払いは、</span><span class="cl-nw">codoc（コードック）を通じて</span><span class="cl-nw">行われます。</span></p>
           <p class="cl-ticket-foot">MONTHLY MEMBERSHIP</p>
         </div>
       </div>
@@ -789,7 +807,7 @@
       <p class="cl-lead cl-reveal">余韻に還り、夢を思い出す。<br class="cl-br">走り続けるあなたが、<br class="cl-br-sp"><span class="cl-em">折れないための場所。</span></p>
       <p class="cl-wait cl-reveal">あなたを待っています。</p>
       <div class="cl-cta-block cl-reveal">
-        <a class="cl-cta cl-js-signup" href="https://www.cinelish-japan.tech/register/">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
+        <a class="cl-cta cl-js-signup" href="#join">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
         <p class="cl-cta-note">月額500円・いつでも解約OK</p>
       </div>
       <p class="cl-fin cl-reveal">Fin.</p>
@@ -802,7 +820,7 @@
 <div class="cl-footer">&copy; Cine Lish</div>
 
 <div class="cl-sticky" aria-hidden="true">
-  <a class="cl-cta cl-js-signup" href="https://www.cinelish-japan.tech/register/" tabindex="-1">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
+  <a class="cl-cta cl-js-signup" href="#join" tabindex="-1">プレミアム会員に登録する<span class="cl-arrow" aria-hidden="true">→</span></a>
 </div>
 
 </div><!-- /#cinelish-lp -->
@@ -811,12 +829,15 @@
 (() => {
     document.getElementById("cinelish-lp").classList.add("cl-js");
 
-    // ▼ 登録ページのURLをここに入れてください（全ボタンに反映されます）
-    const SIGNUP_URL = "https://www.cinelish-japan.tech/register/";
-
+    // 登録ボタンを押したら、チケット（codocの登録ボタン）までなめらかに移動する
+    const ticket = document.querySelector("#cinelish-lp .cl-ticket");
     document.querySelectorAll("#cinelish-lp .cl-js-signup").forEach(a => {
-      a.href = SIGNUP_URL;
-      if (/^https?:/.test(SIGNUP_URL) && new URL(SIGNUP_URL).host !== location.host) { a.target = "_blank"; a.rel = "noopener"; }
+      a.addEventListener("click", e => {
+        if (!ticket) return;
+        e.preventDefault();
+        const y = ticket.getBoundingClientRect().top + window.scrollY - 90;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      });
     });
 
     // スクロールでふわっと表示
@@ -835,6 +856,7 @@
     new IntersectionObserver(([e]) => { joinVisible = e.isIntersecting; update(); }).observe(join);
 })();
 </script>
+<script src="https://codoc.jp/js/cms.js" data-css="rainbow-square" data-usercode="NZVH8jM8Hg" charset="UTF-8" defer></script>
 <?php wp_footer(); ?>
 </body>
 </html>

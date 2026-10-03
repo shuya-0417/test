@@ -82,7 +82,7 @@ fonts = src[src.index('<link rel="preconnect"'):src.index("<style>")].strip()
     "<!-- Cine Lish プレミアム LP 用HTML（TCDテーマ）\n"
     "     貼り付け先：固定ページ本文の「カスタムHTML」ブロック（クラシックエディタなら「テキスト」タブ）\n"
     "     ・画像URLは入力済み\n"
-    '     ・codocの登録ボタン入り（チケットの中）。ほかの登録ボタンはチケットまで移動します\n'
+    '     ・codocの登録ボタン入り（チケットの中）。ほかの登録ボタンを押しても、codocの登録画面が開きます\n'
     "     ※ エディタの自動整形で崩れないよう、あえて1行にしています（Ctrl+F で検索して書き換えてください） -->\n"
     + one_line(fonts + tcd_body) + "\n"
 )
@@ -109,7 +109,7 @@ pv_head = pv_head.replace('<meta property="og:image" content="hero.webp">\n', ""
 pv_body = src[src.index('<div id="cinelish-lp">'):src.index("</body>")]
 pv_body = re.sub(r'<script src="https://codoc.jp[^<]*</script>', "", pv_body)
 pv_body = pv_body.replace('<div id="codoc-subscription-tuq1lf60NQ" class="codoc-subscriptions"></div>',
-    '<div style="display:inline-block;padding:16px 36px;border-radius:6px;background:linear-gradient(90deg,#ff6b6b,#f7b733,#4ecdc4,#5567ff);color:#fff;font:700 15px/1.4 system-ui,sans-serif">月額500円で購読する（codocのボタン見本）</div>')
+    '<div style="display:inline-block;padding:16px 36px;border-radius:6px;background:#1b1917;color:#f4eee3;font:700 14px/1.4 serif;letter-spacing:.12em">購読する（codocのボタン見本）</div>')
 frame = """<style>
   /* プレビュー枠：実サイトの本文幅（690px）を再現 */
   html, body { background: #ffffff; color: #262220; }

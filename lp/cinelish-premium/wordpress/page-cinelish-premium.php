@@ -446,7 +446,7 @@
   #cinelish-lp .cl-stub-label span { color: var(--gold-1); }
   /* codocの登録ボタンが入る場所（中身には触らない） */
   #cinelish-lp .cl-widget {
-    display: flex; justify-content: center;
+    display: block;
     min-height: 48px;
     font-family: system-ui, sans-serif;
     font-weight: normal;
@@ -456,6 +456,21 @@
     text-wrap: wrap;
     color: initial;
   }
+  /* codocのボタンをLPのトーンに合わせる（色・角・書体だけ） */
+  #cinelish-lp .cl-widget .codoc-subscription-list { width: 100%; margin: 4px auto 0 !important; }
+  #cinelish-lp .cl-widget .codoc-subscription-list li { border: 1px solid var(--line); border-radius: 0; background: var(--paper); text-align: left; }
+  #cinelish-lp .cl-widget .codoc-subscription-title { font-family: var(--serif-ja); font-weight: 700; color: var(--ink); }
+  #cinelish-lp .cl-widget .codoc-subscription-description { color: var(--ink-faint); }
+  #cinelish-lp .cl-widget .codoc-subscription-price { font-family: var(--serif-ja); color: var(--ink); }
+  #cinelish-lp .cl-widget .codoc-btn {
+    background: var(--dark) !important;
+    color: #f4eee3 !important;
+    border-radius: 0 !important;
+    font-family: var(--serif-ja);
+    letter-spacing: .12em;
+  }
+  #cinelish-lp .cl-widget .codoc-btn:hover { background: var(--brown) !important; }
+  #cinelish-lp .cl-widget .codoc-subscription-term-toggle.codoc-is-active { background: var(--dark); color: #f4eee3; }
   #cinelish-lp .cl-widget-note { margin-top: 14px; font-size: 12px; line-height: 1.8; color: var(--ink-faint); letter-spacing: .06em; }
   #cinelish-lp .cl-ticket-foot { margin-top: 14px; font-family: var(--serif-en); font-size: 11px; line-height: 1; letter-spacing: .32em; color: var(--ink-faint); }
 
@@ -829,14 +844,18 @@
 (() => {
     document.getElementById("cinelish-lp").classList.add("cl-js");
 
-    // 登録ボタンを押したら、チケット（codocの登録ボタン）までなめらかに移動する
+    // 登録ボタンを押したら、codocの登録画面を開く
+    // （codocのボタンがまだ表示されていないときは、チケットまで移動する）
     const ticket = document.querySelector("#cinelish-lp .cl-ticket");
     document.querySelectorAll("#cinelish-lp .cl-js-signup").forEach(a => {
       a.addEventListener("click", e => {
-        if (!ticket) return;
         e.preventDefault();
-        const y = ticket.getBoundingClientRect().top + window.scrollY - 90;
-        window.scrollTo({ top: y, behavior: "smooth" });
+        const codocBtn = document.querySelector("#cinelish-lp .cl-widget .codoc-btn, #cinelish-lp .cl-widget a, #cinelish-lp .cl-widget button");
+        if (codocBtn) { codocBtn.click(); return; }
+        if (ticket) {
+          const y = ticket.getBoundingClientRect().top + window.scrollY - 90;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
       });
     });
 
@@ -856,7 +875,7 @@
     new IntersectionObserver(([e]) => { joinVisible = e.isIntersecting; update(); }).observe(join);
 })();
 </script>
-<script src="https://codoc.jp/js/cms.js" data-css="rainbow-square" data-usercode="NZVH8jM8Hg" charset="UTF-8" defer></script>
+<script src="https://codoc.jp/js/cms.js" data-css="black-square" data-usercode="NZVH8jM8Hg" charset="UTF-8" defer></script>
 <?php wp_footer(); ?>
 </body>
 </html>

@@ -506,6 +506,19 @@
     font-family: var(--serif-en); font-style: italic; font-size: 22px; line-height: 1.2; color: var(--gold-1);
   }
 
+  #cinelish-lp .cl-faq-steps { margin-top: 10px; }
+  #cinelish-lp .cl-faq-steps li { display: flex; align-items: baseline; gap: 10px; padding: 3px 0; }
+  #cinelish-lp .cl-step-n {
+    flex-shrink: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px;
+    border: 1px solid var(--gold-1);
+    border-radius: 50%;
+    font-family: var(--serif-en); font-size: 12px; line-height: 1; color: var(--gold-1);
+    font-variant-numeric: lining-nums;
+  }
+  #cinelish-lp .cl-faq dd a { color: var(--brown); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--gold-1); }
+
   /* ---------- ボタン ---------- */
   #cinelish-lp .cl-cta {
     display: inline-flex; align-items: center; justify-content: center; gap: 16px;
@@ -874,7 +887,11 @@
       <dl class="cl-faq cl-reveal">
         <div><span class="cl-q">Q.</span><dt>料金はいくらですか？</dt><dd>月額500円です。</dd></div>
         <div><span class="cl-q">Q.</span><dt>どのくらいの頻度で更新されますか？</dt><dd>毎週1本程度、月3〜4本のエッセイを公開します。</dd></div>
-        <div><span class="cl-q">Q.</span><dt>途中でやめることはできますか？</dt><dd>はい。いつでも解約できます。</dd></div>
+        <div><span class="cl-q">Q.</span><dt>途中でやめることはできますか？</dt><dd>はい。いつでも解約できます。解約は、codocの画面から次の手順で行えます。
+          <ol class="cl-faq-steps">
+            <li><span class="cl-step-n">1</span><span><a href="https://codoc.jp/login?locale=ja" target="_blank" rel="noopener">codocにログイン</a>する</span></li>
+            <li><span class="cl-step-n">2</span><span>「購読プランの確認・解約」に進む</span></li>
+          </ol></dd></div>
       </dl>
     </div>
   </section>

@@ -496,6 +496,19 @@
   font-family: var(--serif-en); font-style: italic; font-size: 22px; line-height: 1.2; color: var(--gold-1);
 }
 
+#cinelish-lp#cinelish-lp .cl-faq-steps { margin-top: 10px; }
+#cinelish-lp#cinelish-lp .cl-faq-steps li { display: flex; align-items: baseline; gap: 10px; padding: 3px 0; }
+#cinelish-lp#cinelish-lp .cl-step-n {
+  flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px;
+  border: 1px solid var(--gold-1);
+  border-radius: 50%;
+  font-family: var(--serif-en); font-size: 12px; line-height: 1; color: var(--gold-1);
+  font-variant-numeric: lining-nums;
+}
+#cinelish-lp#cinelish-lp .cl-faq dd a { color: var(--brown); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--gold-1); }
+
 /* ---------- ボタン ---------- */
 #cinelish-lp#cinelish-lp .cl-cta {
   display: inline-flex; align-items: center; justify-content: center; gap: 16px;

@@ -383,8 +383,8 @@
   #cinelish-lp .cl-sign span { font-family: var(--serif-en); font-style: italic; font-weight: 400; font-size: 34px; line-height: 1; color: var(--brown); }
 
   /* ---------- Profile（エンドロールのキャスト紹介風） ---------- */
-  #cinelish-lp .cl-profile { text-align: center; }
-  #cinelish-lp .cl-prof-role { font-size: 13px; letter-spacing: .24em; color: var(--dark-soft); }
+  #cinelish-lp .cl-profile { text-align: center; background: var(--paper); color: var(--ink); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  #cinelish-lp .cl-prof-role { font-size: 13px; letter-spacing: .24em; color: var(--ink-faint); }
   #cinelish-lp p.cl-prof-name {
     margin-top: 10px;
     font-family: var(--serif-en);
@@ -394,34 +394,34 @@
     line-height: 1;
     letter-spacing: .02em;
   }
-  #cinelish-lp .cl-prof-name .cl-gold { padding: 0 .06em; }
+  #cinelish-lp .cl-prof-name .cl-gold { padding: 0 .06em; background: none; color: var(--brown); }
   #cinelish-lp .cl-prof-photo { position: relative; width: min(300px, 70%); margin: 36px auto 0; }
   #cinelish-lp .cl-prof-photo .cl-offset { position: absolute; inset: 14px -14px -14px 14px; border: 1px solid var(--gold-1); opacity: .6; }
   #cinelish-lp .cl-prof-photo .cl-photo { position: relative; aspect-ratio: 4 / 5; object-fit: cover; }
   #cinelish-lp .cl-favs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 560px; margin: 44px auto 0; text-align: left; }
-  #cinelish-lp .cl-fav { padding: 24px 22px 22px; background: var(--dark-2); border: 1px solid #3d3935; }
-  #cinelish-lp .cl-fav-label { display: block; font-family: var(--serif-en); font-style: italic; font-size: 12px; letter-spacing: .2em; color: var(--gold-2); }
-  #cinelish-lp p.cl-fav-title { margin-top: 8px; font-size: 20px; font-weight: 700; line-height: 1.5; letter-spacing: .06em; color: #f6f1e8; }
-  #cinelish-lp .cl-fav-title small { display: block; font-family: var(--serif-en); font-style: italic; font-weight: 400; font-size: 14px; letter-spacing: .06em; color: var(--dark-soft); }
-  #cinelish-lp p.cl-fav-text { margin-top: 12px; font-size: 14px; line-height: 1.9; color: var(--dark-soft); }
+  #cinelish-lp .cl-fav { padding: 24px 22px 22px; background: var(--bg); border: 1px solid #e3ddd3; }
+  #cinelish-lp .cl-fav-label { display: block; font-family: var(--serif-en); font-style: italic; font-size: 12px; letter-spacing: .2em; color: var(--gold-1); }
+  #cinelish-lp p.cl-fav-title { margin-top: 8px; font-size: 20px; font-weight: 700; line-height: 1.5; letter-spacing: .06em; color: var(--ink); }
+  #cinelish-lp .cl-fav-title small { display: block; font-family: var(--serif-en); font-style: italic; font-weight: 400; font-size: 14px; letter-spacing: .06em; color: var(--ink-faint); }
+  #cinelish-lp p.cl-fav-text { margin-top: 12px; font-size: 14px; line-height: 1.9; color: var(--ink-soft); }
   #cinelish-lp .cl-motto {
     position: relative;
     max-width: 520px;
     margin: 48px auto 0;
     padding: 34px 20px;
-    border-top: 1px solid #3d3935;
-    border-bottom: 1px solid #3d3935;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
   }
-  #cinelish-lp .cl-motto-label { display: block; margin-bottom: 14px; font-family: var(--serif-en); font-style: italic; font-size: 13px; letter-spacing: .2em; color: var(--gold-2); }
-  #cinelish-lp .cl-motto p { font-size: clamp(19px, 4vw, 23px); font-weight: 700; line-height: 1.85; letter-spacing: .06em; color: #f6f1e8; }
+  #cinelish-lp .cl-motto-label { display: block; margin-bottom: 14px; font-family: var(--serif-en); font-style: italic; font-size: 13px; letter-spacing: .2em; color: var(--gold-1); }
+  #cinelish-lp .cl-motto p { font-size: clamp(19px, 4vw, 23px); font-weight: 700; line-height: 1.85; letter-spacing: .06em; color: var(--ink); }
   #cinelish-lp .cl-credits { max-width: 520px; margin: 44px auto 0; text-align: left; }
-  #cinelish-lp .cl-credits div { display: grid; grid-template-columns: 104px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px dashed #45403b; }
-  #cinelish-lp .cl-credits dt { font-family: var(--serif-en); font-style: italic; font-size: 13px; line-height: 2; letter-spacing: .16em; color: var(--gold-2); }
-  #cinelish-lp .cl-credits dd { margin: 0; font-size: 15px; line-height: 1.9; color: var(--dark-ink); }
+  #cinelish-lp .cl-credits div { display: grid; grid-template-columns: 104px 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px dashed var(--line); }
+  #cinelish-lp .cl-credits dt { font-family: var(--serif-en); font-style: italic; font-size: 13px; line-height: 2; letter-spacing: .16em; color: var(--gold-1); }
+  #cinelish-lp .cl-credits dd { margin: 0; font-size: 15px; line-height: 1.9; color: var(--ink); }
   #cinelish-lp .cl-credits dd b { font-family: var(--serif-en); font-weight: 400; font-size: 1.5em; line-height: 1; letter-spacing: .02em; font-variant-numeric: lining-nums; }
-  #cinelish-lp .cl-prof-bio { max-width: 520px; margin: 40px auto 0; text-align: left; font-size: 15px; line-height: 2; color: var(--dark-soft); }
+  #cinelish-lp .cl-prof-bio { max-width: 520px; margin: 40px auto 0; text-align: left; font-size: 15px; line-height: 2; color: var(--ink-soft); }
   #cinelish-lp .cl-prof-bio p + p { margin-top: 1.2em; }
-  #cinelish-lp .cl-prof-bio .cl-hl { color: #f6f1e8; font-weight: 700; }
+  #cinelish-lp .cl-prof-bio .cl-hl { color: var(--ink); font-weight: 700; }
 
   /* ---------- Scene 02：受け取れるもの（カード） ---------- */
   #cinelish-lp .cl-benefits { background: var(--bg-alt); }
@@ -761,9 +761,7 @@
   </section>
 
   <!-- Profile：Shuyaについて -->
-  <section class="cl-profile cl-dark cl-dark-pad">
-    <span class="cl-film"></span>
-    <div class="cl-dark-inner">
+  <section class="cl-profile">
     <div class="cl-wrap">
       <p class="cl-eyebrow cl-reveal"><span class="cl-eb-line"></span><i>Cast</i><span class="cl-eb-line"></span></p>
       <div class="cl-reveal">
@@ -803,8 +801,6 @@
         <p><span class="cl-hl">このメンバーシップで綴るのは、<br class="cl-br-pc">メディアの記事では書けない、自分自身の言葉です。</span></p>
       </div>
     </div>
-    </div>
-    <span class="cl-film"></span>
   </section>
 
   <!-- Scene 02：受け取れるもの -->

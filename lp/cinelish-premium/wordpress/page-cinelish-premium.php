@@ -343,6 +343,30 @@
     letter-spacing: .05em;
   }
 
+  /* ---------- About：Cine Lishとは ---------- */
+  #cinelish-lp .cl-about { background: var(--paper); text-align: center; }
+  #cinelish-lp p.cl-about-mark {
+    font-family: var(--serif-en);
+    font-weight: 400;
+    font-size: clamp(44px, 10vw, 64px);
+    line-height: 1;
+    letter-spacing: .04em;
+    color: var(--ink);
+  }
+  #cinelish-lp p.cl-about-mark small { display: block; margin-top: 10px; font-family: var(--serif-ja); font-size: 14px; font-weight: 500; letter-spacing: .3em; color: var(--ink-faint); }
+  #cinelish-lp p.cl-about-lead { max-width: 30em; margin: 32px auto 0; font-size: clamp(17px, 3.4vw, 20px); font-weight: 700; line-height: 1.9; letter-spacing: .05em; }
+  #cinelish-lp .cl-pillars { display: grid; grid-template-columns: repeat(3, 1fr); margin: 40px 0 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  #cinelish-lp .cl-pillars li { padding: 24px 8px 22px; text-align: center; }
+  #cinelish-lp .cl-pillars li + li { border-left: 1px solid var(--line); }
+  #cinelish-lp .cl-pillar-en { display: block; font-family: var(--serif-en); font-style: italic; font-size: 13px; letter-spacing: .12em; color: var(--gold-1); }
+  #cinelish-lp .cl-pillar-ja { display: block; margin-top: 4px; font-size: clamp(17px, 3.6vw, 21px); font-weight: 700; line-height: 1.5; letter-spacing: .08em; white-space: nowrap; }
+  #cinelish-lp .cl-about-body { max-width: 32em; margin: 40px auto 0; text-align: left; font-size: 15.5px; line-height: 2.05; color: var(--ink-soft); }
+  #cinelish-lp .cl-about-body p + p { margin-top: 1.3em; }
+  #cinelish-lp .cl-about-quote { max-width: 32em; margin: 40px auto 0; padding: 28px 24px; background: var(--bg); text-align: left; }
+  #cinelish-lp .cl-about-quote p { font-size: 15.5px; line-height: 2; color: var(--ink-soft); }
+  #cinelish-lp .cl-about-quote p + p { margin-top: 1em; }
+  #cinelish-lp .cl-about-quote .cl-hl { color: var(--ink); font-weight: 700; }
+
   /* ---------- Concept（黒・縦書き・フィルム） ---------- */
   #cinelish-lp .cl-film {
     display: block;
@@ -646,6 +670,8 @@
     #cinelish-lp .cl-lead { font-size: 21px; letter-spacing: .04em; }
     #cinelish-lp .cl-fin { font-size: 38px; margin-top: 64px; }
     #cinelish-lp .cl-sticky { display: block; }
+    #cinelish-lp .cl-pillars li { padding: 20px 4px 18px; }
+    #cinelish-lp .cl-about-quote { padding: 22px 18px; }
     #cinelish-lp .cl-credits div { grid-template-columns: 1fr; gap: 0; padding: 12px 0; }
     #cinelish-lp .cl-favs { grid-template-columns: 1fr; gap: 12px; }
     #cinelish-lp .cl-motto { margin-top: 40px; padding: 28px 8px; }
@@ -729,6 +755,31 @@
       </div>
 
       <p class="cl-pull cl-reveal">人が本来力を発揮するのは、<br class="cl-br">自分の意思で、<span class="cl-em">能動的に<br class="cl-br-sp">行動しているとき</span>です。</p>
+    </div>
+  </section>
+
+  <!-- About：Cine Lishとは -->
+  <section class="cl-about">
+    <div class="cl-wrap">
+      <p class="cl-eyebrow cl-reveal"><span class="cl-eb-line"></span><i>About</i><span class="cl-eb-line"></span></p>
+      <p class="cl-about-mark cl-reveal">Cine Lish<small>シネリッシュとは</small></p>
+      <p class="cl-about-lead cl-reveal"><span class="cl-nw">言葉を通して、</span><span class="cl-nw">人々の可能性や気づき、</span><span class="cl-nw">新たな視点を</span><span class="cl-nw">発信していくメディアです。</span></p>
+
+      <ul class="cl-pillars cl-reveal">
+        <li><span class="cl-pillar-en">Possibility</span><span class="cl-pillar-ja">可能性</span></li>
+        <li><span class="cl-pillar-en">Insight</span><span class="cl-pillar-ja">気づき</span></li>
+        <li><span class="cl-pillar-en">Perspective</span><span class="cl-pillar-ja">新たな視点</span></li>
+      </ul>
+
+      <div class="cl-about-body cl-reveal">
+        <p>今は、周りからの影響を受けやすい時代です。その中で、自分の人生や自分自身を見失ってしまう人が増えていると感じます。</p>
+        <p>だからこそCineLishは、記事を通して、夢を追う人や悩める人が<span class="cl-em">自分の足元を見つめ直せる機会</span>をつくりたい。自分自身を発見するための、新たな視点と可能性を手渡したいと考えています。</p>
+      </div>
+
+      <div class="cl-about-quote cl-reveal">
+        <p>誰かの助言で、ふと自分の可能性に気づけた。そんな経験は、きっと誰にでもあるはずです。</p>
+        <p><span class="cl-hl">夢に行き詰まったとき、ここで読んだ言葉が、もう一度希望を持つきっかけになる。そんな言葉を、記事を通して届けたいと願っています。</span></p>
+      </div>
     </div>
   </section>
 

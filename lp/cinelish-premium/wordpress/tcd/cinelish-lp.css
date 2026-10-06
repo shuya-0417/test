@@ -325,6 +325,30 @@
   letter-spacing: .05em;
 }
 
+/* ---------- About：Cine Lishとは ---------- */
+#cinelish-lp#cinelish-lp .cl-about { background: var(--paper); text-align: center; }
+#cinelish-lp#cinelish-lp p.cl-about-mark {
+  font-family: var(--serif-en);
+  font-weight: 400;
+  font-size: clamp(44px, 10vw, 64px);
+  line-height: 1;
+  letter-spacing: .04em;
+  color: var(--ink);
+}
+#cinelish-lp#cinelish-lp p.cl-about-mark small { display: block; margin-top: 10px; font-family: var(--serif-ja); font-size: 14px; font-weight: 500; letter-spacing: .3em; color: var(--ink-faint); }
+#cinelish-lp#cinelish-lp p.cl-about-lead { max-width: 30em; margin: 32px auto 0; font-size: clamp(17px, 3.4vw, 20px); font-weight: 700; line-height: 1.9; letter-spacing: .05em; }
+#cinelish-lp#cinelish-lp .cl-pillars { display: grid; grid-template-columns: repeat(3, 1fr); margin: 40px 0 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+#cinelish-lp#cinelish-lp .cl-pillars li { padding: 24px 8px 22px; text-align: center; }
+#cinelish-lp#cinelish-lp .cl-pillars li + li { border-left: 1px solid var(--line); }
+#cinelish-lp#cinelish-lp .cl-pillar-en { display: block; font-family: var(--serif-en); font-style: italic; font-size: 13px; letter-spacing: .12em; color: var(--gold-1); }
+#cinelish-lp#cinelish-lp .cl-pillar-ja { display: block; margin-top: 4px; font-size: clamp(17px, 3.6vw, 21px); font-weight: 700; line-height: 1.5; letter-spacing: .08em; white-space: nowrap; }
+#cinelish-lp#cinelish-lp .cl-about-body { max-width: 32em; margin: 40px auto 0; text-align: left; font-size: 15.5px; line-height: 2.05; color: var(--ink-soft); }
+#cinelish-lp#cinelish-lp .cl-about-body p + p { margin-top: 1.3em; }
+#cinelish-lp#cinelish-lp .cl-about-quote { max-width: 32em; margin: 40px auto 0; padding: 28px 24px; background: var(--bg); text-align: left; }
+#cinelish-lp#cinelish-lp .cl-about-quote p { font-size: 15.5px; line-height: 2; color: var(--ink-soft); }
+#cinelish-lp#cinelish-lp .cl-about-quote p + p { margin-top: 1em; }
+#cinelish-lp#cinelish-lp .cl-about-quote .cl-hl { color: var(--ink); font-weight: 700; }
+
 /* ---------- Concept（黒・縦書き・フィルム） ---------- */
 #cinelish-lp#cinelish-lp .cl-film {
   display: block;
@@ -628,6 +652,8 @@
   #cinelish-lp#cinelish-lp .cl-lead { font-size: 21px; letter-spacing: .04em; }
   #cinelish-lp#cinelish-lp .cl-fin { font-size: 38px; margin-top: 64px; }
   #cinelish-lp#cinelish-lp .cl-sticky { display: block; }
+  #cinelish-lp#cinelish-lp .cl-pillars li { padding: 20px 4px 18px; }
+  #cinelish-lp#cinelish-lp .cl-about-quote { padding: 22px 18px; }
   #cinelish-lp#cinelish-lp .cl-credits div { grid-template-columns: 1fr; gap: 0; padding: 12px 0; }
   #cinelish-lp#cinelish-lp .cl-favs { grid-template-columns: 1fr; gap: 12px; }
   #cinelish-lp#cinelish-lp .cl-motto { margin-top: 40px; padding: 28px 8px; }

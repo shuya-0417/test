@@ -6,7 +6,7 @@
    Cine Lish プレミアム LP
    ・CSSは #cinelish-lp#cinelish-lp の内側だけに効く（サイトの他の部分に影響しない）
    ・WordPressのCSS欄で記号が変換されても壊れないよう、引用符と不等号は使わない
-   ・レイアウト：1本の映画の構成（Prologue → Scene → Concept → Note → Ticket → Epilogue）
+   ・レイアウト：1本の映画の構成（Prologue → Scene → About → Note → Cast → Ticket → Epilogue）
    ============================================================ */
 #cinelish-lp#cinelish-lp {
   --bg: #f3f1ec;
@@ -128,7 +128,7 @@
 }
 #cinelish-lp#cinelish-lp .cl-gate i { font-style: normal; color: #c6533e; }
 
-/* ---------- 暗いシーン共通（Prologue / Concept / Epilogue） ---------- */
+/* ---------- 暗いシーン共通（Prologue / Epilogue） ---------- */
 #cinelish-lp#cinelish-lp .cl-dark { background: var(--dark); color: var(--dark-ink); }
 #cinelish-lp#cinelish-lp .cl-dark .cl-eyebrow { color: #a69f95; }
 #cinelish-lp#cinelish-lp .cl-dark .cl-em { background: linear-gradient(transparent 68%, rgba(212, 184, 102, .42) 68%); }
@@ -349,7 +349,6 @@
 #cinelish-lp#cinelish-lp .cl-about-quote p + p { margin-top: 1em; }
 #cinelish-lp#cinelish-lp .cl-about-quote .cl-hl { color: var(--ink); font-weight: 700; }
 
-/* ---------- Concept（黒・縦書き・フィルム） ---------- */
 #cinelish-lp#cinelish-lp .cl-film {
   display: block;
   height: 26px;
@@ -357,19 +356,6 @@
     repeating-linear-gradient(90deg, transparent 0 9px, #3b3733 9px 21px, transparent 21px 30px) center / 100% 10px no-repeat,
     var(--dark-2);
 }
-#cinelish-lp#cinelish-lp .cl-concept { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 56px; }
-#cinelish-lp#cinelish-lp .cl-vertical {
-  grid-column: 2; grid-row: 1;
-  writing-mode: vertical-rl;
-  font-size: clamp(24px, 3.6vw, 30px);
-  line-height: 2;
-  letter-spacing: .22em;
-  font-weight: 600;
-  color: #f3eee5;
-  margin: 0 auto;
-}
-#cinelish-lp#cinelish-lp .cl-concept-body { grid-column: 1; grid-row: 1; color: var(--dark-soft); font-size: 15px; }
-#cinelish-lp#cinelish-lp .cl-concept-body .cl-hl { color: var(--dark-ink); font-weight: 700; }
 
 /* ---------- Editor Note ---------- */
 #cinelish-lp#cinelish-lp .cl-note-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 44px; align-items: center; }
@@ -614,19 +600,6 @@
   #cinelish-lp#cinelish-lp .cl-dark-inner { padding: 64px 0 72px; }
   #cinelish-lp#cinelish-lp .cl-bigno { font-size: 110px; }
   #cinelish-lp#cinelish-lp .cl-scene-head { padding-top: 92px; }
-  #cinelish-lp#cinelish-lp .cl-concept { grid-template-columns: 1fr; gap: 44px; }
-  #cinelish-lp#cinelish-lp .cl-vertical {
-    grid-column: 1; grid-row: 1;
-    -webkit-writing-mode: horizontal-tb;
-    writing-mode: horizontal-tb;
-    text-align: center;
-    font-size: clamp(20px, 6.2vw, 25px);
-    line-height: 1.8;
-    letter-spacing: .05em;
-  }
-  #cinelish-lp#cinelish-lp .cl-vertical .cl-line { display: block; white-space: nowrap; }
-  #cinelish-lp#cinelish-lp .cl-vertical .cl-vbr { display: none; }
-  #cinelish-lp#cinelish-lp .cl-concept-body { grid-column: 1; grid-row: 2; text-align: center; }
   #cinelish-lp#cinelish-lp .cl-note-grid { grid-template-columns: 1fr; gap: 44px; }
   #cinelish-lp#cinelish-lp .cl-note-photo { width: 78%; margin: 0 auto; }
   #cinelish-lp#cinelish-lp .cl-cards { grid-template-columns: 1fr; gap: 12px; }

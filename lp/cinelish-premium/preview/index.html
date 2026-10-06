@@ -381,6 +381,15 @@
     letter-spacing: .02em;
   }
   #cinelish-lp .cl-prof-name .cl-gold { padding: 0 .06em; }
+  #cinelish-lp .cl-prof-photo { position: relative; width: min(300px, 70%); margin: 36px auto 0; }
+  #cinelish-lp .cl-prof-photo .cl-offset { position: absolute; inset: 14px -14px -14px 14px; border: 1px solid var(--gold-1); opacity: .6; }
+  #cinelish-lp .cl-prof-photo .cl-photo { position: relative; aspect-ratio: 4 / 5; object-fit: cover; }
+  #cinelish-lp .cl-favs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 560px; margin: 44px auto 0; text-align: left; }
+  #cinelish-lp .cl-fav { padding: 24px 22px 22px; background: var(--dark-2); border: 1px solid #3d3935; }
+  #cinelish-lp .cl-fav-label { display: block; font-family: var(--serif-en); font-style: italic; font-size: 12px; letter-spacing: .2em; color: var(--gold-2); }
+  #cinelish-lp p.cl-fav-title { margin-top: 8px; font-size: 20px; font-weight: 700; line-height: 1.5; letter-spacing: .06em; color: #f6f1e8; }
+  #cinelish-lp .cl-fav-title small { display: block; font-family: var(--serif-en); font-style: italic; font-weight: 400; font-size: 14px; letter-spacing: .06em; color: var(--dark-soft); }
+  #cinelish-lp p.cl-fav-text { margin-top: 12px; font-size: 14px; line-height: 1.9; color: var(--dark-soft); }
   #cinelish-lp .cl-motto {
     position: relative;
     max-width: 520px;
@@ -610,6 +619,8 @@
     #cinelish-lp .cl-fin { font-size: 38px; margin-top: 64px; }
     #cinelish-lp .cl-sticky { display: block; }
     #cinelish-lp .cl-credits div { grid-template-columns: 1fr; gap: 0; padding: 12px 0; }
+    #cinelish-lp .cl-favs { grid-template-columns: 1fr; gap: 12px; }
+    #cinelish-lp .cl-prof-photo { width: 72%; }
     #cinelish-lp .cl-motto { margin-top: 40px; padding: 28px 8px; }
     #cinelish-lp .cl-br-pc { display: none; }
   }
@@ -752,6 +763,7 @@
         <p class="cl-prof-role"><span class="cl-nw">編集者／</span><span class="cl-nw">映画ジャーナリスト／</span><span class="cl-nw">俳優</span></p>
         <p class="cl-prof-name"><span class="cl-gold">Shuya</span></p>
       </div>
+      <figure class="cl-prof-photo cl-reveal"><span class="cl-offset"></span><img class="cl-photo" src="img/profile.jpg" width="800" height="1000" alt="インタビューで語るShuya"></figure>
 
       <div class="cl-motto cl-reveal">
         <span class="cl-motto-label">Motto</span>
@@ -764,6 +776,19 @@
         <div><dt>Articles</dt><dd>手がけた記事は <b>1,000</b> 本以上</dd></div>
         <div><dt>Dream</dt><dd><span class="cl-nw">撮影で海外を飛び回り、</span><span class="cl-nw">世界基準で活躍すること</span></dd></div>
       </dl>
+
+      <div class="cl-favs cl-reveal">
+        <div class="cl-fav">
+          <span class="cl-fav-label">Favorite Film</span>
+          <p class="cl-fav-title">『キャロル』<small>Carol</small></p>
+          <p class="cl-fav-text">演技、照明、音楽、世界観、物語。そのすべてが美しい。映画史上、最も美しいと思う一本です。</p>
+        </div>
+        <div class="cl-fav">
+          <span class="cl-fav-label">Favorite Actor</span>
+          <p class="cl-fav-title">ルーニー・マーラ<small>Rooney Mara</small></p>
+          <p class="cl-fav-text">共演者から「なぜそこまで自然に演じられるの？」と聞かれるほど、すべてを捨てて役に入れる俳優。内向的で謙虚な姿勢を尊敬しています。</p>
+        </div>
+      </div>
 
       <div class="cl-prof-bio cl-reveal">
         <p>エンタメメディアを中心に、これまでさまざまな媒体で映画や人の言葉を伝えてきました。手がけた記事は1,000本を超えます。</p>
